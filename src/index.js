@@ -9,9 +9,9 @@ import store from './redux/store'
 
 
 ReactDOM.render(<Router>
-            
+                  <Provider store={store}>
                     <App />
-
+                  </Provider>
                 </Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
-import ProfileContainer from './ProfileContainer';
+import Profile from '../components/Profile';
 import NotesContainer from './NotesContainer';
 import SavedRecipesContainer from './SavedRecipesContainer';
 
@@ -9,7 +9,7 @@ class OverviewPage extends Component {
     return (
       <div>
         <Navbar />
-        <ProfileContainer />
+        <Profile />
         <NotesContainer />
         <SavedRecipesContainer />
       </div>
