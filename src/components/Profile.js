@@ -5,13 +5,10 @@ class Profile extends Component {
 
   render() {
     return (
-          <div>
-              Profile Container here
-              <div>
-                <h2>{this.props.proimage}</h2>
-                <h1>{this.props.fname + " " + this.props.lname}</h1>
-                <h3>{this.props.email}</h3>
-              </div>
+          <div className="ui card">
+              <h2>{this.props.proimage}</h2>
+              <h1>{this.props.fname + " " + this.props.lname}</h1>
+              <h3>{this.props.email}</h3>
           </div>
         );
       }

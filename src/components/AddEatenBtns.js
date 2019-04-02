@@ -1,9 +1,9 @@
 import React from 'react';
 
 const AddEatenBtns = () => (
-   <div class="large ui buttons">
-    <button class="ui button">Add Food</button>
-    <button class="ui button">Eat Food</button>
+   <div className="large ui buttons">
+    <button className="ui button">Add Food</button>
+    <button className="ui button">Eat Food</button>
   </div>
 );
 

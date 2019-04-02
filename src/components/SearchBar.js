@@ -1,9 +1,9 @@
 import React from 'react';
 
 const SearchBar = () => (
-  <div class="ui large icon input">
+  <div className="ui large icon input">
    <input type="text" placeholder="Search large..."/>
-   <i class="search icon"></i>
+   <i className="search icon"></i>
  </div>
 );
 

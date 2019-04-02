@@ -7,9 +7,8 @@ import { connect } from 'react-redux'
 const RecipesPage = () => (
  <div>
     <Navbar />
-    welcome to recipes page
     <SearchBar />
-    <h1>advanced search button</h1>
+    <button className="ui button">Advanced Search</button>
     <RecipeContainer />
  </div>
 );

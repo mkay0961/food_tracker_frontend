@@ -11,7 +11,9 @@ class OverviewPage extends Component {
       <div>
         <Navbar />
         <Profile />
-        <AddEatenBtns />
+        <div className="ui card">
+          <AddEatenBtns />
+        </div>
         <NotesContainer />
         <SavedRecipesContainer />
       </div>

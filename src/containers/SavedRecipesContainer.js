@@ -9,7 +9,7 @@ const genRecipeComponents = (recipes) =>{
 
 
 const SavedRecipesContainer = (props) => (
- <div>
+ <div className="ui card">
     Saved Recipes Container
     {genRecipeComponents(props.saveRecipes)}
  </div>

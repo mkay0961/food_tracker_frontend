@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Food = (props) => (
- <div>
+ <div className="ui card">
     {`${props.data.name}`}
  </div>
 );

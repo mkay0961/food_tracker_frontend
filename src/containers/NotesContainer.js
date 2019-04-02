@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NotesContainer = () => (
- <div>
+ <div className="ui card">
     Notes Container here
  </div>
 );
