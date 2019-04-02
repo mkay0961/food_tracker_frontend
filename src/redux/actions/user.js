@@ -6,8 +6,7 @@ function getUser(id){
     .then(res => res.json())
     .then(user => {
       // debugger
-      console.log(user)
-      console.log(dispatch({type: "SET_USER", user}))
+      dispatch({type: "SET_USER", payload: user})
       //{type: "FETCHED_PAINTINGS", paintings}
     })
   }
