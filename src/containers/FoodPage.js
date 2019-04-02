@@ -8,7 +8,7 @@ const FoodPage = () => (
     <Navbar />
     <h1>search bar</h1>
     <h1>AddEaten buttons bar</h1>
-    <CatagoriesContainer catagories={["c1","c2","c3"]}/>
+    <CatagoriesContainer />
  </div>
 );
 
