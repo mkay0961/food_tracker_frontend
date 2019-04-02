@@ -1,35 +1,40 @@
 import React, {Component} from 'react';
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(){
     super()
-    this.state = {
-      username: "",
-      password: ""
-    }
   }
-
-  onChangeOfForm = (e) =>{
-    console.log("Change on form", e.target.name,e.target.value)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-
   render() {
     return (
       <div>
         <h1>Food Tracker</h1>
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
         <div>
-          <form onChange={(e)=>{this.onChangeOfForm(e)}}>
+          <form>
+            <div>
+              <input type="text" name="firstname" placeholder="First Name"/>
+            </div>
+
+            <div>
+              <input type="text" name="lastname" placeholder="Last Name"/>
+            </div>
+
+            <div>
+              <input type="text" name="email" placeholder="Email"/>
+            </div>
+
             <div>
               <input type="text" name="username" placeholder="Username"/>
             </div>
+
             <div>
               <input type="password" name="password" placeholder="Password"/>
             </div>
+
+            <div>
+              <input type="text" name="image" placeholder="Image"/>
+            </div>
+
             <div>
               <input type="Submit" name="submit" placeholder="Submit"/>
             </div>
@@ -40,4 +45,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default SignUp;
