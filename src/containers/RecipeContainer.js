@@ -1,11 +1,16 @@
 import React from 'react';
 import Navbar from '../components/Navbar'
+import Recipe from '../components/Recipe'
 import { connect } from 'react-redux'
 
-const RecipeContainer = () => (
+const genRecipeComponents = (recipes) =>{
+  return recipes.map((recipe)=><Recipe data={recipe} />)
+}
+
+const RecipeContainer = (props) => (
  <div>
     welcome to container page
-
+    {genRecipeComponents(props.recipes)}
  </div>
 );
 

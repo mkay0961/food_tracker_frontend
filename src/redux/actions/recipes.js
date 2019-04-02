@@ -5,9 +5,7 @@ function getAllRecipes(){
     fetch(`${URL}`)
     .then(res => res.json())
     .then(recipes => {
-      // debugger
       dispatch({type: "SET_ALL_RECIPES", payload: recipes})
-      //{type: "FETCHED_PAINTINGS", paintings}
     })
   }
 }

@@ -1,9 +1,22 @@
 import React from 'react';
+import Recipe from '../components/Recipe'
 
-const SavedRecipesContainer = () => (
+import { connect } from 'react-redux'
+
+const genRecipeComponents = (recipes) =>{
+  return recipes.map((recipe)=><Recipe data={recipe} />)
+}
+
+
+const SavedRecipesContainer = (props) => (
  <div>
-    Saved Recipes Container here
+    Saved Recipes Container
+    {genRecipeComponents(props.saveRecipes)}
  </div>
 );
 
-export default SavedRecipesContainer;
+const mapStateToProps = state =>({
+  saveRecipes: state.user.recipes
+})
+
+export default connect(mapStateToProps)(SavedRecipesContainer);

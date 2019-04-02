@@ -6,17 +6,31 @@ import { connect } from 'react-redux'
 class CategoriesContainer extends Component {
 
   generateCategories = () =>{
-    console.log(this.props.foods);
+    let obj = {}
 
-    return this.props.foods.map((item)=>item.Category)
+    this.props.foods.forEach((food, i)=>{
+      let category = food.category
+
+      if (obj[category] === undefined){
+        obj[category] = []
+      }
+
+      if (obj[category] !== undefined && !obj[category].includes(food)) {
+        obj[category].push(food)
+      }
+      console.log(obj)
+    })
+    let array = Object.keys(obj).map((key, i)=>{
+      return <Category key={i} name={key} food={obj[key]} />
+    })
+
+    return array
   }
 
   render() {
     return (
       <div>
-         {this.generateCategories().map((cat)=>{
-           return <Category name={cat}/>
-         })}
+         {this.generateCategories()}
       </div>
     )
   }

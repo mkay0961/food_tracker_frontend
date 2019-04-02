@@ -2,7 +2,7 @@ import React from 'react';
 
 const Food = (props) => (
  <div>
-    Food
+    {`${props.data.name}`}
  </div>
 );
 

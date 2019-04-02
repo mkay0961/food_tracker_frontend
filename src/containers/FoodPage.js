@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import CategoriesContainer from './CategoriesContainer'
 import Navbar from '../components/Navbar'
+import AddEatenBtns from '../components/AddEatenBtns'
+import SearchBar from '../components/SearchBar'
 import { connect } from 'react-redux'
 
 class FoodPage extends Component {
@@ -8,8 +10,8 @@ class FoodPage extends Component {
     return (
       <div>
         <Navbar />
-        <h1>search bar</h1>
-        <h1>AddEaten buttons bar</h1>
+        <SearchBar />
+        <AddEatenBtns />
         <CategoriesContainer />
       </div>
     );

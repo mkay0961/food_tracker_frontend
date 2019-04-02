@@ -23,13 +23,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route path= "/login" component={Login} />
-          <Route path= "/signup" component={SignUp} />
+        <Route path= "/login" component={Login} />
+        <Route path= "/signup" component={SignUp} />
+        {this.props.user.id === undefined? null : <Switch>
           <Route path= "/overview" component={OverviewPage} />
           <Route path= "/recipes" component={RecipesPage} />
           <Route path= "/food" component={FoodPage}  />
-        </Switch>
+        </Switch> }
       </div>
     );
   }
@@ -42,4 +42,8 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+const mapStateToProps = state =>({
+  user: state.user
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
