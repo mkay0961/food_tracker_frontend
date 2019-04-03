@@ -1,4 +1,4 @@
-import {SET_ALL_FOODS} from '../actions/types'
+import {SET_ALL_FOODS } from '../actions/types'
 
 export default (state=[],action)=>{
   switch (action.type) {

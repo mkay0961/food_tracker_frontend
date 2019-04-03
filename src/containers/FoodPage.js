@@ -7,16 +7,13 @@ import EatModal from '../components/EatModal'
 
 class FoodPage extends Component {
 
-  handleAddModalSubmit = () =>{
-    console.log("ADDD ALL THESE DAMN FOOD");
-  }
 
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar path={this.props.location.pathname}/>
         <SearchBar />
-        <AddModal handleAdd={this.handleAddModalSubmit}/>
+        <AddModal/>
         <EatModal />
         <CategoriesContainer />
       </div>
