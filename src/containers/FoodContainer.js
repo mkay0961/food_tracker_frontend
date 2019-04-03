@@ -1,9 +1,16 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
+import Food from '../components/Food'
+import { Visibility, Segment } from 'semantic-ui-react'
 
 const FoodContainer = (props) => (
- <div>
-    Food Container!
+ <div className="scrollable">
+    {props.food.map((food, i)=><Food key={i} data={food}/>)}
  </div>
 );
 
-export default FoodContainer;
+const mapStateToProps = state =>({
+  food: state.food
+})
+
+export default connect(mapStateToProps)(FoodContainer)

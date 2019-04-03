@@ -23,7 +23,7 @@ class RecipesPage extends Component {
   render() {
     return (
        <div>
-          <Navbar />
+          <Navbar path={this.props.location.pathname} />
           <SearchBar />
           <AdvancedModal />
           <RecipeContainer />

@@ -9,19 +9,19 @@ class Navbar extends Component {
        <Menu pointing secondary>
 
          <Link to="/overview">
-            <Menu.Item name='Overview'/>
+            <Menu.Item active={this.props.path=== "/overview"} name='Overview'/>
          </Link>
 
          <Link to="/food">
-            <Menu.Item name='My Food'/>
+            <Menu.Item  active={this.props.path=== "/food"} name='My Food'/>
          </Link>
 
          <Link to="/recipes">
-            <Menu.Item name='Recipes'/>
+            <Menu.Item  active={this.props.path=== "/recipes"} name='Recipes'/>
          </Link>
 
          <Menu.Menu position='right'>
-           <Menu.Item name='logout'/>
+           <Menu.Item active={this.props.path=== "/logout"} name='Logout'/>
          </Menu.Menu>
 
        </Menu>

@@ -15,29 +15,34 @@ class AddModal extends Component {
 
   close = () => this.setState({ active: false })
 
+  handleSubmit = () => {
+    this.close()
+    this.props.handleAdd()
+  }
+
   render() {
 
   const { active } = this.state
 
-   return (
+  return (
       <div>
         <Modal open={active}  onOpen={this.open} onClose={this.close} trigger={<button className="ui button">Add Food</button>}>
           <Modal.Header>Add Food</Modal.Header>
           <Modal.Content >
             <Modal.Description>
-              <div class="row">
-                <div class="column">
+              <div className="row">
+                <div className="column">
                   <Header>All Food</Header>
                   <SearchBar />
                   <FoodContainer />
                 </div>
-                <div class="column">
+                <div className="column">
                   <Header>Food To Add</Header>
                 </div>
               </div>
             </Modal.Description>
             <Modal.Actions>
-              <Button icon='check' content='Submit' onClick={this.close}/>
+              <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
             </Modal.Actions>
           </Modal.Content>
         </Modal>
