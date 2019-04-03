@@ -9,6 +9,7 @@ import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from './redux/actions/user'
 import {getAllRecipes} from './redux/actions/recipes'
+import {getAllFoods} from './redux/actions/food'
 import {withRouter} from 'react-router-dom'
 
 
@@ -17,6 +18,7 @@ class App extends Component {
   componentDidMount(){
     this.props.getUser()
     this.props.getAllRecipes()
+    this.props.getAllFoods()
   }
 
   render() {
@@ -37,7 +39,8 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     getUser: ()=>{dispatch(getUser(1))},
-    getAllRecipes: ()=>{dispatch(getAllRecipes())}
+    getAllRecipes: ()=>{dispatch(getAllRecipes())},
+    getAllFoods: ()=>{dispatch(getAllFoods())}
   }
 }
 

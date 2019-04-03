@@ -1,8 +1,8 @@
-import {SET_ALL_RECIPES} from '../actions/types'
+import {SET_ALL_FOODS} from '../actions/types'
 
 export default (state=[],action)=>{
   switch (action.type) {
-    case SET_ALL_RECIPES:
+    case SET_ALL_FOODS:
       return action.payload;
     default:
       return state;

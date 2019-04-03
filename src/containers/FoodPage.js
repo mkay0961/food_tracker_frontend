@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import CategoriesContainer from './CategoriesContainer'
 import Navbar from '../components/Navbar'
-import AddEatenBtns from '../components/AddEatenBtns'
 import SearchBar from '../components/SearchBar'
+import AddModal from '../components/AddModal'
+import EatModal from '../components/EatModal'
 
 class FoodPage extends Component {
   render() {
@@ -10,7 +11,8 @@ class FoodPage extends Component {
       <div>
         <Navbar />
         <SearchBar />
-        <AddEatenBtns />
+        <AddModal />
+        <EatModal />
         <CategoriesContainer />
       </div>
     );

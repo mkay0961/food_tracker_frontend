@@ -1,3 +1,5 @@
+import {SET_USER} from './types'
+
 const URL = `http://localhost:3000/users`
 
 function getUser(id){
@@ -5,9 +7,7 @@ function getUser(id){
     fetch(`${URL}/${id}`)
     .then(res => res.json())
     .then(user => {
-      // debugger
-      dispatch({type: "SET_USER", payload: user})
-      //{type: "FETCHED_PAINTINGS", paintings}
+      dispatch({type: SET_USER, payload: user})
     })
   }
 }

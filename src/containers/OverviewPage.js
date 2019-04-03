@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import Profile from '../components/Profile';
-import AddEatenBtns from '../components/AddEatenBtns';
 import NotesContainer from './NotesContainer';
 import SavedRecipesContainer from './SavedRecipesContainer';
+import AddModal from '../components/AddModal'
+import EatModal from '../components/EatModal'
 
 class OverviewPage extends Component {
   render() {
@@ -12,7 +13,8 @@ class OverviewPage extends Component {
         <Navbar />
         <Profile />
         <div className="ui card">
-          <AddEatenBtns />
+          <AddModal />
+          <EatModal />
         </div>
         <NotesContainer />
         <SavedRecipesContainer />

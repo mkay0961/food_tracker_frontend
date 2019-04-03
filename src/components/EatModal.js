@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header, Modal } from 'semantic-ui-react'
 
-const AdvancedModal = (props) => (
+const EatModal = (props) => (
   <div>
-    <Modal trigger={<button className="ui button">Advanced Search</button>}>
-      <Modal.Header>Advanced Search</Modal.Header>
+    <Modal trigger={<button className="ui button">Eat Food</button>}>
+      <Modal.Header>Eat Food</Modal.Header>
       <Modal.Content image>
         <Modal.Description>
           <Header>stuff</Header>
@@ -29,17 +29,6 @@ const AdvancedModal = (props) => (
       </Modal.Content>
     </Modal>
   </div>
-
 );
 
-export default AdvancedModal;
-
-// //
-// <Modal trigger={props.button}>
-//   <Modal.Header>Advanced Search</Modal.Header>
-//   <Modal.Content image>
-//     <Modal.Description>
-//       <Header>stuff</Header>
-//     </Modal.Description>
-//   </Modal.Content>
-// </Modal>
+export default EatModal;
