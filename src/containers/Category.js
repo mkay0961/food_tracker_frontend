@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import Food from '../components/Food'
 
 // const genFoodComponents = (food) =>{
@@ -10,7 +9,7 @@ const Category = (props) => (
  <div className="ui card">
     <h1>{props.name}</h1>
     <div>
-    {props.food.map((item)=><Food data={item}/>)}
+    {props.food.map((item, i)=><Food key={i} data={item}/>)}
     </div>
  </div>
 );

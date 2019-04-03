@@ -3,7 +3,6 @@ import CategoriesContainer from './CategoriesContainer'
 import Navbar from '../components/Navbar'
 import AddEatenBtns from '../components/AddEatenBtns'
 import SearchBar from '../components/SearchBar'
-import { connect } from 'react-redux'
 
 class FoodPage extends Component {
   render() {

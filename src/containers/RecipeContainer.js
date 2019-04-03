@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar'
 import Recipe from '../components/Recipe'
 import { connect } from 'react-redux'
 
@@ -11,7 +10,7 @@ import { connect } from 'react-redux'
 const RecipeContainer = (props) => (
  <div className="ui card">
     <h1>Recipes</h1>
-    {props.recipes.map((recipe)=> <Recipe data={recipe} /> )}
+    {props.recipes.map((recipe,i)=> <Recipe key={i} data={recipe} /> )}
  </div>
 );
 

@@ -1,14 +1,20 @@
 import React from 'react';
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
+import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
-import { connect } from 'react-redux'
+
+const test = () =>{
+  debugger
+}
+
 
 const RecipesPage = () => (
  <div>
     <Navbar />
     <SearchBar />
-    <button className="ui button">Advanced Search</button>
+    <AdvancedModal/>
+    <button onClick={test} className="ui button">Advanced Search</button>
     <RecipeContainer />
  </div>
 );

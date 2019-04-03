@@ -4,7 +4,7 @@ import Recipe from '../components/Recipe'
 import { connect } from 'react-redux'
 
 const genRecipeComponents = (recipes) =>{
-  return recipes.map((recipe)=><Recipe data={recipe} />)
+  return recipes.map((recipe, i)=><Recipe key={i} data={recipe} />)
 }
 
 

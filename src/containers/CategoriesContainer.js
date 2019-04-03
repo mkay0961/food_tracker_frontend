@@ -5,6 +5,13 @@ import { connect } from 'react-redux'
 
 class CategoriesContainer extends Component {
 
+
+
+
+
+//clean up
+
+
   generateCategories = () =>{
     let obj = {}
 
@@ -18,7 +25,6 @@ class CategoriesContainer extends Component {
       if (obj[category] !== undefined && !obj[category].includes(food)) {
         obj[category].push(food)
       }
-      console.log(obj)
     })
     let array = Object.keys(obj).map((key, i)=>{
       return <Category key={i} name={key} food={obj[key]} />
