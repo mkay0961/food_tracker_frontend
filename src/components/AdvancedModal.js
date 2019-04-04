@@ -25,14 +25,4 @@ const AdvancedModal = (props) => (
 
 );
 
-export default AdvancedModal;
-
-// //
-// <Modal trigger={props.button}>
-//   <Modal.Header>Advanced Search</Modal.Header>
-//   <Modal.Content image>
-//     <Modal.Description>
-//       <Header>stuff</Header>
-//     </Modal.Description>
-//   </Modal.Content>
-// </Modal>
+export default (AdvancedModal)

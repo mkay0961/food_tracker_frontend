@@ -9,3 +9,7 @@ export const SET_ALL_FOODS = "SET_ALL_FOODS"
 export const ADD_FOOD_TO_LIST = "ADD_FOOD_TO_LIST"
 export const DEL_FOOD_FROM_LIST = "DEL_FOOD_FROM_LIST"
 export const EMPTY_LIST = "EMPTY_LIST"
+
+//searchbar
+export const SET_SEARCH = "SET_SEARCH"
+export const CLEAR_SEARCH = "CLEAR_SEARCH"

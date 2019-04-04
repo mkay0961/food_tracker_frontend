@@ -28,8 +28,6 @@ function addFoodsBackend(data){
     .then(res => res.json())
     .then(user => {
       dispatch({type: SET_USER, payload: user})
-      // console.log(user);
-
     })
   }
 }

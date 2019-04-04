@@ -14,8 +14,8 @@ class CategoriesContainer extends Component {
 
   generateCategories = () =>{
     let obj = {}
-
-    this.props.foods.forEach((food, i)=>{
+    console.log(this.props.search);
+    this.props.foods.filter((food)=>food.name.toLowerCase().includes(this.props.search.toLowerCase())).forEach((food, i)=>{
       let category = food.category
 
       if (obj[category] === undefined){
@@ -43,7 +43,8 @@ class CategoriesContainer extends Component {
 }
 
 const mapStateToProps = state =>({
-  foods: state.user.foods
+  foods: state.user.foods,
+  search: state.search
 })
 
 export default connect(mapStateToProps)(CategoriesContainer);

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Header, Modal } from 'semantic-ui-react'
 
+
+
+
 const DetailAddModal = (props) => (
   <div>
   <Modal open={props.detailsActive} >

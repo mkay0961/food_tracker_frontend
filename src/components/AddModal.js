@@ -4,6 +4,7 @@ import SearchBar from './SearchBar'
 import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
+import {clearSearch} from '../redux/actions/searchBar'
 import {addFoodsBackend} from '../redux/actions/user'
 import {addFoodList,delFoodList,emptyList} from '../redux/actions/food'
 
@@ -18,36 +19,63 @@ class AddModal extends Component {
     }
   }
 
-  open = () => this.setState({ active: true })
+  open = () => {
+      this.setState({ active: true })
+  }
 
-  close = () => this.setState({ active: false })
+  close = () => {
+    this.setState({ active: false })
+    this.props.emptyList()
+  }
 
   handleSubmit = () => {
+    let addFoodList = this.props.addFoodList
     this.close()
-    if(this.props.addFoodList.length !== 0){
-      console.log(this.props.addFoodList);
-      this.props.addFoodsBackend(this.props.addFoodList)
+    if(addFoodList.length !== 0){
+      this.props.addFoodsBackend(addFoodList)
     }
     this.props.emptyList()
+  }
+
+  checkDeatails(foodDetails){
+    console.log("h", foodDetails["amount"].split(" ").length === 2);
+    let amount = foodDetails["amount"].split(" ")
+
+    if(amount.length === 2){
+      return true
+    //   this.props.userFoods.forEach((food)=>{
+    //     if(food.name === foodDetails.name && ){
+    //       console.log("found");
+    //     }else{
+    //       console.log("not found");
+    //     }
+    //   })
+    // }else{
+    //   return false
+    }else{
+      return false
+    }
 
   }
 
   handleDetailsClose = (e, foodDetails) => {
-    this.setState({detailsActive: false})
-
+    e.preventDefault()
     let amount = e.target.parentElement.children[0].children[1].value
     let price = e.target.parentElement.children[1].children[1].value
     let expire_date = e.target.parentElement.children[2].children[1].value
     if (amount !== "" && price !== "" && expire_date !== "") {
-      foodDetails["Price"] = price
-      foodDetails["Expired"] = false
-      foodDetails["Amount"] = amount
-      foodDetails["Expiration_date"] = expire_date
-      foodDetails["Active"] = true
-      this.props.addFood(foodDetails)
-      console.log("deatails output" ,foodDetails, e);
+      foodDetails["price"] = price
+      foodDetails["expired"] = false
+      foodDetails["amount"] = amount
+      foodDetails["expiration_date"] = expire_date
+      foodDetails["active"] = true
+      if(this.checkDeatails(foodDetails)){
+        this.setState({detailsActive: false})
+        this.props.addFood(foodDetails)
+      }
+    }else{
+      alert("You Enter all Information")
     }
-
   }
 
   handleAddClick = (item) =>{
@@ -62,7 +90,7 @@ class AddModal extends Component {
 
   generateCorrectFoodList = () => {
     return this.props.food.filter((food)=>{
-        if(!this.props.addFoodList.includes(food)){
+        if(!this.props.addFoodList.includes(food) && food.name.toLowerCase().includes(this.props.search.toLowerCase())){
           return food
         }
       })
@@ -74,7 +102,7 @@ class AddModal extends Component {
 
   return (
       <div>
-        <Modal open={active}  onOpen={this.open} onClose={this.close} trigger={<button className="ui button">Add Food</button>}>
+        <Modal open={active}  onOpen={this.open} onClose={this.close} trigger={<button onClick={this.props.clearSearch} className="ui button">Add Food</button>}>
           <Modal.Header>Add Food</Modal.Header>
           <Modal.Content >
             <Modal.Description>
@@ -106,13 +134,16 @@ const mapDispatchToProps = dispatch => {
     addFood: (food)=>{dispatch(addFoodList(food))},
     delFood: (food)=>{dispatch(delFoodList(food))},
     addFoodsBackend: (food)=>{dispatch(addFoodsBackend(food))},
-    emptyList: ()=>{dispatch(emptyList())}
-  }
+    emptyList: ()=>{dispatch(emptyList())},
+    clearSearch: ()=>{dispatch(clearSearch())}
+    }
 }
 
 const mapStateToProps = state =>({
   food: state.food,
-  addFoodList: state.addFoodList
+  addFoodList: state.addFoodList,
+  search: state.search,
+  userFoods: state.user.foods
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddModal)
