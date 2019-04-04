@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 const RecipeContainer = (props) => (
  <div className="ui card">
     <h1>Recipes</h1>
-    {props.recipes.map((recipe,i)=> <Recipe key={i} data={recipe} /> )}
+    {props.recipes.map((recipe,i)=> <Recipe handleClick={props.handleClick} key={i} data={recipe} /> )}
  </div>
 );
 

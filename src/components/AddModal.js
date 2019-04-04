@@ -4,7 +4,8 @@ import SearchBar from './SearchBar'
 import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
-import {addFoodList,delFoodList,addFoodsBackend} from '../redux/actions/food'
+import {addFoodsBackend} from '../redux/actions/user'
+import {addFoodList,delFoodList,emptyList} from '../redux/actions/food'
 
 
 class AddModal extends Component {
@@ -23,21 +24,35 @@ class AddModal extends Component {
 
   handleSubmit = () => {
     this.close()
-    // if(this.props.addFoodList.length !== 0){
-    //   this.props.addFoodsBackend()
-    // }
+    if(this.props.addFoodList.length !== 0){
+      console.log(this.props.addFoodList);
+      this.props.addFoodsBackend(this.props.addFoodList)
+    }
+    this.props.emptyList()
+
   }
 
-  handleDetailsClose = (foodDetails) => {
+  handleDetailsClose = (e, foodDetails) => {
     this.setState({detailsActive: false})
-    console.log("deatails output" ,foodDetails);
+
+    let amount = e.target.parentElement.children[0].children[1].value
+    let price = e.target.parentElement.children[1].children[1].value
+    let expire_date = e.target.parentElement.children[2].children[1].value
+    if (amount !== "" && price !== "" && expire_date !== "") {
+      foodDetails["Price"] = price
+      foodDetails["Expired"] = false
+      foodDetails["Amount"] = amount
+      foodDetails["Expiration_date"] = expire_date
+      foodDetails["Active"] = true
+      this.props.addFood(foodDetails)
+      console.log("deatails output" ,foodDetails, e);
+    }
+
   }
 
   handleAddClick = (item) =>{
     console.log("clicked on item",item);
     this.setState({detailsActive: true, current: item})
-
-    // this.props.addFood(item)
   }
 
   handleDelClick = (item) =>{
@@ -80,7 +95,7 @@ class AddModal extends Component {
             </Modal.Actions>
           </Modal.Content>
         </Modal>
-        <DetailAddModal item={this.state.current} handleDetailsClose={this.handleDetailsClose} detailsActive={this.state.detailsActive} />
+        <DetailAddModal item={this.state.current} handleDetailsClose={this.handleDetailsClose} detailsActive={detailsActive} />
       </div>
       )
     }
@@ -90,7 +105,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addFood: (food)=>{dispatch(addFoodList(food))},
     delFood: (food)=>{dispatch(delFoodList(food))},
-    addFoodsBackend: (food)=>{dispatch(addFoodsBackend())}
+    addFoodsBackend: (food)=>{dispatch(addFoodsBackend(food))},
+    emptyList: ()=>{dispatch(emptyList())}
   }
 }
 

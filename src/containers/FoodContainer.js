@@ -1,6 +1,5 @@
 import React from 'react'
 import Food from '../components/Food'
-import { Visibility, Segment } from 'semantic-ui-react'
 
 const FoodContainer = (props) => (
  <div className="scrollable">

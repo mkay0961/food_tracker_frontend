@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Modal } from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 
 const AdvancedModal = (props) => (
   <div>
@@ -7,7 +7,6 @@ const AdvancedModal = (props) => (
       <Modal.Header>Advanced Search</Modal.Header>
       <Modal.Content image>
         <Modal.Description>
-          <Header>stuff</Header>
           <form className="ui form">
             <div className="field">
               <label>First Name</label>
@@ -16,12 +15,6 @@ const AdvancedModal = (props) => (
             <div className="field">
               <label>Last Name</label>
               <input type="text" name="last-name" placeholder="Last Name"/>
-            </div>
-            <div className="field">
-              <div className="ui checkbox">
-                <input type="checkbox" tabIndex="0" className="hidden"/>
-                <label>I agree to the Terms and Conditions</label>
-              </div>
             </div>
             <button className="ui button" type="submit">Submit</button>
           </form>
