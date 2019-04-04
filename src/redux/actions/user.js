@@ -1,6 +1,8 @@
 import {SET_USER} from './types'
 
 const URL = `http://localhost:3000/users`
+const URLUSERFOODS = `http://localhost:3000/user_foods`
+
 
 function getUser(id){
   return (dispatch) => {
@@ -16,7 +18,7 @@ function addFoodsBackend(data){
   let obj={}
   obj["food"] = data
   return (dispatch) => {
-    fetch(`${URL}/1`,{
+    fetch(`${URLUSERFOODS}/1`,{
       method: 'PATCH',
       body: JSON.stringify(obj),
       headers:{
@@ -25,8 +27,8 @@ function addFoodsBackend(data){
     })
     .then(res => res.json())
     .then(user => {
-      // dispatch({type: SET_USER, payload: user}
-      console.log(user);
+      dispatch({type: SET_USER, payload: user})
+      // console.log(user);
 
     })
   }

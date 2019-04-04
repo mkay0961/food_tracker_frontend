@@ -8,21 +8,21 @@ import RecipeModal from '../components/RecipeModal'
 
 
 class RecipesPage extends Component {
-  // constructor(){
-  //   super()
-  //   this.state = {
-  //     showModal: false,
-  //     current: null
-  //   }
-  // }
-  //
-  // handleShowModal = (data) => {
-  //   console.log(data);
-  //   this.setState({showModal: true, current: data})
-  // }
-  // handleNoShowModal = () => {
-  //   this.setState({showModal: false, current: null})
-  // }
+  constructor(){
+    super()
+    this.state = {
+      showModal: false,
+      current: null
+    }
+  }
+
+  handleShowModal = (data) => {
+    console.log(data);
+    this.setState({showModal: true, current: data})
+  }
+  handleNoShowModal = () => {
+    this.setState({showModal: false, current: null})
+  }
 
   render() {
     return (
@@ -30,7 +30,8 @@ class RecipesPage extends Component {
           <Navbar path={this.props.location.pathname} />
           <SearchBar />
           <AdvancedModal />
-          <RecipeContainer  />
+          <RecipeContainer handleClick={this.handleShowModal} />
+          <RecipeModal data={this.state.current} active={this.state.showModal} noShow={this.handleNoShowModal} />
        </div>
         )
       }
