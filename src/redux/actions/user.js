@@ -17,9 +17,10 @@ function getUser(id){
 function addFoodsBackend(data){
   let obj={}
   obj["food"] = data
+  obj["id"] = 1
   return (dispatch) => {
-    fetch(`${URLUSERFOODS}/1`,{
-      method: 'PATCH',
+    fetch(`${URLUSERFOODS}`,{
+      method: 'POST',
       body: JSON.stringify(obj),
       headers:{
         'Content-Type': 'application/json'

@@ -57,6 +57,10 @@ class AddModal extends Component {
     }
 
   }
+  handleDetailsClose2 = (e) => {
+    e.preventDefault()
+    this.setState({detailsActive: false})
+  }
 
   handleDetailsClose = (e, foodDetails) => {
     e.preventDefault()
@@ -102,7 +106,7 @@ class AddModal extends Component {
 
   return (
       <div>
-        <Modal open={active}  onOpen={this.open} onClose={this.close} trigger={<button onClick={this.props.clearSearch} className="ui button">Add Food</button>}>
+        <Modal dimmer={"blur"} open={active}  onOpen={this.open} onClose={this.close} trigger={<button onClick={this.props.clearSearch} className="ui button">Add Food</button>}>
           <Modal.Header>Add Food</Modal.Header>
           <Modal.Content >
             <Modal.Description>
@@ -123,7 +127,7 @@ class AddModal extends Component {
             </Modal.Actions>
           </Modal.Content>
         </Modal>
-        <DetailAddModal item={this.state.current} handleDetailsClose={this.handleDetailsClose} detailsActive={detailsActive} />
+        <DetailAddModal item={this.state.current} handleDetailsClose2={this.handleDetailsClose2} handleDetailsClose={this.handleDetailsClose} detailsActive={detailsActive} />
       </div>
       )
     }

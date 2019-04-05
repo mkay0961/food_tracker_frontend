@@ -25,7 +25,7 @@ class OverviewPage extends Component {
           <EatModal />
         </div>
         <NotesContainer />
-        <SavedRecipesContainer />
+        <SavedRecipesContainer  />
       </div>
     );
   }

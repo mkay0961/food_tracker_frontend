@@ -1,12 +1,9 @@
 import React from 'react';
 import { Header, Modal } from 'semantic-ui-react'
 
-
-
-
 const DetailAddModal = (props) => (
   <div>
-  <Modal open={props.detailsActive} >
+  <Modal dimmer={"blur"} open={props.detailsActive} >
     <Modal.Header>Adding Food</Modal.Header>
     <Modal.Content image>
       <Modal.Description>
@@ -25,8 +22,8 @@ const DetailAddModal = (props) => (
             <input type="text" name="exp_date" defaultValue={(props.item)?props.item.default_expiration:null}/>
           </div>
           <button className="ui button" onClick={(e)=>props.handleDetailsClose(e,props.item)}>Update</button>
+          <button className="ui button" onClick={(e)=>props.handleDetailsClose2(e)}>Cancel</button>
         </form>
-
       </Modal.Description>
     </Modal.Content>
   </Modal>

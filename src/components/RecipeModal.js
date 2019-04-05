@@ -21,10 +21,8 @@ class RecipeModal extends Component {
         </Modal>
       }
       </div>
-
       )
     }
 }
-
 
 export default (RecipeModal)

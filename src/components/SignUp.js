@@ -11,27 +11,21 @@ class SignUp extends Component {
             <div>
               <input type="text" name="firstname" placeholder="First Name"/>
             </div>
-
             <div>
               <input type="text" name="lastname" placeholder="Last Name"/>
             </div>
-
             <div>
               <input type="text" name="email" placeholder="Email"/>
             </div>
-
             <div>
               <input type="text" name="username" placeholder="Username"/>
             </div>
-
             <div>
               <input type="password" name="password" placeholder="Password"/>
             </div>
-
             <div>
               <input type="text" name="image" placeholder="Image"/>
             </div>
-
             <div>
               <input type="Submit" name="submit" placeholder="Submit"/>
             </div>

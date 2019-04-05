@@ -1,5 +1,12 @@
 import React from 'react';
 import { Header, Modal } from 'semantic-ui-react'
+import SearchBar from './SearchBar'
+import CategoriesContainer from '../containers/CategoriesContainer'
+import FoodContainer from '../containers/FoodContainer'
+
+const handleEatClick = () =>{
+  console.log("hi");
+}
 
 const EatModal = (props) => (
   <div>
@@ -8,23 +15,22 @@ const EatModal = (props) => (
       <Modal.Content image>
         <Modal.Description>
           <Header>stuff</Header>
-          <form className="ui form">
-            <div className="field">
-              <label>First Name</label>
-              <input type="text" name="first-name" placeholder="First Name"/>
-            </div>
-            <div className="field">
-              <label>Last Name</label>
-              <input type="text" name="last-name" placeholder="Last Name"/>
-            </div>
-            <div className="field">
-              <div className="ui checkbox">
-                <input type="checkbox" tabIndex="0" className="hidden"/>
-                <label>I agree to the Terms and Conditions</label>
+          <div className="row">
+            <div className="column">
+              <Header>My Food</Header>
+              <SearchBar />
+              <div className="scrollable">
+                <CategoriesContainer />
               </div>
             </div>
+            <div className="column">
+                <Header>Food To Eat</Header>
+                <div className="scrollable">
+                  <FoodContainer food={[]}/>
+                </div>
+            </div>
+          </div>
             <button className="ui button" type="submit">Submit</button>
-          </form>
         </Modal.Description>
       </Modal.Content>
     </Modal>
