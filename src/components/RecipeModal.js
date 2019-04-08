@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import { Modal, Header } from 'semantic-ui-react'
 import FoodContainer from '../containers/FoodContainer'
 

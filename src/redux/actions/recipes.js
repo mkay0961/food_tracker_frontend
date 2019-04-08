@@ -1,4 +1,4 @@
-import {SET_ALL_RECIPES} from './types'
+import { SET_ALL_RECIPES } from './types'
 
 const URL = `http://localhost:3000/recipes`
 
@@ -7,9 +7,9 @@ function getAllRecipes(){
     fetch(`${URL}`)
     .then(res => res.json())
     .then(recipes => {
-      dispatch({type: SET_ALL_RECIPES, payload: recipes})
+      dispatch({ type: SET_ALL_RECIPES, payload: recipes })
     })
   }
 }
 
-export {getAllRecipes};
+export { getAllRecipes }

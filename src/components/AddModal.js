@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import { Header, Modal, Button } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
-import {clearSearch} from '../redux/actions/searchBar'
+import { clearSearch } from '../redux/actions/searchBar'
 import { addFoodsBackend } from '../redux/actions/user'
-import { setShowModal, resetShowModal, setDetailShowModal, setCurretModal } from '../redux/actions/modal'
+// import { setShowModal, resetShowModal, setDetailShowModal, setCurretModal } from '../redux/actions/modal'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 
 //make funtional?
 //deconstruct
+
 class AddModal extends Component {
   constructor(){
     super()
@@ -30,7 +31,7 @@ class AddModal extends Component {
   //   }
   // }
   // componentDidMount(){
-  //   console.log("mount add");
+  //   console.log("mount add")
   // }
 
   open = () =>{
@@ -38,15 +39,18 @@ class AddModal extends Component {
   }
 
   close = () =>{
+    const { clearSearch, addFoodList, emptyList} = this.props
+
     this.setState({addModalActive: false})
-    this.props.clearSearch()
-    if(this.props.addFoodList.length !== 0){
-      this.props.emptyList()
+    clearSearch()
+    if(addFoodList.length !== 0){
+      emptyList()
     }
   }
 
   handleUpdate = (e, item) =>{
     //logic
+    //decontruct
     e.preventDefault()
     let amount = e.target.parentElement.children[0].children[1].value
     let price = e.target.parentElement.children[1].children[1].value
@@ -57,7 +61,6 @@ class AddModal extends Component {
   handleCancel= (e) =>{
     e.preventDefault()
     this.setState({addDetailModalActive: false, currentAddModal:null})
-    debugger
   }
 
   handleAddClick = (item) =>{
@@ -66,16 +69,15 @@ class AddModal extends Component {
 
   handleDelClick = (item) =>{
     this.props.delFood(item)
-    debugger
   }
 
   handleSubmit = () =>{
+    const { addFoodList, addFoodsBackend } = this.props
 
-    if(this.props.addFoodList.length !== 0){
-      this.props.addFoodsBackend()
+    if(addFoodList.length !== 0){
+      addFoodsBackend()
     }
     this.close()
-    debugger
   }
 
   // handleSubmit = () => {
@@ -92,16 +94,16 @@ class AddModal extends Component {
   // }
 
   // checkDeatails(foodDetails){
-  //   console.log("h", foodDetails["amount"].split(" ").length === 2);
+  //   console.log("h", foodDetails["amount"].split(" ").length === 2)
   //   let amount = foodDetails["amount"].split(" ")
   //
   //   if(amount.length === 2){
   //     return true
   //   //   this.props.userFoods.forEach((food)=>{
   //   //     if(food.name === foodDetails.name && ){
-  //   //       console.log("found");
+  //   //       console.log("found")
   //   //     }else{
-  //   //       console.log("not found");
+  //   //       console.log("not found")
   //   //     }
   //   //   })
   //   // }else{
@@ -141,7 +143,7 @@ class AddModal extends Component {
   //
   //   const {setDetailShowModal, setCurretModal} = this.props
   //
-  //   console.log("clicked on item",item);
+  //   console.log("clicked on item",item)
   //   setDetailShowModal()
   //   setCurretModal(item)
   //   // this.setState({detailsActive: true, current: item})
@@ -149,24 +151,23 @@ class AddModal extends Component {
   //
   // handleDelClick = (item) =>{
   //   const delFood = this.props
-  //   console.log("del item",item);
+  //   console.log("del item",item)
   //   delFood(item)
   // }
   //
   generateFood = () => {
-
-    return this.props.food.filter((aFood)=>(!this.props.addFoodList.includes(aFood) && aFood.name.toLowerCase().includes(this.props.search.toLowerCase())))
-
-    // return this.props.food
+    const { food, addFoodList, search } = this.props
+    return food.filter((aFood)=>(!addFoodList.includes(aFood) && aFood.name.toLowerCase().includes(search.toLowerCase())))
   }
 
   render() {
 
-  // const {showModal, addFoodList, clearSearch } = this.props
+  const { addModalActive, addDetailModalActive, currentAddModal } = this.state
+  const { addFoodList } = this.props
 
   return (
       <div>
-        <Modal dimmer={"blurring"} open={this.state.addModalActive}  onOpen={this.open} onClose={this.close} trigger={<button className="ui button">Add Food</button>}>
+        <Modal dimmer={"blurring"} open={addModalActive}  onOpen={this.open} onClose={this.close} trigger={<button className="ui button">Add Food</button>}>
           <Modal.Header>Add Food</Modal.Header>
           <Modal.Content >
             <Modal.Description>
@@ -178,7 +179,7 @@ class AddModal extends Component {
                 </div>
                 <div className="column">
                   <Header>Food To Add</Header>
-                  <FoodContainer food={this.props.addFoodList} handleClick={this.handleDelClick}/>
+                  <FoodContainer food={addFoodList} handleClick={this.handleDelClick}/>
                 </div>
               </div>
             </Modal.Description>
@@ -187,11 +188,11 @@ class AddModal extends Component {
             </Modal.Actions>
           </Modal.Content>
         </Modal>
-        {!this.state.currentAddModal?null:
+        {!currentAddModal?null:
           <DetailAddModal handleCancel={this.handleCancel}
                           handleUpdate={this.handleUpdate}
-                          status={this.state.addDetailModalActive}
-                          data={this.state.currentAddModal} />}
+                          status={addDetailModalActive}
+                          data={currentAddModal} />}
       </div>
       )
     }
@@ -201,7 +202,7 @@ const mapDispatchToProps = dispatch => {
   return {
     addFood: (food)=>{dispatch(addFoodList(food))},
     delFood: (food)=>{dispatch(delFoodList(food))},
-    addFoodsBackend: (food)=>{dispatch(addFoodsBackend(food))},
+    addFoodsBackend: ()=>{dispatch(addFoodsBackend())},
     emptyList: ()=>{dispatch(emptyList())},
     clearSearch: ()=>{dispatch(clearSearch())}
     }

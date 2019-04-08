@@ -4,7 +4,7 @@ import recipeReducer from './recipeReducer'
 import foodReducer from './foodReducer'
 import addFoodReducer from './addFoodReducer'
 import searchReducer from './searchReducer'
-import modalReducer from './modalReducer'
+// import modalReducer from './modalReducer'
 
 
 const rootReducer = combineReducers({
@@ -12,8 +12,7 @@ const rootReducer = combineReducers({
   recipes:recipeReducer,
   food: foodReducer,
   addFoodList: addFoodReducer,
-  search: searchReducer,
-  modal: modalReducer
+  search: searchReducer
 })
 
 export default rootReducer

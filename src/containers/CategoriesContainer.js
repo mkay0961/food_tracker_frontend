@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import Category from './Category'
 import { connect } from 'react-redux'
 
@@ -14,7 +14,7 @@ class CategoriesContainer extends Component {
 
   generateCategories = () =>{
     let obj = {}
-    console.log(this.props.search);
+    console.log(this.props.search)
     this.props.foods.filter((food)=>food.name.toLowerCase().includes(this.props.search.toLowerCase())).forEach((food, i)=>{
       let category = food.category
 
@@ -47,4 +47,4 @@ const mapStateToProps = state =>({
   search: state.search
 })
 
-export default connect(mapStateToProps)(CategoriesContainer);
+export default connect(mapStateToProps)(CategoriesContainer)

@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import CategoriesContainer from './CategoriesContainer'
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
-import {clearSearch} from '../redux/actions/searchBar'
+import { clearSearch } from '../redux/actions/searchBar'
 import { connect } from 'react-redux'
 
 
@@ -23,7 +23,7 @@ class FoodPage extends Component {
         <EatModal />
         <CategoriesContainer />
       </div>
-    );
+    )
   }
 }
 const mapDispatchToProps = dispatch => {

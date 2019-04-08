@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react'
 import { Header, Modal } from 'semantic-ui-react'
 
 //make funtional?
@@ -7,7 +7,7 @@ class DetailEatModal extends Component {
 
   render() {
 
-    const {status, data} = this.props
+    const { status, data, handleUpdate, handleCancel} = this.props
 
     return (
       <div>
@@ -21,14 +21,14 @@ class DetailEatModal extends Component {
                 <label>Amount</label>
                 <input type="text" name="amount" defaultValue={data.amount}/>
               </div>
-              <button className="ui button" onClick={(e)=>this.props.handleUpdate(e, data)}>Eat</button>
-              <button className="ui button" onClick={(e)=>this.props.handleCancel(e)}>Cancel</button>
+              <button className="ui button" onClick={(e)=>handleUpdate(e, data)}>Eat</button>
+              <button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</button>
             </form>
           </Modal.Description>
         </Modal.Content>
       </Modal>
       </div>
-    );
+    )
   }
 }
 

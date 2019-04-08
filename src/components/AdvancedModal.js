@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Modal } from 'semantic-ui-react'
 
 const AdvancedModal = (props) => (
@@ -19,6 +19,6 @@ const AdvancedModal = (props) => (
     </Modal>
   </div>
 
-);
+)
 
 export default (AdvancedModal)

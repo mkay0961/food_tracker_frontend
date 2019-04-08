@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
 //make funtional?
@@ -12,7 +12,7 @@ class Profile extends Component {
               <h1>{this.props.fname + " " + this.props.lname}</h1>
               <h3>{this.props.email}</h3>
           </div>
-        );
+        )
       }
 }
 
@@ -23,4 +23,4 @@ const mapStateToProps = state =>({
   proimage: state.user.profile_image
 })
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(Profile)

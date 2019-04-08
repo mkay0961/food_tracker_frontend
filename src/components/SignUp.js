@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 
 //make funtional?
 
@@ -34,8 +34,8 @@ class SignUp extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default SignUp;
+export default SignUp

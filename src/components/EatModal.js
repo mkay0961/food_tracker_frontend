@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import { Header, Modal, Button } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import FoodContainer from '../containers/FoodContainer'
@@ -37,6 +37,7 @@ class EatModal extends Component {
 
   handleUpdate = (e, item) =>{
     //logic
+    //decontruct
     let eatenAmount = e.target.parentElement.children[0].children[1].value.split(" ")
     let oldAmount = item.amount.split(" ")
     if(oldAmount[0]- eatenAmount[0]>= 0 && eatenAmount.length === 2){
@@ -79,8 +80,8 @@ class EatModal extends Component {
     const { addFoodList, foods, search } = this.props
 
     let ids = addFoodList.map((food)=>food.food_id)
-    let searchArray = foods.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
-    return searchArray.filter((aFood)=>!(ids).includes(aFood.food_id))
+    let searchFilteredArray = foods.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
+    return searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.food_id))
   }
 
   render() {
@@ -125,7 +126,7 @@ class EatModal extends Component {
                             status={eatDetailModalActive}
                             data={currentEatModal} />}
       </div>
-    );
+    )
   }
 }
 

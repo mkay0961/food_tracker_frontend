@@ -1,12 +1,12 @@
-import {SET_SEARCH,CLEAR_SEARCH } from '../actions/types'
+import { SET_SEARCH, CLEAR_SEARCH } from '../actions/types'
 
 export default (state="",action)=>{
   switch (action.type) {
     case SET_SEARCH:
-      return action.payload;
+      return action.payload
     case CLEAR_SEARCH:
-      return "";
+      return ""
     default:
-      return state;
+      return state
   }
 }

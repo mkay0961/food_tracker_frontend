@@ -1,7 +1,7 @@
-import {SET_USER} from './types'
+import { SET_USER } from './types'
 
 const URL = `http://localhost:3000/users`
-const URLUSERFOODS = `http://localhost:3000/user_foods`
+const URL_USER_FOODS = `http://localhost:3000/user_foods`
 
 
 function getUser(id){
@@ -9,27 +9,28 @@ function getUser(id){
     fetch(`${URL}/${id}`)
     .then(res => res.json())
     .then(user => {
-      dispatch({type: SET_USER, payload: user})
+      dispatch({ type: SET_USER, payload: user })
     })
   }
 }
 
 function addFoodsBackend(){
   return (dispatch, getState) => {
-    let obj = {}
-    obj["food"] = getState().addFoodList
-    obj["id"] = getState().user.id
-    fetch(`${URLUSERFOODS}`,{
-      method: 'POST',
-      body: JSON.stringify(obj),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(user => {
-      dispatch({type: SET_USER, payload: user})
-    })
+    debugger
+    // let obj = {}
+    // obj["food"] = getState().addFoodList
+    // obj["id"] = getState().user.id
+    // fetch(`${URL_USER_FOODS}`,{
+    //   method: 'POST',
+    //   body: JSON.stringify(obj),
+    //   headers:{
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // .then(res => res.json())
+    // .then(user => {
+    //   dispatch({type: SET_USER, payload: user})
+    // })
   }
 }
 
@@ -54,4 +55,4 @@ function eatFoodsBackend(){
 }
 
 
-export {getUser,addFoodsBackend, eatFoodsBackend};
+export { getUser, addFoodsBackend, eatFoodsBackend }

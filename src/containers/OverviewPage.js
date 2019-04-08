@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import Navbar from '../components/Navbar';
-import Profile from '../components/Profile';
-import NotesContainer from './NotesContainer';
-import SavedRecipesContainer from './SavedRecipesContainer';
+import React, { Component } from 'react' 
+import Navbar from '../components/Navbar'
+import Profile from '../components/Profile'
+import NotesContainer from './NotesContainer'
+import SavedRecipesContainer from './SavedRecipesContainer'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
-import {clearSearch} from '../redux/actions/searchBar'
+import { clearSearch } from '../redux/actions/searchBar'
 import { connect } from 'react-redux'
 
 
@@ -27,7 +27,7 @@ class OverviewPage extends Component {
         <NotesContainer />
         <SavedRecipesContainer />
       </div>
-    );
+    )
   }
 }
 

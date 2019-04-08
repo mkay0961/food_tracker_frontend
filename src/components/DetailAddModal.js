@@ -1,29 +1,30 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react'
 import { Header, Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { resetDetailShowModal, resetCurrentModal} from '../redux/actions/modal'
-import {addFoodList} from '../redux/actions/food'
+import { addFoodList } from '../redux/actions/food'
 
 
 //make funtional?
 //deconstruct
+
 class DetailAddModal extends Component {
 
   // componentDidMount(){
-  //   console.log("mount detail add");
+  //   console.log("mount detail add")
   // }
   //
   // checkDeatails(foodDetails){
-  //   console.log("h", foodDetails["amount"].split(" ").length === 2);
+  //   console.log("h", foodDetails["amount"].split(" ").length === 2)
   //   let amount = foodDetails["amount"].split(" ")
   //
   //   if(amount.length === 2){
   //     return true
   //   //   this.props.userFoods.forEach((food)=>{
   //   //     if(food.name === foodDetails.name && ){
-  //   //       console.log("found");
+  //   //       console.log("found")
   //   //     }else{
-  //   //       console.log("not found");
+  //   //       console.log("not found")
   //   //     }
   //   //   })
   //   // }else{
@@ -62,15 +63,15 @@ class DetailAddModal extends Component {
 
   render() {
 
-    // const {showDetailModal, currentModal, resetDetailShowModal,resetCurrentModal } = this.props
+    const { status, data, handleUpdate, handleCancel } = this.props
 
     return (
       <div>
-      <Modal dimmer={"blurring"} open={this.props.status}>
+      <Modal dimmer={"blurring"} open={status}>
         <Modal.Header>Adding Food</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
-            <Header>Item: {this.props.data.name}</Header>
+            <Header>Item: {data.name}</Header>
             <form className="ui form">
               <div className="field">
                 <label>Amount</label>
@@ -82,16 +83,16 @@ class DetailAddModal extends Component {
               </div>
               <div className="field">
                 <label>Expiration Date</label>
-                <input type="text" name="exp_date" defaultValue={this.props.data.default_expiration}/>
+                <input type="text" name="exp_date" defaultValue={data.default_expiration}/>
               </div>
-              <button className="ui button" onClick={(e)=>this.props.handleUpdate(e,this.props.data)}>Add</button>
-              <button className="ui button" onClick={(e)=>this.props.handleCancel(e)}>Cancel</button>
+              <button className="ui button" onClick={(e)=>handleUpdate(e,data)}>Add</button>
+              <button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</button>
             </form>
           </Modal.Description>
         </Modal.Content>
       </Modal>
       </div>
-    );
+    )
   }
 }
 

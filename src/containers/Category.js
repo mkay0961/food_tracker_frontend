@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Food from '../components/Food'
 
 // const genFoodComponents = (food) =>{
@@ -12,7 +12,7 @@ const Category = (props) => (
       {props.food.map((item, i)=><Food key={i} data={item}/>)}
     </div>
  </div>
-);
+) 
 
 
-export default (Category);
+export default (Category)

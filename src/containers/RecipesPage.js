@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
 import AdvancedModal from '../components/AdvancedModal'
@@ -26,7 +26,7 @@ class RecipesPage extends Component {
   }
 
   handleShowModal = (data) => {
-    console.log(data);
+    console.log(data)
     this.setState({showModal: true, current: data})
   }
   handleNoShowModal = () => {
