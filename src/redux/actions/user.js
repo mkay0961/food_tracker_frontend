@@ -15,6 +15,10 @@ function getUser(id){
 }
 
 function addFoodsBackend(data){
+
+  //change this for auth
+
+
   let obj={}
   obj["food"] = data
   obj["id"] = 1

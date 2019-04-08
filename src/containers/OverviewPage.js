@@ -25,14 +25,16 @@ class OverviewPage extends Component {
           <EatModal />
         </div>
         <NotesContainer />
-        <SavedRecipesContainer  />
+        <SavedRecipesContainer />
       </div>
     );
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     clearSearch: ()=>{dispatch(clearSearch())}
   }
 }
+
 export default connect(null, mapDispatchToProps)(OverviewPage)

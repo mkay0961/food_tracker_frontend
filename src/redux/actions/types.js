@@ -13,3 +13,9 @@ export const EMPTY_LIST = "EMPTY_LIST"
 //searchbar
 export const SET_SEARCH = "SET_SEARCH"
 export const CLEAR_SEARCH = "CLEAR_SEARCH"
+
+//modals
+export const SET_CURRENT = "SET_CURRENT"
+export const RESET_CURRENT = "RESET_CURRENT"
+export const SET_SHOW_MODAL = "SET_SHOW_MODAL"
+export const RESET_SHOW_MODAL = "RESET_SHOW_MODAL"

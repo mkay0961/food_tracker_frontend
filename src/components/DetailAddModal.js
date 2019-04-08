@@ -3,7 +3,7 @@ import { Header, Modal } from 'semantic-ui-react'
 
 const DetailAddModal = (props) => (
   <div>
-  <Modal dimmer={"blur"} open={props.detailsActive} >
+  <Modal dimmer={"blurring"} open={props.detailsActive} >
     <Modal.Header>Adding Food</Modal.Header>
     <Modal.Content image>
       <Modal.Description>

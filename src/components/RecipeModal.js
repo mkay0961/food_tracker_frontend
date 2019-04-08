@@ -7,7 +7,7 @@ class RecipeModal extends Component {
   return (
       <div>
       {!this.props.data?null:
-        <Modal open={this.props.active} onClose={this.props.noShow}>
+        <Modal dimmer={"blurring"} open={this.props.active} onClose={this.props.noShow}>
         <Modal.Header>Recipe</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
@@ -21,7 +21,7 @@ class RecipeModal extends Component {
         </Modal>
       }
       </div>
-      )
+    )
     }
 }
 

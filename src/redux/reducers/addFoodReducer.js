@@ -5,6 +5,7 @@ export default (state=[],action)=>{
     case ADD_FOOD_TO_LIST:
       return [...state, action.payload];
     case DEL_FOOD_FROM_LIST:
+      //fix filter statement
       return state.filter((food)=>{
         if(food !== action.payload){
           return food

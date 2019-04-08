@@ -6,10 +6,14 @@ import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
 import {clearSearch} from '../redux/actions/searchBar'
 import {addFoodsBackend} from '../redux/actions/user'
+import {setShowModal} from '../redux/actions/modal'
 import {addFoodList,delFoodList,emptyList} from '../redux/actions/food'
 
 
 class AddModal extends Component {
+
+  //move to redux
+
   constructor(){
     super()
     this.state = {
@@ -20,6 +24,7 @@ class AddModal extends Component {
   }
 
   open = () => {
+      this.props.setShowModal()
       this.setState({ active: true })
   }
 
@@ -93,6 +98,7 @@ class AddModal extends Component {
   }
 
   generateCorrectFoodList = () => {
+    //fix filter
     return this.props.food.filter((food)=>{
         if(!this.props.addFoodList.includes(food) && food.name.toLowerCase().includes(this.props.search.toLowerCase())){
           return food
@@ -106,7 +112,7 @@ class AddModal extends Component {
 
   return (
       <div>
-        <Modal dimmer={"blur"} open={active}  onOpen={this.open} onClose={this.close} trigger={<button onClick={this.props.clearSearch} className="ui button">Add Food</button>}>
+        <Modal dimmer={"blurring"} open={active}  onOpen={this.open} onClose={this.close} trigger={<button onClick={this.props.clearSearch} className="ui button">Add Food</button>}>
           <Modal.Header>Add Food</Modal.Header>
           <Modal.Content >
             <Modal.Description>
@@ -139,7 +145,8 @@ const mapDispatchToProps = dispatch => {
     delFood: (food)=>{dispatch(delFoodList(food))},
     addFoodsBackend: (food)=>{dispatch(addFoodsBackend(food))},
     emptyList: ()=>{dispatch(emptyList())},
-    clearSearch: ()=>{dispatch(clearSearch())}
+    clearSearch: ()=>{dispatch(clearSearch())},
+    setShowModal: ()=>{dispatch(setShowModal())}
     }
 }
 

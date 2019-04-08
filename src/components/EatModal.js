@@ -10,7 +10,7 @@ const handleEatClick = () =>{
 
 const EatModal = (props) => (
   <div>
-    <Modal trigger={<button className="ui button">Eat Food</button>}>
+    <Modal dimmer={"blurring"} trigger={<button className="ui button">Eat Food</button>}>
       <Modal.Header>Eat Food</Modal.Header>
       <Modal.Content image>
         <Modal.Description>

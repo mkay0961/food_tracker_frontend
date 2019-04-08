@@ -14,4 +14,5 @@ const mapDispatchToProps = dispatch => {
     setSearch: (text)=>{dispatch(setSearch(text))}
   }
 }
+
 export default connect(null, mapDispatchToProps)(SearchBar)

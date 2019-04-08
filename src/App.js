@@ -5,13 +5,11 @@ import SignUp from './components/SignUp'
 import OverviewPage from './containers/OverviewPage'
 import RecipesPage from './containers/RecipesPage'
 import FoodPage from './containers/FoodPage'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from './redux/actions/user'
 import {getAllRecipes} from './redux/actions/recipes'
 import {getAllFoods} from './redux/actions/food'
-import {withRouter} from 'react-router-dom'
-
 
 class App extends Component {
 

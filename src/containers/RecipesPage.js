@@ -11,6 +11,8 @@ import { connect } from 'react-redux'
 
 
 class RecipesPage extends Component {
+
+  //move to redux
   constructor(){
     super()
     this.state = {

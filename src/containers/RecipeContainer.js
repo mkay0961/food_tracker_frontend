@@ -2,11 +2,6 @@ import React from 'react';
 import Recipe from '../components/Recipe'
 import { connect } from 'react-redux'
 
-// const genRecipeComponents = (recipes) =>{
-//   return recipes.map((item, i)=><Recipe data={item}/>)
-// }
-
-
 const RecipeContainer = (props) => (
  <div className="ui card">
     <h1>Recipes</h1>
