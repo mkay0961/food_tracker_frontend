@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 
+//make funtional?
+
 class Profile extends Component {
 
   render() {

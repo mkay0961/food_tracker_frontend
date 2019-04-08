@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+//make funtional?
+
 class SignUp extends Component {
   render() {
     return (

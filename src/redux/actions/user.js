@@ -14,15 +14,11 @@ function getUser(id){
   }
 }
 
-function addFoodsBackend(data){
-
-  //change this for auth
-
-
-  let obj={}
-  obj["food"] = data
-  obj["id"] = 1
-  return (dispatch) => {
+function addFoodsBackend(){
+  return (dispatch, getState) => {
+    let obj = {}
+    obj["food"] = getState().addFoodList
+    obj["id"] = getState().user.id
     fetch(`${URLUSERFOODS}`,{
       method: 'POST',
       body: JSON.stringify(obj),
@@ -36,5 +32,26 @@ function addFoodsBackend(data){
     })
   }
 }
+
+function updateFoodsBackend(){
+  return (dispatch, getState) => {
+    debugger
+    let obj = {}
+    obj["food"] = getState().addFoodList
+    obj["id"] = getState().user.id
+    fetch(`${URLUSERFOODS}`,{
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(user => {
+      dispatch({type: SET_USER, payload: user})
+    })
+  }
+}
+
 
 export {getUser,addFoodsBackend};

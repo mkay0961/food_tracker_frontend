@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Modal, Header } from 'semantic-ui-react'
 import FoodContainer from '../containers/FoodContainer'
 
+//make funtional?
+
 class RecipeModal extends Component {
   render() {
   return (

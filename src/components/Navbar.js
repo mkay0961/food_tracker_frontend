@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Menu } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
+//make funtional?
+
 class Navbar extends Component {
   render() {
    return (

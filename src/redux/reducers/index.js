@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   food: foodReducer,
   addFoodList: addFoodReducer,
   search: searchReducer,
-  modal: modalReducer
+  addModal: modalReducer
 })
 
 export default rootReducer
