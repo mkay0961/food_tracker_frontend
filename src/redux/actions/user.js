@@ -33,25 +33,25 @@ function addFoodsBackend(){
   }
 }
 
-function updateFoodsBackend(){
+function eatFoodsBackend(){
   return (dispatch, getState) => {
     debugger
-    let obj = {}
-    obj["food"] = getState().addFoodList
-    obj["id"] = getState().user.id
-    fetch(`${URLUSERFOODS}`,{
-      method: 'POST',
-      body: JSON.stringify(obj),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(user => {
-      dispatch({type: SET_USER, payload: user})
-    })
+    // let obj = {}
+    // obj["food"] = getState().addFoodList
+    // obj["id"] = getState().user.id
+    // fetch(`${URLUSERFOODS}`,{
+    //   method: 'POST',
+    //   body: JSON.stringify(obj),
+    //   headers:{
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // .then(res => res.json())
+    // .then(user => {
+    //   dispatch({type: SET_USER, payload: user})
+    // })
   }
 }
 
 
-export {getUser,addFoodsBackend};
+export {getUser,addFoodsBackend, eatFoodsBackend};

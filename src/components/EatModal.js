@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import { Header, Modal } from 'semantic-ui-react'
+import { Header, Modal, Button } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
 import DetailEatModal from './DetailEatModal'
-import {addFoodList,delFoodList,emptyList} from '../redux/actions/food'
-import {setCurretModal,setDetailShowModal} from '../redux/actions/modal'
-import {clearSearch} from '../redux/actions/searchBar'
+import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
+import { clearSearch } from '../redux/actions/searchBar'
+import { eatFoodsBackend } from '../redux/actions/user'
+
 
 
 class EatModal extends Component {
@@ -24,16 +25,18 @@ class EatModal extends Component {
   }
 
   close = () =>{
+
+    const { clearSearch, addFoodList, emptyList} = this.props
+
     this.setState({eatModalActive: false})
-    this.props.clearSearch()
-    if(this.props.addFoodList.length !== 0){
+    clearSearch()
+    if(addFoodList.length !== 0){
       emptyList()
     }
   }
 
   handleUpdate = (e, item) =>{
-    console.log("update", e.target);
-    //all update logic
+    //logic
     let eatenAmount = e.target.parentElement.children[0].children[1].value.split(" ")
     let oldAmount = item.amount.split(" ")
     if(oldAmount[0]- eatenAmount[0]>= 0 && eatenAmount.length === 2){
@@ -51,45 +54,46 @@ class EatModal extends Component {
   }
 
   handleCancel= (e) =>{
-    console.log("cancel", e);
     e.preventDefault()
     this.setState({eatDetailModalActive: false, currentModal:null})
   }
 
   handleEatClick = (item) =>{
-    console.log("hi", item, this.props);
-    //bring up detailed menu
     this.setState({eatDetailModalActive: true, currentEatModal: item})
-    // this.props.setCurretModal(item)
-
   }
 
   handleDelClick = (item) =>{
-    console.log("delete me", item);
     this.props.delFood(item)
   }
 
   handleSubmit = () =>{
-    console.log("submit", this.props.addFoodList);
-    debugger
+    const { addFoodList, eatFoodsBackend } = this.props
+
+    if(addFoodList.length !== 0){
+      eatFoodsBackend()
+    }
+    this.close()
   }
 
   generateFood = () => {
-    let ids = this.props.foods.map((food)=>food.id)
-    debugger
-    let array = this.props.foods.filter((aFood)=>(aFood.name.toLowerCase().includes(this.props.search.toLowerCase())))
-    return array.filter((aFood)=>{
-      if(!(ids).incudes(aFood.id)){
-        return aFood
-      }
-    })
+    const { addFoodList, foods, search } = this.props
 
+    let ids = addFoodList.map((food)=>food.food_id)
+    let searchArray = foods.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
+    return searchArray.filter((aFood)=>!(ids).includes(aFood.food_id))
   }
 
   render() {
+    const { addFoodList } = this.props
+    const { eatDetailModalActive, currentEatModal, eatModalActive } = this.state
+
     return (
       <div>
-        <Modal dimmer={"blurring"} open={this.state.eatModalActive} onOpen={this.open} onClose={this.close} trigger={<button className="ui button">Eat Food</button>}>
+        <Modal dimmer={"blurring"}
+               open={eatModalActive}
+               onOpen={this.open}
+               onClose={this.close}
+               trigger={<button className="ui button">Eat Food</button>}>
           <Modal.Header>Eat Food</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
@@ -99,21 +103,27 @@ class EatModal extends Component {
                   <Header>My Food</Header>
                   <SearchBar />
                   <div className="scrollable">
-                    <FoodContainer food={this.generateFood()}  handleClick={this.handleEatClick} />
+                    <FoodContainer food={this.generateFood()}
+                                   handleClick={this.handleEatClick} />
                   </div>
                 </div>
                 <div className="column">
                     <Header>Food To Eat</Header>
-                    <div className="scrollable">
-                      <FoodContainer food={this.props.addFoodList} handleClick={this.handleDelClick}/>
+                    <div className = "scrollable">
+                      <FoodContainer food={addFoodList}
+                                     handleClick={this.handleDelClick}/>
                     </div>
                 </div>
               </div>
-              <button onClick={this.handleSubmit} className="ui button" type="submit">Submit</button>
+              <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
             </Modal.Description>
           </Modal.Content>
         </Modal>
-        {this.state.currentEatModal?<DetailEatModal handleCancel={this.handleCancel} handleUpdate={this.handleUpdate} status={this.state.eatDetailModalActive} data={this.state.currentEatModal} />: null}
+        {!this.state.currentEatModal? null:
+            <DetailEatModal handleCancel={this.handleCancel}
+                            handleUpdate={this.handleUpdate}
+                            status={eatDetailModalActive}
+                            data={currentEatModal} />}
       </div>
     );
   }
@@ -124,14 +134,15 @@ const mapDispatchToProps = dispatch => {
     addFood: (food)=>{dispatch(addFoodList(food))},
     delFood: (food)=>{dispatch(delFoodList(food))},
     emptyList: ()=>{dispatch(emptyList())},
-    clearSearch: ()=>{dispatch(clearSearch())}
+    clearSearch: ()=>{dispatch(clearSearch())},
+    eatFoodsBackend: ()=>{dispatch(eatFoodsBackend())}
     }
 }
 
 const mapStateToProps = state =>({
   foods: state.user.foods,
   addFoodList: state.addFoodList,
-  search: state.search,
+  search: state.search
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EatModal)
