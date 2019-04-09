@@ -4,13 +4,15 @@ import recipeReducer from './recipeReducer'
 import allFoodReducer from './allFoodReducer'
 import addFoodReducer from './addFoodReducer'
 import searchReducer from './searchReducer'
+import advancedSearchReducer from './advancedSearchReducer'
 
 const rootReducer = combineReducers({
   user: userReducer,
   recipes:recipeReducer,
   food: allFoodReducer,
   addFoodList: addFoodReducer,
-  search: searchReducer
+  search: searchReducer,
+  advancedSearch: advancedSearchReducer
 })
 
 export default rootReducer

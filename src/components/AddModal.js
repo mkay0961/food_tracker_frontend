@@ -21,18 +21,6 @@ class AddModal extends Component {
     }
   }
 
-  // constructor(){
-  //   super()
-  //   this.state = {
-  //     active: false,
-  //     detailsActive: false,
-  //     current: null
-  //   }
-  // }
-  // componentDidMount(){
-  //   console.log("mount add")
-  // }
-
   open = () =>{
     this.setState({addModalActive: true})
   }
@@ -49,12 +37,25 @@ class AddModal extends Component {
 
   handleUpdate = (e, item) =>{
     //logic
-    //decontruct
+    //work on
     e.preventDefault()
     let amount = e.target.parentElement.children[0].children[1].value
     let price = e.target.parentElement.children[1].children[1].value
     let expire_date = e.target.parentElement.children[2].children[1].value
-    debugger
+    let amountSplit = amount.split(" ")
+
+    if (amountSplit.length === 2 && !isNaN(amountSplit[0]) && isNaN(amountSplit[1])) {
+      console.log("works");
+      let newItem = {...item}
+      newItem["amount"] = amount
+      newItem["price"] = price
+      newItem["expire_date"] = expire_date
+      this.props.addFood(newItem)
+      this.setState({addDetailModalActive: false, currentAddModal:null})
+    }else {
+      alert("wrong amount")
+    }
+
   }
 
   handleCancel= (e) =>{
@@ -72,91 +73,19 @@ class AddModal extends Component {
 
   handleSubmit = () =>{
     const { addFoodList, addFoodsBackend } = this.props
-
+  
     if(addFoodList.length !== 0){
       addFoodsBackend()
     }
     this.close()
   }
 
-  // handleSubmit = () => {
-  //
-  //   const {addFoodList, clearSearch, addFoodsBackend} = this.props
-  //
-  //   clearSearch()
-  //
-  //   if(addFoodList.length !== 0){
-  //     addFoodsBackend()
-  //   }
-  //   this.close()
-  //
-  // }
-
-  // checkDeatails(foodDetails){
-  //   console.log("h", foodDetails["amount"].split(" ").length === 2)
-  //   let amount = foodDetails["amount"].split(" ")
-  //
-  //   if(amount.length === 2){
-  //     return true
-  //   //   this.props.userFoods.forEach((food)=>{
-  //   //     if(food.name === foodDetails.name && ){
-  //   //       console.log("found")
-  //   //     }else{
-  //   //       console.log("not found")
-  //   //     }
-  //   //   })
-  //   // }else{
-  //   //   return false
-  //   }else{
-  //     return false
-  //   }
-  //
-  // // }
-  // handleDetailsClose2 = (e) => {
-  //   e.preventDefault()
-  //   this.setState({detailsActive: false})
-  //  }
-  //
-  // handleDetailsClose = (e, foodDetails) => {
-  //   e.preventDefault()
-  //   let amount = e.target.parentElement.children[0].children[1].value
-  //   let price = e.target.parentElement.children[1].children[1].value
-  //   let expire_date = e.target.parentElement.children[2].children[1].value
-  //   if (amount !== "" && price !== "" && expire_date !== "") {
-  //     foodDetails["price"] = price
-  //     foodDetails["expired"] = false
-  //     foodDetails["amount"] = amount
-  //     foodDetails["expiration_date"] = expire_date
-  //     foodDetails["active"] = true
-  //     if(this.checkDeatails(foodDetails)){
-  //       this.props.resetShowModal()
-  //       // this.setState({detailsActive: false})
-  //       this.props.addFood(foodDetails)
-  //     }
-  //   }else{
-  //     alert("You Enter all Information")
-  //   }
-  // }
-  //
-  // handleAddClick = (item) =>{
-  //
-  //   const {setDetailShowModal, setCurretModal} = this.props
-  //
-  //   console.log("clicked on item",item)
-  //   setDetailShowModal()
-  //   setCurretModal(item)
-  //   // this.setState({detailsActive: true, current: item})
-  // }
-  //
-  // handleDelClick = (item) =>{
-  //   const delFood = this.props
-  //   console.log("del item",item)
-  //   delFood(item)
-  // }
-  //
   generateFood = () => {
-    const { food, addFoodList, search } = this.props
-    return food.filter((aFood)=>(!addFoodList.includes(aFood) && aFood.name.toLowerCase().includes(search.toLowerCase())))
+    const { addFoodList, food, search } = this.props
+
+    let ids = addFoodList.map((food)=>food.id)
+    let searchFilteredArray = food.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
+    return searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
   }
 
   render() {

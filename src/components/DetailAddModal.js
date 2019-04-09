@@ -9,57 +9,6 @@ import { addFoodList } from '../redux/actions/food'
 
 class DetailAddModal extends Component {
 
-  // componentDidMount(){
-  //   console.log("mount detail add")
-  // }
-  //
-  // checkDeatails(foodDetails){
-  //   console.log("h", foodDetails["amount"].split(" ").length === 2)
-  //   let amount = foodDetails["amount"].split(" ")
-  //
-  //   if(amount.length === 2){
-  //     return true
-  //   //   this.props.userFoods.forEach((food)=>{
-  //   //     if(food.name === foodDetails.name && ){
-  //   //       console.log("found")
-  //   //     }else{
-  //   //       console.log("not found")
-  //   //     }
-  //   //   })
-  //   // }else{
-  //   //   return false
-  //   }else{
-  //     return false
-  //   }
-  //
-  // }
-  //
-  // handleDetailsClose = (e) => {
-  //
-  //   const {currentModal, resetDetailShowModal,resetCurrentModal, addFood } = this.props
-  //
-  //   e.preventDefault()
-  //   let amount = e.target.parentElement.children[0].children[1].value
-  //   let price = e.target.parentElement.children[1].children[1].value
-  //   let expire_date = e.target.parentElement.children[2].children[1].value
-  //   if (amount !== "" && price !== "" && expire_date !== "") {
-  //     currentModal["price"] = price
-  //     currentModal["expired"] = false
-  //     currentModal["amount"] = amount
-  //     currentModal["expiration_date"] = expire_date
-  //     currentModal["active"] = true
-  //     if(this.checkDeatails(currentModal)){
-  //       addFood(currentModal)
-  //       resetDetailShowModal()
-  //       resetCurrentModal()
-  //     }
-  //   }else{
-  //     alert("You Enter all Information")
-  //   }
-  // }
-
-
-
   render() {
 
     const { status, data, handleUpdate, handleCancel } = this.props

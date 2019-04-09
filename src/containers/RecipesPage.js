@@ -7,12 +7,8 @@ import RecipeModal from '../components/RecipeModal'
 import {clearSearch} from '../redux/actions/searchBar'
 import { connect } from 'react-redux'
 
-
-
-
 class RecipesPage extends Component {
 
-  //move to redux
   constructor(){
     super()
     this.state = {
@@ -33,14 +29,46 @@ class RecipesPage extends Component {
     this.setState({showModal: false, current: null})
   }
 
+  recipeCheck = (recipe, num) => {
+    const { userFoods } = this.props
+
+
+    let rtnVal = true
+    let userFoodIds = userFoods.map((food)=>food.food_id)
+    let recipeFoodIds = recipe.food.map((food)=>food.food_id)
+    if(num === 0){
+      recipeFoodIds.forEach((foodId)=>{
+        if(!userFoodIds.includes(foodId)){
+          rtnVal = false
+        }
+      })
+    }else{
+      console.log("misCheck is ", num);
+    }
+    return rtnVal
+  }
+
+  generateRecipes = () =>{
+    const { recipes, advancedSearch, search } = this.props
+
+    let rtnVal = recipes
+    if(advancedSearch.withIngredients){
+      rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
+    }
+    return rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(search.toLowerCase())))
+  }
+
   render() {
+    const { current, showModal } = this.state
+    const { location } = this.props
+
     return (
        <div>
-          <Navbar path={this.props.location.pathname} />
+          <Navbar path={location.pathname} />
           <SearchBar />
           <AdvancedModal />
-          <RecipeContainer handleClick={this.handleShowModal} />
-          <RecipeModal data={this.state.current} active={this.state.showModal} noShow={this.handleNoShowModal} />
+          <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
+          <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
        </div>
         )
       }
@@ -50,7 +78,12 @@ const mapDispatchToProps = dispatch => {
     clearSearch: ()=>{dispatch(clearSearch())}
   }
 }
-export default connect(null, mapDispatchToProps)(RecipesPage)
 
-// <RecipeContainer handleClick={this.handleShowModal} />
-// <RecipeModal active={this.state.showModal} noShow={this.handleNoShowModal}/>
+const mapStateToProps = state =>({
+  recipes: state.recipes,
+  search: state.search,
+  userFoods: state.user.foods,
+  advancedSearch: state.advancedSearch
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesPage)

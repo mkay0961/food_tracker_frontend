@@ -37,15 +37,13 @@ class EatModal extends Component {
 
   handleUpdate = (e, item) =>{
     //logic
-    //decontruct
+    //work on
     let eatenAmount = e.target.parentElement.children[0].children[1].value.split(" ")
     let oldAmount = item.amount.split(" ")
     if(oldAmount[0]- eatenAmount[0]>= 0 && eatenAmount.length === 2){
-      // let newAmount = `${oldAmount[0] - eatenAmount[0]} ${oldAmount[1]}`
       let newItem = {...item}
-      newItem.amount = eatenAmount
+      newItem.amount = eatenAmount.join(" ")
       this.props.addFood(newItem)
-      // e.preventDefault()
       this.setState({eatDetailModalActive: false, currentModal:null})
     }else {
       alert("stop")

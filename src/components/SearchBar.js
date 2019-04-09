@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
 import { setSearch } from '../redux/actions/searchBar'
 
@@ -7,7 +7,7 @@ const SearchBar = (props) => (
    <input onChange={(e)=>props.setSearch(e.target.value)} type="text" placeholder="Search large..."/>
    <i className="search icon"></i>
  </div>
-);
+)
 
 const mapDispatchToProps = dispatch => {
   return {
