@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
+import { loginUser } from '../redux/actions/user'
+import { connect } from 'react-redux'
 
 class Login extends Component {
-  constructor(){
-    super()
-    this.state = {
-      username: "",
-      password: ""
-    }
-  }
 
-  onChangeOfForm = (e) =>{
-    console.log("Change on form", e.target.name,e.target.value)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+  handleSubmitClick = (e) =>{
+    e.preventDefault()
+    let username = document.getElementById("username").value
+    let password = document.getElementById("password").value
+    this.props.loginUser(username, password)
   }
 
 
@@ -23,15 +18,15 @@ class Login extends Component {
         <h1>Food Tracker</h1>
         <h1>Login</h1>
         <div>
-          <form onChange={(e)=>{this.onChangeOfForm(e)}}>
+          <form >
             <div>
-              <input type="text" name="username" placeholder="Username"/>
+              <input id="username" type="text" name="username" placeholder="Username"/>
             </div>
             <div>
-              <input type="password" name="password" placeholder="Password"/>
+              <input id="password" type="password" name="password" placeholder="Password"/>
             </div>
             <div>
-              <input type="Submit" name="submit" placeholder="Submit"/>
+              <input onClick={this.handleSubmitClick} type="Submit" name="submit" placeholder="Submit"/>
             </div>
           </form>
         </div>
@@ -39,5 +34,14 @@ class Login extends Component {
     )
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: (username, password)=>{dispatch(loginUser(username, password))}
+    }
+}
 
-export default Login
+const mapStateToProps = state =>({
+  user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

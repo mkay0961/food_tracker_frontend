@@ -73,7 +73,7 @@ class AddModal extends Component {
 
   handleSubmit = () =>{
     const { addFoodList, addFoodsBackend } = this.props
-  
+
     if(addFoodList.length !== 0){
       addFoodsBackend()
     }

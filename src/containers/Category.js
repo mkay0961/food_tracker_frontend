@@ -12,7 +12,7 @@ const Category = (props) => (
       {props.food.map((item, i)=><Food key={i} data={item}/>)}
     </div>
  </div>
-) 
+)
 
 
 export default (Category)

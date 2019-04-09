@@ -79,7 +79,7 @@ class RecipesPage extends Component {
 
     return (
        <div>
-          <Navbar path={location.pathname} />
+          <Navbar />
           <SearchBar />
           <AdvancedModal />
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />

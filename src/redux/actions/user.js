@@ -1,17 +1,48 @@
-import { SET_USER } from './types'
+import { SET_USER, CLEAR_USER } from './types'
 
 const URL = `http://localhost:3000/users`
 const URL_USER_FOODS = `http://localhost:3000/user_foods`
 const URL_FAV_RECIPES = `http://localhost:3000/user_recipes`
 
 
-function getUser(id){
+function getUser(){
   return (dispatch) => {
-    fetch(`${URL}/${id}`)
-    .then(res => res.json())
-    .then(user => {
-      dispatch({ type: SET_USER, payload: user })
+    fetch('http://localhost:3000/users', {
+      method: 'GET',
+      headers: {
+        Authentication: `Bearer ${localStorage.getItem('token')}`
+      }
     })
+      .then(response => response.json())
+      .then((user) =>{
+        dispatch({type: SET_USER, payload: user})
+      })
+  }
+}
+
+function loginUser(username, password){
+  return (dispatch) => {
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+          username: username,
+          password: password
+      })
+    }).then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw response
+        }
+      }).then((auth) => {
+        localStorage.setItem('token', auth.token)
+        dispatch({type: SET_USER, payload: auth.user})
+      })
+      // .catch(r => r.json().then(e => console.log(e.message)))
   }
 }
 
@@ -92,5 +123,9 @@ function removeFavRecipe(recipeId){
   }
 }
 
+function clearUser(){
+  return { type: CLEAR_USER }
+}
 
-export { getUser, addFoodsBackend, eatFoodsBackend, addFavRecipe, removeFavRecipe }
+
+export { getUser, addFoodsBackend, eatFoodsBackend, addFavRecipe, removeFavRecipe, loginUser, clearUser }

@@ -17,7 +17,7 @@ class FoodPage extends Component {
   render() {
     return (
       <div>
-        <Navbar path={this.props.location.pathname}/>
+        <Navbar />
         <SearchBar />
         <AddModal/>
         <EatModal />
