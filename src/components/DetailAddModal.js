@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Header, Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { resetDetailShowModal, resetCurrentModal} from '../redux/actions/modal'
 import { addFoodList } from '../redux/actions/food'
 
 
@@ -98,15 +97,13 @@ class DetailAddModal extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addFood: (food)=>{dispatch(addFoodList(food))},
-    resetDetailShowModal: ()=>{dispatch(resetDetailShowModal())},
-    resetCurrentModal: ()=>{dispatch(resetCurrentModal())}
+    addFood: (food)=>{dispatch(addFoodList(food))}
     }
 }
 
-const mapStateToProps = state =>({
-  showDetailModal: state.modal.showDetailModal,
-  currentModal: state.modal.currentModal
-})
+// const mapStateToProps = state =>({
+//   // showDetailModal: state.modal.showDetailModal,
+//   // currentModal: state.modal.currentModal
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailAddModal)
+export default connect(null, mapDispatchToProps)(DetailAddModal)
