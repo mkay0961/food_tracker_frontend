@@ -1,16 +1,14 @@
 import { combineReducers } from "redux"
 import userReducer from './userReducer'
 import recipeReducer from './recipeReducer'
-import foodReducer from './foodReducer'
+import allFoodReducer from './allFoodReducer'
 import addFoodReducer from './addFoodReducer'
 import searchReducer from './searchReducer'
-// import modalReducer from './modalReducer'
-
 
 const rootReducer = combineReducers({
   user: userReducer,
   recipes:recipeReducer,
-  food: foodReducer,
+  food: allFoodReducer,
   addFoodList: addFoodReducer,
   search: searchReducer
 })

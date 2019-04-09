@@ -6,7 +6,6 @@ import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
 import { clearSearch } from '../redux/actions/searchBar'
 import { addFoodsBackend } from '../redux/actions/user'
-// import { setShowModal, resetShowModal, setDetailShowModal, setCurretModal } from '../redux/actions/modal'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 
 //make funtional?
@@ -167,7 +166,11 @@ class AddModal extends Component {
 
   return (
       <div>
-        <Modal dimmer={"blurring"} open={addModalActive}  onOpen={this.open} onClose={this.close} trigger={<button className="ui button">Add Food</button>}>
+        <Modal dimmer={"blurring"}
+               open={addModalActive}
+               onOpen={this.open}
+               onClose={this.close}
+               trigger={<button className="ui button">Add Food</button>}>
           <Modal.Header>Add Food</Modal.Header>
           <Modal.Content >
             <Modal.Description>
@@ -175,11 +178,13 @@ class AddModal extends Component {
                 <div className="column">
                   <Header>All Food</Header>
                   <SearchBar />
-                  <FoodContainer food={this.generateFood()} handleClick={this.handleAddClick}/>
+                  <FoodContainer food={this.generateFood()}
+                                 handleClick={this.handleAddClick}/>
                 </div>
                 <div className="column">
                   <Header>Food To Add</Header>
-                  <FoodContainer food={addFoodList} handleClick={this.handleDelClick}/>
+                  <FoodContainer food={addFoodList}
+                                 handleClick={this.handleDelClick}/>
                 </div>
               </div>
             </Modal.Description>
