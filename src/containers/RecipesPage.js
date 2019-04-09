@@ -30,22 +30,36 @@ class RecipesPage extends Component {
   }
 
   recipeCheck = (recipe, num) => {
+    // console.log("NEW");
     const { userFoods } = this.props
 
-
     let rtnVal = true
-    let userFoodIds = userFoods.map((food)=>food.food_id)
-    let recipeFoodIds = recipe.food.map((food)=>food.food_id)
+
+    // let userFoodIds = userFoods.map((food)=>food.food_id)
+    // let recipeFoodIds = recipe.food.map((food)=>food.food_id)
     if(num === 0){
-      recipeFoodIds.forEach((foodId)=>{
-        if(!userFoodIds.includes(foodId)){
-          rtnVal = false
-        }
+      let obj = {}
+      recipe.food.forEach((recipeFood)=>{
+        userFoods.forEach((userFood)=>{
+          // console.log("comparing", recipeFood.name,"to", userFood.name);
+          if(!(recipeFood.food_id === userFood.food_id && (userFood.amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
+            // console.log("DOesnt work");
+            if(!obj[recipeFood.food_id] === true){
+              obj[recipeFood.food_id] = false
+            }
+          }else{
+            obj[recipeFood.food_id] = true
+            // console.log("it works",userFood.amount.split(" ")[0],recipeFood.amount.split(" ")[0]);
+          }
+        })
       })
+      rtnVal = !Object.values(obj).includes(false)
+      // console.log("can we do this recipe", !Object.values(obj).includes(false))
     }else{
       console.log("misCheck is ", num);
     }
     return rtnVal
+    // console.log(rtnVal);
   }
 
   generateRecipes = () =>{
@@ -54,6 +68,7 @@ class RecipesPage extends Component {
     let rtnVal = recipes
     if(advancedSearch.withIngredients){
       rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
+      console.log("return val = ",rtnVal);
     }
     return rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(search.toLowerCase())))
   }
