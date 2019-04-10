@@ -1,13 +1,12 @@
 import { SET_ALL_FOODS,
          ADD_FOOD_TO_LIST,
          DEL_FOOD_FROM_LIST,
-         EMPTY_LIST } from './types'
-
-const URL = `http://localhost:3000/foods`
+         EMPTY_LIST,
+         URL_ALL_FOOD } from './types'
 
 function getAllFoods(){
   return (dispatch) => {
-    fetch(`${URL}`)
+    fetch(URL_ALL_FOOD)
     .then(res => res.json())
     .then(foods => {
       dispatch({ type: SET_ALL_FOODS, payload: foods })

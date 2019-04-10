@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { setIngredientsSearch,
          resetIngredientsSearch,
          setMisMatchNum,
@@ -20,13 +21,17 @@ class AdvancedModal extends Component {
     }
   }
 
+  onOpen = () => {
+    this.props.clearSearchPage()
+  }
+
   render() {
     const { advancedSearch } = this.props
 
     return (
       <div>
         <Modal dimmer={"blurring"}
-               trigger={<button className="ui button">Advanced Search</button>}>
+               trigger={<button onClick={this.onOpen} className="ui button">Advanced Search</button>}>
           <Modal.Header>Advanced Search</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
@@ -60,7 +65,8 @@ const mapDispatchToProps = dispatch => {
     setIngredientsSearch: ()=>{dispatch(setIngredientsSearch())},
     resetIngredientsSearch: ()=>{dispatch(resetIngredientsSearch())},
     setMisMatchNum: (num)=>{dispatch(setMisMatchNum(num))},
-    clearMisMatchNum: ()=>{dispatch(clearMisMatchNum())}
+    clearMisMatchNum: ()=>{dispatch(clearMisMatchNum())},
+    clearSearchPage: ()=>{dispatch(clearSearchPage())}
     }
 }
 

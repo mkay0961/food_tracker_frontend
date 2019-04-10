@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import Navbar from '../components/Navbar'
-import SearchBar from '../components/SearchBar'
+import SearchPageBar from '../components/SearchPageBar'
 import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
 import RecipeModal from '../components/RecipeModal'
-import {clearSearch} from '../redux/actions/searchBar'
+import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 
 class RecipesPage extends Component {
@@ -18,7 +18,7 @@ class RecipesPage extends Component {
   }
 
   componentDidMount(){
-    this.props.clearSearch()
+    this.props.clearSearchPage()
   }
 
   handleShowModal = (data) => {
@@ -55,21 +55,21 @@ class RecipesPage extends Component {
       rtnVal = !Object.values(obj).includes(false)
       // console.log("can we do this recipe", !Object.values(obj).includes(false))
     }else{
-      console.log("misCheck is ", num)  
+      console.log("misCheck is ", num)
     }
     return rtnVal
     // console.log(rtnVal)
   }
 
   generateRecipes = () =>{
-    const { recipes, advancedSearch, search } = this.props
+    const { recipes, advancedSearch, searchPage } = this.props
 
     let rtnVal = recipes
     if(advancedSearch.withIngredients){
       rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
       console.log("return val = ",rtnVal)
     }
-    return rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(search.toLowerCase())))
+    return rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(searchPage.toLowerCase())))
   }
 
   render() {
@@ -78,7 +78,7 @@ class RecipesPage extends Component {
     return (
        <div>
           <Navbar />
-          <SearchBar />
+          <SearchPageBar />
           <AdvancedModal />
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
@@ -88,13 +88,13 @@ class RecipesPage extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    clearSearch: ()=>{dispatch(clearSearch())}
+    clearSearchPage: ()=>{dispatch(clearSearchPage())}
   }
 }
 
 const mapStateToProps = state =>({
   recipes: state.recipes,
-  search: state.search,
+  searchPage: state.searchPage,
   userFoods: state.user.foods,
   advancedSearch: state.advancedSearch
 })

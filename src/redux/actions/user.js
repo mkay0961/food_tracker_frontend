@@ -1,13 +1,8 @@
-import { SET_USER, CLEAR_USER } from './types'
-
-const URL = `http://localhost:3000/users`
-const URL_USER_FOODS = `http://localhost:3000/user_foods`
-const URL_FAV_RECIPES = `http://localhost:3000/user_recipes`
-const URL_LOGIN = `http://localhost:3000/login`
+import { SET_USER, CLEAR_USER, URL_USER, URL_USER_FOODS, URL_FAV_RECIPES, URL_LOGIN } from './types'
 
 function getUser(){
   return (dispatch) => {
-    fetch(URL, {
+    fetch(URL_USER, {
       method: 'GET',
       headers: {
         Authentication: `Bearer ${localStorage.getItem('token')}`
@@ -55,7 +50,7 @@ function addFoodsBackend(){
     let obj = {}
     obj["food"] = getState().addFoodList
     obj["id"] = getState().user.id
-    fetch(`${URL_USER_FOODS}`,{
+    fetch(URL_USER_FOODS,{
       method: 'POST',
       body: JSON.stringify(obj),
       headers:{
@@ -94,7 +89,7 @@ function addFavRecipe(recipeId){
   return (dispatch, getState) => {
     let obj = {}
     obj["recipeId"] = recipeId
-    fetch(`${URL_FAV_RECIPES}`,{
+    fetch(URL_FAV_RECIPES,{
       method: 'POST',
       body: JSON.stringify(obj),
       headers:{
@@ -112,7 +107,7 @@ function removeFavRecipe(recipeId){
   return (dispatch, getState) => {
     let obj = {}
     obj["recipeId"] = recipeId
-    fetch(`${URL_FAV_RECIPES}`,{
+    fetch(URL_FAV_RECIPES,{
       method: 'DELETE',
       body: JSON.stringify(obj),
       headers:{

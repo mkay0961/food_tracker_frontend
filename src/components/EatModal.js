@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import DetailEatModal from './DetailEatModal'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 import { clearSearch } from '../redux/actions/searchBar'
+import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { eatFoodsBackend } from '../redux/actions/user'
 
 
@@ -21,6 +22,7 @@ class EatModal extends Component {
   }
 
   open = () =>{
+    this.props.clearSearchPage()
     this.setState({eatModalActive: true})
   }
 
@@ -134,6 +136,7 @@ const mapDispatchToProps = dispatch => {
     delFood: (food)=>{dispatch(delFoodList(food))},
     emptyList: ()=>{dispatch(emptyList())},
     clearSearch: ()=>{dispatch(clearSearch())},
+    clearSearchPage: ()=>{dispatch(clearSearchPage())},
     eatFoodsBackend: ()=>{dispatch(eatFoodsBackend())}
     }
 }

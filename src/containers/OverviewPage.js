@@ -5,7 +5,7 @@ import NotesContainer from './NotesContainer'
 import SavedRecipesContainer from './SavedRecipesContainer'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
-import { clearSearch } from '../redux/actions/searchBar'
+import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import RecipeModal from '../components/RecipeModal'
 
@@ -29,7 +29,7 @@ class OverviewPage extends Component {
   }
 
   componentDidMount(){
-    this.props.clearSearch()
+    this.props.clearSearchPage()
   }
 
   render() {
@@ -54,7 +54,7 @@ class OverviewPage extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearSearch: ()=>{dispatch(clearSearch())}
+    clearSearchPage: ()=>{dispatch(clearSearchPage())}
   }
 }
 

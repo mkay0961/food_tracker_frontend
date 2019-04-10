@@ -4,6 +4,7 @@ import recipeReducer from './recipeReducer'
 import allFoodReducer from './allFoodReducer'
 import addFoodReducer from './addFoodReducer'
 import searchReducer from './searchReducer'
+import searchPageReducer from './searchPageReducer'
 import advancedSearchReducer from './advancedSearchReducer'
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   food: allFoodReducer,
   addFoodList: addFoodReducer,
   search: searchReducer,
+  searchPage: searchPageReducer,
   advancedSearch: advancedSearchReducer
 })
 

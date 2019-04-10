@@ -37,7 +37,7 @@ class CategoriesContainer extends Component {
 
 const mapStateToProps = state =>({
   foods: state.user.foods,
-  search: state.search
+  search: state.searchPage
 })
 
 export default connect(mapStateToProps, null)(CategoriesContainer)

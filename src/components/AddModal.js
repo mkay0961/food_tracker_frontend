@@ -5,6 +5,7 @@ import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
 import { clearSearch } from '../redux/actions/searchBar'
+import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { addFoodsBackend } from '../redux/actions/user'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 
@@ -19,6 +20,7 @@ class AddModal extends Component {
   }
 
   open = () =>{
+    this.props.clearSearchPage()
     this.setState({ addModalActive: true })
   }
 
@@ -135,7 +137,9 @@ const mapDispatchToProps = dispatch => {
     delFood: (food)=>{dispatch(delFoodList(food))},
     addFoodsBackend: ()=>{dispatch(addFoodsBackend())},
     emptyList: ()=>{dispatch(emptyList())},
-    clearSearch: ()=>{dispatch(clearSearch())}
+    clearSearch: ()=>{dispatch(clearSearch())},
+    clearSearchPage: ()=>{dispatch(clearSearchPage())}
+
     }
 }
 

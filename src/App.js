@@ -27,10 +27,11 @@ class App extends Component {
   }
 
   render() {
-    const { user } = this.props
-    
+    const { user, location } = this.props
+
     return (
       <div className="App">
+        {(localStorage.length>0 && isEmpty(user) && location.pathname === "/login") ?"LOADING":
         <Switch>
           <Route exact path="/login" render={() => {
               return isEmpty(user)? <Login /> :
@@ -55,7 +56,7 @@ class App extends Component {
           />s
          <Route exact path= "/signup" component={SignUp} />
          <Route exact path="*" render={() =>  <Redirect to="/overview" />} />
-        </Switch>
+        </Switch>}
       </div>
     )
   }

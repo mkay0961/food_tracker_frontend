@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import CategoriesContainer from './CategoriesContainer'
 import Navbar from '../components/Navbar'
-import SearchBar from '../components/SearchBar'
+import SearchPageBar from '../components/SearchPageBar'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
-import { clearSearch } from '../redux/actions/searchBar'
+import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 
 
 class FoodPage extends Component {
 
   componentDidMount(){
-    this.props.clearSearch()
+    this.props.clearSearchPage()
   }
 
   render() {
     return (
       <div>
         <Navbar />
-        <SearchBar />
+        <SearchPageBar />
         <AddModal/>
         <EatModal />
         <CategoriesContainer />
@@ -28,7 +28,7 @@ class FoodPage extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    clearSearch: ()=>{dispatch(clearSearch())}
+    clearSearchPage: ()=>{dispatch(clearSearchPage())}
   }
 }
 export default connect(null, mapDispatchToProps)(FoodPage)
