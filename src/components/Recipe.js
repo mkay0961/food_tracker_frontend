@@ -1,9 +1,10 @@
-import React from 'react' 
+import React from 'react'
+import { Card } from 'semantic-ui-react'
 
 const Recipe = (props) => (
- <div className="ui card" onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
+ <Card onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
     {`${props.data.title}`}
- </div>
+ </Card>
 )
 
 export default Recipe

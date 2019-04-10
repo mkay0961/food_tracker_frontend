@@ -8,9 +8,6 @@ import { clearSearch } from '../redux/actions/searchBar'
 import { addFoodsBackend } from '../redux/actions/user'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 
-//make funtional?
-//deconstruct
-
 class AddModal extends Component {
   constructor(){
     super()
@@ -22,13 +19,13 @@ class AddModal extends Component {
   }
 
   open = () =>{
-    this.setState({addModalActive: true})
+    this.setState({ addModalActive: true })
   }
 
   close = () =>{
-    const { clearSearch, addFoodList, emptyList} = this.props
+    const { clearSearch, addFoodList, emptyList } = this.props
 
-    this.setState({addModalActive: false})
+    this.setState({ addModalActive: false })
     clearSearch()
     if(addFoodList.length !== 0){
       emptyList()
@@ -45,7 +42,7 @@ class AddModal extends Component {
     let amountSplit = amount.split(" ")
 
     if (amountSplit.length === 2 && !isNaN(amountSplit[0]) && isNaN(amountSplit[1])) {
-      console.log("works");
+      console.log("works")
       let newItem = {...item}
       newItem["amount"] = amount
       newItem["price"] = price
@@ -73,7 +70,7 @@ class AddModal extends Component {
 
   handleSubmit = () =>{
     const { addFoodList, addFoodsBackend } = this.props
-  
+
     if(addFoodList.length !== 0){
       addFoodsBackend()
     }

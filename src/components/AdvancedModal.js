@@ -25,7 +25,8 @@ class AdvancedModal extends Component {
 
     return (
       <div>
-        <Modal dimmer={"blurring"} trigger={<button className="ui button">Advanced Search</button>}>
+        <Modal dimmer={"blurring"}
+               trigger={<button className="ui button">Advanced Search</button>}>
           <Modal.Header>Advanced Search</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
@@ -33,9 +34,16 @@ class AdvancedModal extends Component {
                 <div className="field">
                   <label>Show recipes by ingredients</label>
                   {advancedSearch.withIngredients?
-                  <input onChange={()=>this.onChangeCheck()} checked type="checkbox" name="ingredients" placeholder="ingredients"/>
+                  <input onChange={()=>this.onChangeCheck()}
+                         checked
+                         type="checkbox"
+                         name="ingredients"
+                         placeholder="ingredients"/>
                   :
-                  <input onChange={()=>this.onChangeCheck()} type="checkbox" name="ingredients" placeholder="ingredients"/>
+                  <input onChange={()=>this.onChangeCheck()}
+                         type="checkbox"
+                         name="ingredients"
+                         placeholder="ingredients"/>
                   }
                 </div>
               </form>

@@ -26,35 +26,36 @@ class App extends Component {
   }
 
   render() {
+    const { user } = this.props
     return (
       <div className="App">
-      <Switch>
-        <Route exact path="/login" render={() => {
-            return isEmpty(this.props.user)? <Login /> :
-            <Redirect to="/overview" />
-        }}
-        />
-        <Route exact path="/overview" render={() => {
-            return isEmpty(this.props.user) ? <Redirect to="/login" /> :
-            <OverviewPage />
-        }}
-        />
+        <Switch>
+          <Route exact path="/login" render={() => {
+              return isEmpty(user)? <Login /> :
+              <Redirect to="/overview" />
+          }}
+          />
+          <Route exact path="/overview" render={() => {
+              return isEmpty(user) ? <Redirect to="/login" /> :
+              <OverviewPage />
+          }}
+          />
 
-        <Route exact path="/recipes" render={() => {
-            return isEmpty(this.props.user) ? <Redirect to="/login" /> :
-            <RecipesPage />
-        }}
-        />
-        <Route exact path="/food" render={() => {
-            return isEmpty(this.props.user) ? <Redirect to="/login" /> :
-            <FoodPage />
-        }}
-        />
+          <Route exact path="/recipes" render={() => {
+              return isEmpty(user) ? <Redirect to="/login" /> :
+              <RecipesPage />
+          }}
+          />
+          <Route exact path="/food" render={() => {
+              return isEmpty(user) ? <Redirect to="/login" /> :
+              <FoodPage />
+          }}
+          />
 
-       <Route exact path= "/signup" component={SignUp} />
+         <Route exact path= "/signup" component={SignUp} />
 
-       <Route exact path="/" render={() =>  <Redirect to="/overview" />} />
-      </Switch>
+         <Route exact path="/" render={() =>  <Redirect to="/overview" />} />
+        </Switch>
       </div>
     )
   }

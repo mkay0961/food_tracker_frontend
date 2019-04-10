@@ -23,4 +23,4 @@ const mapStateToProps = state =>({
   proimage: state.user.profile_image
 })
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps, null)(Profile)

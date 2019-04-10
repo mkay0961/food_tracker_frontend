@@ -55,7 +55,8 @@ function addFoodsBackend(){
       method: 'POST',
       body: JSON.stringify(obj),
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authentication: `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(res => res.json())
@@ -74,7 +75,8 @@ function eatFoodsBackend(){
       method: 'PATCH',
       body: JSON.stringify(obj),
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authentication: `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(res => res.json())
@@ -94,7 +96,8 @@ function addFavRecipe(recipeId){
       method: 'POST',
       body: JSON.stringify(obj),
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authentication: `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(res => res.json())
@@ -113,7 +116,8 @@ function removeFavRecipe(recipeId){
       method: 'DELETE',
       body: JSON.stringify(obj),
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authentication: `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(res => res.json())

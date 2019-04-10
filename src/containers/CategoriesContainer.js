@@ -5,13 +5,6 @@ import { connect } from 'react-redux'
 
 class CategoriesContainer extends Component {
 
-
-
-
-
-//clean up
-
-
   generateCategories = () =>{
     let obj = {}
     console.log(this.props.search)
@@ -35,7 +28,7 @@ class CategoriesContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ui cards">
          {this.generateCategories()}
       </div>
     )
@@ -47,4 +40,4 @@ const mapStateToProps = state =>({
   search: state.search
 })
 
-export default connect(mapStateToProps)(CategoriesContainer)
+export default connect(mapStateToProps, null)(CategoriesContainer)

@@ -24,7 +24,7 @@ class RecipeModal extends Component {
 
   render() {
 
-    const { data, active, noShow } = this.props
+  const { data, active, noShow } = this.props
 
   return (
       <div>

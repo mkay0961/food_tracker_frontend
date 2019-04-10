@@ -17,4 +17,4 @@ const mapStateToProps = state =>({
   saveRecipes: state.user.recipes
 })
 
-export default connect(mapStateToProps)(SavedRecipesContainer)
+export default connect(mapStateToProps, null)(SavedRecipesContainer)

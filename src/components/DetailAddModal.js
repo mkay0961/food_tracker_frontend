@@ -50,9 +50,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-// const mapStateToProps = state =>({
-//   // showDetailModal: state.modal.showDetailModal,
-//   // currentModal: state.modal.currentModal
-// })
-
-export default connect(null, mapDispatchToProps)(DetailAddModal)
+export default connect(null, mapDispatchToProps)( DetailAddModal )

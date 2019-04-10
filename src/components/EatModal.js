@@ -54,11 +54,11 @@ class EatModal extends Component {
 
   handleCancel= (e) =>{
     e.preventDefault()
-    this.setState({eatDetailModalActive: false, currentModal:null})
+    this.setState({ eatDetailModalActive: false, currentModal:null })
   }
 
   handleEatClick = (item) =>{
-    this.setState({eatDetailModalActive: true, currentEatModal: item})
+    this.setState({ eatDetailModalActive: true, currentEatModal: item })
   }
 
   handleDelClick = (item) =>{

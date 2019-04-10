@@ -30,7 +30,6 @@ class RecipesPage extends Component {
   }
 
   recipeCheck = (recipe, num) => {
-    // console.log("NEW");
     const { userFoods } = this.props
 
     let rtnVal = true
@@ -75,7 +74,6 @@ class RecipesPage extends Component {
 
   render() {
     const { current, showModal } = this.state
-    const { location } = this.props
 
     return (
        <div>

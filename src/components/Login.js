@@ -11,7 +11,6 @@ class Login extends Component {
     this.props.loginUser(username, password)
   }
 
-
   render() {
     return (
       <div>

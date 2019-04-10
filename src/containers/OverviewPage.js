@@ -34,7 +34,6 @@ class OverviewPage extends Component {
 
   render() {
     const { current, showModal } = this.state
-    const { location } = this.props
 
     return (
       <div>
