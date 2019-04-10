@@ -8,7 +8,7 @@ import { clearUser } from '../redux/actions/user'
 class Navbar extends Component {
 
   onLogout = () =>{
-    console.log("LOG OUT");
+    console.log("LOG OUT")
     localStorage.clear()
     this.props.clearUser()
   }

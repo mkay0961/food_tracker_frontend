@@ -40,25 +40,25 @@ class RecipesPage extends Component {
       let obj = {}
       recipe.food.forEach((recipeFood)=>{
         userFoods.forEach((userFood)=>{
-          // console.log("comparing", recipeFood.name,"to", userFood.name);
+          // console.log("comparing", recipeFood.name,"to", userFood.name)
           if(!(recipeFood.food_id === userFood.food_id && (userFood.amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
-            // console.log("DOesnt work");
+            // console.log("DOesnt work")
             if(!obj[recipeFood.food_id] === true){
               obj[recipeFood.food_id] = false
             }
           }else{
             obj[recipeFood.food_id] = true
-            // console.log("it works",userFood.amount.split(" ")[0],recipeFood.amount.split(" ")[0]);
+            // console.log("it works",userFood.amount.split(" ")[0],recipeFood.amount.split(" ")[0])
           }
         })
       })
       rtnVal = !Object.values(obj).includes(false)
       // console.log("can we do this recipe", !Object.values(obj).includes(false))
     }else{
-      console.log("misCheck is ", num);
+      console.log("misCheck is ", num)  
     }
     return rtnVal
-    // console.log(rtnVal);
+    // console.log(rtnVal)
   }
 
   generateRecipes = () =>{
@@ -67,7 +67,7 @@ class RecipesPage extends Component {
     let rtnVal = recipes
     if(advancedSearch.withIngredients){
       rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
-      console.log("return val = ",rtnVal);
+      console.log("return val = ",rtnVal)
     }
     return rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(search.toLowerCase())))
   }

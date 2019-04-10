@@ -15,13 +15,14 @@ import { isEmpty } from 'lodash'
 class App extends Component {
 
   componentDidMount(){
-    // this.props.getUser()
+    const { getAllRecipes, getAllFoods, getUser} = this.props
+
     let token = localStorage.getItem("token")
-    this.props.getAllRecipes()
-    this.props.getAllFoods()
+    getAllRecipes()
+    getAllFoods()
     if(token){
-      console.log("SOMEONE IS LOGGINED");
-      this.props.getUser()
+      console.log("SOMEONE IS LOGGINED")
+      getUser()
     }
   }
 
@@ -51,10 +52,8 @@ class App extends Component {
               <FoodPage />
           }}
           />
-
          <Route exact path= "/signup" component={SignUp} />
-
-         <Route exact path="/" render={() =>  <Redirect to="/overview" />} />
+         <Route exact path="*" render={() =>  <Redirect to="/overview" />} />
         </Switch>
       </div>
     )
