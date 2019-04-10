@@ -28,6 +28,7 @@ class App extends Component {
 
   render() {
     const { user } = this.props
+    
     return (
       <div className="App">
         <Switch>
@@ -51,7 +52,7 @@ class App extends Component {
               return isEmpty(user) ? <Redirect to="/login" /> :
               <FoodPage />
           }}
-          />
+          />s
          <Route exact path= "/signup" component={SignUp} />
          <Route exact path="*" render={() =>  <Redirect to="/overview" />} />
         </Switch>

@@ -39,11 +39,12 @@ function loginUser(username, password){
           throw response
         }
       }).then((auth) => {
-        let newUser = {...auth.user}
-        newUser["foods"] = auth.foods
-        newUser["recipes"] = auth.recipes
+        // let newUser = {...auth.user}
+        // newUser["foods"] = auth.foods
+        // newUser["recipes"] = auth.recipes
+
         localStorage.setItem('token', auth.token)
-        dispatch({type: SET_USER, payload: newUser})
+        dispatch({type: SET_USER, payload: auth.user})
       })
       // .catch(r => r.json().then(e => console.log(e.message)))
   }
