@@ -1,5 +1,22 @@
 import { SET_USER, CLEAR_USER, URL_USER, URL_USER_FOODS, URL_FAV_RECIPES, URL_LOGIN } from './types'
 
+function createUser(data){
+  return (dispatch) => {
+    fetch(URL_USER, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then((user) =>{
+          console.log("USer created");
+      })
+  }
+}
+
 function getUser(){
   return (dispatch) => {
     fetch(URL_USER, {
@@ -126,4 +143,4 @@ function clearUser(){
   return { type: CLEAR_USER }
 }
 
-export { getUser, addFoodsBackend, eatFoodsBackend, addFavRecipe, removeFavRecipe, loginUser, clearUser }
+export { getUser, addFoodsBackend, eatFoodsBackend, addFavRecipe, removeFavRecipe, loginUser, clearUser, createUser }

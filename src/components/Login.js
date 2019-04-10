@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { loginUser } from '../redux/actions/user'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -8,7 +9,11 @@ class Login extends Component {
     e.preventDefault()
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
-    this.props.loginUser(username, password)
+    if(username !== "" && password !== ""){
+      this.props.loginUser(username, password)
+    }else{
+      alert("please enter evertthing")
+    }
   }
 
   render() {
@@ -25,9 +30,12 @@ class Login extends Component {
               <input id="password" type="password" name="password" placeholder="Password"/>
             </div>
             <div>
-              <input onClick={this.handleSubmitClick} type="Submit" name="submit" placeholder="Submit"/>
+              <button onClick={this.handleSubmitClick}>Login</button>
             </div>
           </form>
+          <Link to="/signup">
+            <button>Sign Up</button>
+          </Link>
         </div>
       </div>
     )
