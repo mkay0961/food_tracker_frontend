@@ -32,7 +32,7 @@ class DetailAddModal extends Component {
               </div>
               <div className="field">
                 <label>Expiration Date</label>
-                <input type="date" name="exp_date" defaultValue={data.default_expiration}/>
+                <input type="date" name="exp_date" defaultValue={null}/>
               </div>
               <button className="ui button" onClick={(e)=>handleUpdate(e,data)}>Add</button>
               <button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</button>

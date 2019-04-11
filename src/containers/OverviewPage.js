@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import Profile from '../components/Profile'
-import NotesContainer from './NotesContainer'
+import AllNotes from './AllNotes'
 import SavedRecipesContainer from './SavedRecipesContainer'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
@@ -43,7 +43,7 @@ class OverviewPage extends Component {
           <AddModal />
           <EatModal />
         </div>
-        <NotesContainer />
+        <AllNotes />
         <SavedRecipesContainer handleClick={this.handleShowModal} />
         <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
 

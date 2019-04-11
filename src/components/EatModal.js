@@ -41,6 +41,7 @@ class EatModal extends Component {
     //logic
     //work on
 
+
     let eatenAmount = e.target.parentElement.children[0].children[1].value
     let oldAmount = item.combined_amount.split(" ")
 

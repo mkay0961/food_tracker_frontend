@@ -37,11 +37,15 @@ class AddModal extends Component {
 
   handleUpdate = (e, item) =>{
     //logic
-    //work on
+    //work o
     e.preventDefault()
     let amount = e.target.parentElement.children[0].children[1].value
     let price = e.target.parentElement.children[1].children[1].value
     let expire_date = e.target.parentElement.children[2].children[1].value
+
+    if(expire_date === ""){
+      expire_date = item.default_expiration
+    }
 
     if (!isNaN(amount) && amount !== "" && price !== "" && expire_date !== "" && amount.split(" ").length === 1) {
       console.log("works")

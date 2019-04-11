@@ -1,9 +1,22 @@
-import React from 'react' 
+import React, { Component } from 'react'
+import Note from '../components/Note'
 
-const NotesContainer = () => (
- <div className="ui card">
-    Notes Container here
- </div>
-)
+class NotesContainer extends Component {
 
-export default NotesContainer
+  genNotes = () => {
+    return this.props.data.map((item, i)=>{
+      return <Note key={i} data={item} />
+    })
+  }
+
+  render() {
+    return (
+     <div className="ui card">
+        {this.props.name}
+        {this.genNotes()}
+     </div>
+   )
+ }
+}
+
+export default (NotesContainer)
