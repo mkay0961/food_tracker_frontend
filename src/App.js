@@ -5,6 +5,7 @@ import SignUp from './components/SignUp'
 import OverviewPage from './containers/OverviewPage'
 import RecipesPage from './containers/RecipesPage'
 import FoodPage from './containers/FoodPage'
+import StatsPage from './containers/StatsPage'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getUser, clearUser } from './redux/actions/user'
@@ -53,7 +54,12 @@ class App extends Component {
               return isEmpty(user) ? <Redirect to="/login" /> :
               <FoodPage />
           }}
-          />s
+          />
+        <Route exact path="/stats" render={() => {
+              return isEmpty(user) ? <Redirect to="/login" /> :
+              <StatsPage />
+          }}
+          />
          <Route exact path= "/signup" component={SignUp} />
          <Route exact path="*" render={() =>  <Redirect to="/overview" />} />
         </Switch>}

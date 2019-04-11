@@ -21,14 +21,21 @@ class FoodPage extends Component {
         <SearchPageBar />
         <AddModal/>
         <EatModal />
-        <CategoriesContainer />
+        <CategoriesContainer name={"nonExpired"}foods={this.props.nonExpired} />
+        <CategoriesContainer name={"expired"} foods={this.props.expired} />
       </div>
     )
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     clearSearchPage: ()=>{dispatch(clearSearchPage())}
   }
 }
-export default connect(null, mapDispatchToProps)(FoodPage)
+
+const mapStateToProps = state =>({
+  nonExpired: state.user.foods.nonExpired,
+  expired: state.user.foods.expired
+})
+export default connect(mapStateToProps, mapDispatchToProps)(FoodPage)

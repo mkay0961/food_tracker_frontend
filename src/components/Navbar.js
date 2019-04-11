@@ -26,6 +26,9 @@ class Navbar extends Component {
          <Link to="/recipes">
             <Menu.Item  active={this.props.path=== "/recipes"} name='Recipes'/>
          </Link>
+         <Link to="/stats">
+            <Menu.Item  active={this.props.path=== "/stats"} name='Stats'/>
+         </Link>
          <Menu.Menu position='right'>
             <Menu.Item to="/logout" onClick={this.onLogout} active={this.props.path=== "/logout"} name='Logout'/>
          </Menu.Menu>

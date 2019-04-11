@@ -55,6 +55,7 @@ class CategoriesContainer extends Component {
   render() {
     return (
       <div className="ui cards">
+         {this.props.name}
          {this.generateCategories()}
       </div>
     )
@@ -62,7 +63,6 @@ class CategoriesContainer extends Component {
 }
 
 const mapStateToProps = state =>({
-  foods: state.user.foods,
   search: state.searchPage
 })
 

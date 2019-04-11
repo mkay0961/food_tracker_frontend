@@ -145,7 +145,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state =>({
-  foods: state.user.foods,
+  foods: state.user.foods.nonExpired,
   addFoodList: state.addFoodList,
   search: state.search
 })

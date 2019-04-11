@@ -70,7 +70,7 @@ class RecipesPage extends Component {
 
     let rtnVal = recipes
     if(advancedSearch.withIngredients){
-      
+
       rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
       console.log("return val = ",rtnVal)
     }
@@ -101,7 +101,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state =>({
   recipes: state.recipes,
   searchPage: state.searchPage,
-  userFoods: state.user.foods,
+  userFoods: state.user.foods.nonExpired,
   advancedSearch: state.advancedSearch
 })
 
