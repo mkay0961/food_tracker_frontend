@@ -4,6 +4,7 @@ import SearchPageBar from '../components/SearchPageBar'
 import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
 import RecipeModal from '../components/RecipeModal'
+import NewRecipeModal from '../components/NewRecipeModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 
@@ -38,10 +39,13 @@ class RecipesPage extends Component {
     // let recipeFoodIds = recipe.food.map((food)=>food.food_id)
     if(num === 0){
       let obj = {}
+
       recipe.food.forEach((recipeFood)=>{
         userFoods.forEach((userFood)=>{
+
           // console.log("comparing", recipeFood.name,"to", userFood.name)
-          if(!(recipeFood.food_id === userFood.food_id && (userFood.amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
+
+          if(!(recipeFood.food_id === userFood.food_id && (userFood.combined_amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
             // console.log("DOesnt work")
             if(!obj[recipeFood.food_id] === true){
               obj[recipeFood.food_id] = false
@@ -53,7 +57,7 @@ class RecipesPage extends Component {
         })
       })
       rtnVal = !Object.values(obj).includes(false)
-      // console.log("can we do this recipe", !Object.values(obj).includes(false))
+      console.log("canKJGLKJHG recipe", obj)
     }else{
       console.log("misCheck is ", num)
     }
@@ -66,6 +70,7 @@ class RecipesPage extends Component {
 
     let rtnVal = recipes
     if(advancedSearch.withIngredients){
+      
       rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
       console.log("return val = ",rtnVal)
     }
@@ -80,6 +85,7 @@ class RecipesPage extends Component {
           <Navbar />
           <SearchPageBar />
           <AdvancedModal />
+          <NewRecipeModal />
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
        </div>

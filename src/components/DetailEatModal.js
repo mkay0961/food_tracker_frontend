@@ -19,7 +19,8 @@ class DetailEatModal extends Component {
             <form className="ui form">
               <div className="field">
                 <label>Amount</label>
-                <input type="text" name="amount" defaultValue={data.amount}/>
+                <input type="text" name="amount" defaultValue={data.combined_amount.split(" ")[0]}/>
+                <label>{data.unit}</label>
               </div>
               <button className="ui button" onClick={(e)=>handleUpdate(e, data)}>Eat</button>
               <button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</button>

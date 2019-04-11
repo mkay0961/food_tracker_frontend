@@ -40,11 +40,13 @@ class EatModal extends Component {
   handleUpdate = (e, item) =>{
     //logic
     //work on
-    let eatenAmount = e.target.parentElement.children[0].children[1].value.split(" ")
-    let oldAmount = item.amount.split(" ")
-    if(oldAmount[0]- eatenAmount[0]>= 0 && eatenAmount.length === 2){
+
+    let eatenAmount = e.target.parentElement.children[0].children[1].value
+    let oldAmount = item.combined_amount.split(" ")
+
+    if(oldAmount[0]- eatenAmount >= 0 && eatenAmount !== "" && eatenAmount.split(" ").length === 1){
       let newItem = {...item}
-      newItem.amount = eatenAmount.join(" ")
+      newItem["to_be_eaten"] = eatenAmount + " " + oldAmount[1]
       this.props.addFood(newItem)
       this.setState({eatDetailModalActive: false, currentModal:null})
     }else {

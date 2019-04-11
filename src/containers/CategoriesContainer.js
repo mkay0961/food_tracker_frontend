@@ -5,10 +5,36 @@ import { connect } from 'react-redux'
 
 class CategoriesContainer extends Component {
 
+  // delUniqs = (foods) => {
+  //   let allFoods = []
+  //   let foodsIds = foods.map((aFood)=>aFood.food_id)
+  //
+  //
+  //
+  //
+  //   // // let foodsIds = foods.map((aFood)=>aFood.food_id)
+  //   // for (let i = 0; i < foods.length; i++) {
+  //   //   if(obj[foods[i].food_id] === undefined){
+  //   //     let amount = foods[i].amount.split(" ")[0]
+  //   //     obj[foods[i].food_id] = parseInt(amount)
+  //   //   }else{
+  //   //     let amount1 = foods[i].amount.split(" ")[0]
+  //   //     let amount2 = obj[foods[i].food_id]
+  //   //     console.log(amount2);
+  //   //     obj[foods[i].food_id] = parseInt(amount1) + parseInt(amount2)
+  //   //   }
+  //   // }
+  //   // console.log(obj);
+  //   return foods
+  // }
+
   generateCategories = () =>{
+    const { foods, search } = this.props
     let obj = {}
-    console.log(this.props.search)
-    this.props.foods.filter((food)=>food.name.toLowerCase().includes(this.props.search.toLowerCase())).forEach((food, i)=>{
+    console.log(foods)
+
+
+    foods.filter((food)=>food.name.toLowerCase().includes(search.toLowerCase())).forEach((food, i)=>{
       let category = food.category
 
       if (obj[category] === undefined){

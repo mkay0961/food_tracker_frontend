@@ -15,7 +15,8 @@ class AddModal extends Component {
     this.state = {
       addModalActive: false,
       currentAddModal: null,
-      AddDetailModalActive: false
+      addDetailModalActive: false,
+      display: false
     }
   }
 
@@ -41,12 +42,11 @@ class AddModal extends Component {
     let amount = e.target.parentElement.children[0].children[1].value
     let price = e.target.parentElement.children[1].children[1].value
     let expire_date = e.target.parentElement.children[2].children[1].value
-    let amountSplit = amount.split(" ")
 
-    if (amountSplit.length === 2 && !isNaN(amountSplit[0]) && isNaN(amountSplit[1])) {
+    if (!isNaN(amount) && amount !== "" && price !== "" && expire_date !== "" && amount.split(" ").length === 1) {
       console.log("works")
       let newItem = {...item}
-      newItem["amount"] = amount
+      newItem["amount"] = amount + " " + item.unit
       newItem["price"] = price
       newItem["expire_date"] = expire_date
       this.props.addFood(newItem)
@@ -84,7 +84,11 @@ class AddModal extends Component {
 
     let ids = addFoodList.map((food)=>food.id)
     let searchFilteredArray = food.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
-    return searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
+    searchFilteredArray =  searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
+    if(searchFilteredArray.length === 0){
+      console.log("ADD somthing");
+    }
+    return searchFilteredArray
   }
 
   render() {

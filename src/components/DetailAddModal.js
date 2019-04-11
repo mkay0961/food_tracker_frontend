@@ -24,6 +24,7 @@ class DetailAddModal extends Component {
               <div className="field">
                 <label>Amount</label>
                 <input type="text" name="amount" placeholder="Amount"/>
+                <label>{data.unit}</label>
               </div>
               <div className="field">
                 <label>Price</label>
@@ -31,7 +32,7 @@ class DetailAddModal extends Component {
               </div>
               <div className="field">
                 <label>Expiration Date</label>
-                <input type="text" name="exp_date" defaultValue={data.default_expiration}/>
+                <input type="date" name="exp_date" defaultValue={data.default_expiration}/>
               </div>
               <button className="ui button" onClick={(e)=>handleUpdate(e,data)}>Add</button>
               <button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</button>
