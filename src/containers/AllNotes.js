@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import NotesContainer from './NotesContainer'
+import Calendar from '../components/Calendar'
+
 
 class AllNotes extends Component {
 
   genContainers = () => {
-
-
     let rtnArray = []
     Object.keys(this.props.notes).forEach((interval, i)=>{
       rtnArray.push(<NotesContainer key={i} data={this.props.notes[interval]} name={interval} />)
@@ -16,8 +16,10 @@ class AllNotes extends Component {
 
   render() {
     return (
-     <div className="ui card">
-        {this.genContainers()}
+     <div >
+        <div className="ui cards">
+          {this.genContainers()}
+        </div>
      </div>
    )
  }

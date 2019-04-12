@@ -11,8 +11,8 @@ class NotesContainer extends Component {
 
   render() {
     return (
-     <div className="ui card">
-        {this.props.name}
+     <div className="ui card" >
+        {this.props.name.toUpperCase()}
         {this.genNotes()}
      </div>
    )

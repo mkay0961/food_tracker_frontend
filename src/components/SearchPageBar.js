@@ -14,6 +14,7 @@ const mapDispatchToProps = dispatch => {
     setSearchPage: (text)=>{dispatch(setSearchPage(text))}
   }
 }
+
 const mapStateToProps = state =>({
   searchPage: state.searchPage
 })
