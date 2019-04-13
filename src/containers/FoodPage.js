@@ -17,13 +17,13 @@ class FoodPage extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <SearchPageBar />
+        <Navbar/>
+        <SearchPageBar/>
         <AddModal/>
-        <EatModal />
-        <CategoriesContainer name={"nonExpired"}foods={this.props.nonExpired} />
-        <CategoriesContainer name={"expired"} foods={this.props.expired} />
-      </div>
+        <EatModal/>
+        <CategoriesContainer name={"nonExpired"} foods={this.props.nonExpired}/>
+        <CategoriesContainer name={"expired"} foods={this.props.expired}/>
+    </div>
     )
   }
 }

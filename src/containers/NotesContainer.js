@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Note from '../components/Note'
+import BigCalendar from 'react-big-calendar'
 
 class NotesContainer extends Component {
 
@@ -11,7 +12,7 @@ class NotesContainer extends Component {
 
   render() {
     return (
-     <div className="ui card" >
+     <div >
         {this.props.name.toUpperCase()}
         {this.genNotes()}
      </div>

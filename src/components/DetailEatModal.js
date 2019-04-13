@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Header, Modal } from 'semantic-ui-react'
 
-//make funtional?
-
 class DetailEatModal extends Component {
 
   render() {

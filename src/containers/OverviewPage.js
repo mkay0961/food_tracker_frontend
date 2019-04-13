@@ -46,7 +46,6 @@ class OverviewPage extends Component {
         <AllNotes />
         <SavedRecipesContainer handleClick={this.handleShowModal} />
         <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
-
       </div>
     )
   }

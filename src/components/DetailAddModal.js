@@ -3,10 +3,6 @@ import { Header, Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addFoodList } from '../redux/actions/food'
 
-
-//make funtional?
-//deconstruct
-
 class DetailAddModal extends Component {
 
   render() {

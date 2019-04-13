@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
-import FoodWasteContainer from './FoodWasteContainer'
 import FoodWasteChartsContainer from './FoodWasteChartsContainer'
 import { connect } from 'react-redux'
 

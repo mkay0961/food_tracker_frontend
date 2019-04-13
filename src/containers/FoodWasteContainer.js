@@ -41,7 +41,6 @@ class FoodWasteContainer extends Component {
         rtnArray.push(stat)
       }
     })
-
     return rtnArray
   }
 
@@ -49,6 +48,7 @@ class FoodWasteContainer extends Component {
     let stats = this.getThisMonthStats()
     return stats["wasted"].length
   }
+  
   getWeekTotal = () =>{
     let count = 0
     let date = new Date()
@@ -56,9 +56,7 @@ class FoodWasteContainer extends Component {
     let end = this.endOfWeek(date)
     let stats = this.getThisMonthStats()
     stats["wasted"].forEach((stat)=>{
-      // console.log(start.getUTCDate())
       let dayOfMonth = stat["specifc_data"]["expiration_date"].split("-")[2]
-      // console.log(end.getUTCDate())
       if(dayOfMonth >= start.getUTCDate() && dayOfMonth <= end.getUTCDate() ){
         count +=1
       }
@@ -69,22 +67,22 @@ class FoodWasteContainer extends Component {
 
   render() {
     return (
-          <div>
-            <div>
-              Food Wasted this month
-              <WasteList totalWasted={this.getMonthTotal()} food={this.genMonthWasted()} />
-            </div>
-            <div>
-              Food Wasted this week
-              <WasteList totalWasted={this.getWeekTotal()} food={this.genWeekWasted()} />
-            </div>
-          </div>
-        )
-      }
+      <div>
+        <div>
+          Food Wasted this month
+          <WasteList totalWasted={this.getMonthTotal()} food={this.genMonthWasted()} />
+        </div>
+        <div>
+          Food Wasted this week
+          <WasteList totalWasted={this.getWeekTotal()} food={this.genWeekWasted()} />
+        </div>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state =>({
-    stats: state.user.stats
+  stats: state.user.stats
 })
 
 export default connect(mapStateToProps, null)(FoodWasteContainer)

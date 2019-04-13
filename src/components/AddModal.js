@@ -36,8 +36,6 @@ class AddModal extends Component {
   }
 
   handleUpdate = (e, item) =>{
-    //logic
-    //work o
     e.preventDefault()
     let amount = e.target.parentElement.children[0].children[1].value
     let price = e.target.parentElement.children[1].children[1].value
@@ -48,7 +46,6 @@ class AddModal extends Component {
     }
 
     if (!isNaN(amount) && amount !== "" && price !== "" && expire_date !== "" && amount.split(" ").length === 1) {
-      console.log("works")
       let newItem = {...item}
       newItem["amount"] = amount + " " + item.unit
       newItem["price"] = price
@@ -89,9 +86,9 @@ class AddModal extends Component {
     let ids = addFoodList.map((food)=>food.id)
     let searchFilteredArray = food.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
     searchFilteredArray =  searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
-    if(searchFilteredArray.length === 0){
-      console.log("ADD somthing");
-    }
+    // if(searchFilteredArray.length === 0){
+    //   console.log("ADD somthing");
+    // }
     return searchFilteredArray
   }
 

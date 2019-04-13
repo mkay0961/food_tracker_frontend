@@ -9,6 +9,7 @@ class Chart extends Component {
     return {
         labels:  Object.keys(this.props.data[0]),
         datasets: this.getDataSet()
+
       }
   }
 
@@ -30,6 +31,7 @@ class Chart extends Component {
   }
 
   options = () => {return {
+
     tooltips: {
         // callbacks: {
         //   label: (tooltipItem, data) => {
@@ -45,7 +47,7 @@ class Chart extends Component {
     scales: {
       yAxes: [{ ticks: { fontSize: 40,
                 beginAtZero: true,
-                precision:0 } }],
+                precision:0 }}],
       xAxes: [{ ticks: { fontSize: 40 } }]
     }
 
