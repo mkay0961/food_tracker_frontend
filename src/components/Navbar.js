@@ -16,21 +16,21 @@ class Navbar extends Component {
   render() {
    return (
      <div>
-       <Menu pointing secondary>
+       <Menu pointing size='massive'>
          <Link to="/overview">
-            <Menu.Item active={this.props.path=== "/overview"} name='Overview'/>
+            <Menu.Item  name='Overview'/>
          </Link>
          <Link to="/food">
-            <Menu.Item  active={this.props.path=== "/food"} name='My Food'/>
+            <Menu.Item name='MyFood'/>
          </Link>
          <Link to="/recipes">
-            <Menu.Item  active={this.props.path=== "/recipes"} name='Recipes'/>
+            <Menu.Item  name='Recipes'/>
          </Link>
          <Link to="/stats">
-            <Menu.Item  active={this.props.path=== "/stats"} name='Stats'/>
+            <Menu.Item name='Stats'/>
          </Link>
          <Menu.Menu position='right'>
-            <Menu.Item to="/logout" onClick={this.onLogout} active={this.props.path=== "/logout"} name='Logout'/>
+            <Menu.Item to="/logout" onClick={this.onLogout}  name='Logout'/>
          </Menu.Menu>
        </Menu>
      </div>

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import SearchPageBar from '../components/SearchPageBar'
 import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
+import { Segment } from 'semantic-ui-react'
 import RecipeModal from '../components/RecipeModal'
 import NewRecipeModal from '../components/NewRecipeModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
@@ -30,20 +31,20 @@ class RecipesPage extends Component {
     this.setState({showModal: false, current: null})
   }
 
-  recipeCheck = (recipe, num) => {
+  recipeCheck = (recipe) => {
     const { userFoods } = this.props
 
     let rtnVal = true
 
     // let userFoodIds = userFoods.map((food)=>food.food_id)
     // let recipeFoodIds = recipe.food.map((food)=>food.food_id)
-    if(num === 0){
+
       let obj = {}
 
       recipe.food.forEach((recipeFood)=>{
         userFoods.forEach((userFood)=>{
 
-          // console.log("comparing", recipeFood.name,"to", userFood.name)
+          console.log("comparing", recipeFood.name,"to", userFood.name)
 
           if(!(recipeFood.food_id === userFood.food_id && (userFood.combined_amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
             // console.log("DOesnt work")
@@ -58,9 +59,7 @@ class RecipesPage extends Component {
       })
       rtnVal = !Object.values(obj).includes(false)
       console.log("canKJGLKJHG recipe", obj)
-    }else{
-      console.log("misCheck is ", num)
-    }
+
     return rtnVal
     // console.log(rtnVal)
   }
@@ -71,7 +70,7 @@ class RecipesPage extends Component {
     let rtnVal = recipes
     if(advancedSearch.withIngredients){
 
-      rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe, advancedSearch.misMatchNum))
+      rtnVal = recipes.filter((recipe)=>this.recipeCheck(recipe))
       console.log("return val = ",rtnVal)
     }
     return rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(searchPage.toLowerCase())))
@@ -83,9 +82,10 @@ class RecipesPage extends Component {
     return (
        <div>
           <Navbar />
-          <SearchPageBar />
-          <AdvancedModal />
-          <NewRecipeModal />
+          <div className="buttonsGroup">
+            <SearchPageBar />
+            <AdvancedModal />
+          </div>
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
        </div>

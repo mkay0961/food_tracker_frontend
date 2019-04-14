@@ -139,8 +139,27 @@ function removeFavRecipe(recipeId){
   }
 }
 
+function throwAwayFood(id){
+  return (dispatch, getState) => {
+    let obj = {}
+    obj["user_food"] = id
+    fetch(URL_USER_FOODS,{
+      method: 'DELETE',
+      body: JSON.stringify(obj),
+      headers:{
+        'Content-Type': 'application/json',
+        Authentication: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    .then(res => res.json())
+    .then(user => {
+      dispatch({type: SET_USER, payload: user})
+    })
+  }
+}
+
 function clearUser(){
   return { type: CLEAR_USER }
 }
 
-export { getUser, addFoodsBackend, eatFoodsBackend, addFavRecipe, removeFavRecipe, loginUser, clearUser, createUser }
+export { getUser, addFoodsBackend, eatFoodsBackend, addFavRecipe, removeFavRecipe, loginUser, clearUser, createUser, throwAwayFood }

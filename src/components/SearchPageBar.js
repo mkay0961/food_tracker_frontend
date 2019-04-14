@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setSearchPage } from '../redux/actions/searchPageBar'
+import { Input } from 'semantic-ui-react'
+
 
 const SearchPageBar = (props) => (
-  <div className="ui large icon input">
-   <input onChange={(e)=>props.setSearchPage(e.target.value)} value={props.searchPage} type="text" placeholder="Search large..."/>
-   <i className="search icon"></i>
+  <div>
+   <Input size='massive' onChange={(e)=>props.setSearchPage(e.target.value)} value={props.searchPage} icon='search' placeholder='Search...' />
  </div>
 )
 

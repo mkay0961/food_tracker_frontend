@@ -29,19 +29,19 @@ class RecipeModal extends Component {
   return (
       <div>
       {!this.props.data?null:
-        <Modal dimmer={"blurring"} open={active} onClose={noShow}>
+        <Modal dimmer={"blurring"} size='medium' open={active} onClose={noShow}>
         <Modal.Header>
           <div>Recipe</div>
           <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
             {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
           </Button>
         </Modal.Header>
-        <Modal.Content image>
+        <Modal.Content image scrolling>
           <Modal.Description>
             <Header>{data.title}</Header>
-            <h1>{data.description}</h1>
-            <h1>{data.category}</h1>
-            <h1>{data.instructions}</h1>
+            <p>{data.description}</p>
+            <p>{data.category}</p>
+            <p>{data.instructions}</p>
             <FoodContainer food={data.food} />
           </Modal.Description>
         </Modal.Content>

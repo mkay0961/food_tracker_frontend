@@ -6,8 +6,17 @@
 .scrollable{
   overflow-y: auto;
   height: 75%;
+  overflow-x: hidden;
 }
 
+.buttonsGroup{
+  display: inline-flex;
+  margin: 20px;
+}
+
+.advancedSearch{
+  margin: 20px;
+}
 
 .column {
   flex: 50%;
@@ -15,12 +24,20 @@
   height: 300px;
 }
 .calendar{
-  height: 1000px;
+  height:1000px;
+  width: 1400px;
+}
+.catagory{
+  padding: 10px;
+  margin: 10px;
+  height:1000px;
+  width: 1400px;
 }
 
 .App {
   text-align: center;
 }
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

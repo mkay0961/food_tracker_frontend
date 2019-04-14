@@ -6,6 +6,7 @@ import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
+import { Divider } from 'semantic-ui-react'
 
 
 class FoodPage extends Component {
@@ -18,11 +19,21 @@ class FoodPage extends Component {
     return (
       <div>
         <Navbar/>
-        <SearchPageBar/>
-        <AddModal/>
-        <EatModal/>
-        <CategoriesContainer name={"nonExpired"} foods={this.props.nonExpired}/>
-        <CategoriesContainer name={"expired"} foods={this.props.expired}/>
+        <div className="buttonsGroup">
+          <SearchPageBar/>
+          <AddModal/>
+          <EatModal/>
+        </div>
+
+        <h1>Not Expired</h1>
+        <div className="catagory scrollable">
+          <CategoriesContainer name={"Not Expired"} foods={this.props.nonExpired}/>
+        </div>
+        <Divider section />
+        <h1>Expired</h1>
+        <div className="catagory scrollable">
+          <CategoriesContainer name={"Expired"} foods={this.props.expired}/>
+        </div>
     </div>
     )
   }

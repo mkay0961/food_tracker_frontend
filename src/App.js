@@ -12,6 +12,7 @@ import { getUser, clearUser } from './redux/actions/user'
 import { getAllRecipes } from './redux/actions/recipes'
 import { getAllFoods } from './redux/actions/food'
 import { isEmpty } from 'lodash'
+import { Image, Segment, Dimmer, Loader } from 'semantic-ui-react'
 
 class App extends Component {
 

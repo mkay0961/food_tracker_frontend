@@ -5,6 +5,7 @@ import AllNotes from './AllNotes'
 import SavedRecipesContainer from './SavedRecipesContainer'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
+import Calendar from '../components/Calendar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import RecipeModal from '../components/RecipeModal'
@@ -39,11 +40,11 @@ class OverviewPage extends Component {
       <div>
         <Navbar/>
         <Profile />
-        <div className="ui card">
+        <div className="buttonsGroup">
           <AddModal />
           <EatModal />
         </div>
-        <AllNotes />
+        <Calendar />
         <SavedRecipesContainer handleClick={this.handleShowModal} />
         <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
       </div>
