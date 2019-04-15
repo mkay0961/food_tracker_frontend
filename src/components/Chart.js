@@ -41,8 +41,9 @@ class Chart extends Component {
         titleFontSize: 100,
         bodyFontSize: 100,
       },
-    // legend: {onClick: null,
-    //          display: false},
+    legend: {labels: {
+                fontSize: 50
+            }},
     maintainAspectRatio: false ,
     scales: {
       yAxes: [{ ticks: { fontSize: 40,

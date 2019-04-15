@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import FoodWasteChartsContainer from './FoodWasteChartsContainer'
-import { connect } from 'react-redux'
 
 class StatsPage extends Component {
   //

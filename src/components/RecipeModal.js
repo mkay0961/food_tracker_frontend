@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Modal, Header, Button } from 'semantic-ui-react'
+import { Modal, Header, Button, Rating } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import FoodContainer from '../containers/FoodContainer'
+import IngredientsTable from './IngredientsTable'
 import { removeFavRecipe, addFavRecipe } from '../redux/actions/user'
 
 //make funtional?
@@ -29,20 +29,19 @@ class RecipeModal extends Component {
   return (
       <div>
       {!this.props.data?null:
-        <Modal dimmer={"blurring"} size='medium' open={active} onClose={noShow}>
+        <Modal dimmer={"blurring"} size='large' open={active} onClose={noShow}>
         <Modal.Header>
-          <div>Recipe</div>
-          <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
-            {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
-          </Button>
+          <Header>{data.title} - {data.category}</Header>
         </Modal.Header>
         <Modal.Content image scrolling>
           <Modal.Description>
-            <Header>{data.title}</Header>
+            <Rating icon='star' defaultRating={3} maxRating={3} />
             <p>{data.description}</p>
-            <p>{data.category}</p>
             <p>{data.instructions}</p>
-            <FoodContainer food={data.food} />
+            <IngredientsTable food={data.food} />
+            <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
+              {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
+            </Button>
           </Modal.Description>
         </Modal.Content>
         </Modal>

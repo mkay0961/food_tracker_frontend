@@ -55,9 +55,7 @@ class CategoriesContainer extends Component {
   render() {
     return (
       <div className="ui cards">
-
          {this.generateCategories()}
-       
       </div>
     )
   }

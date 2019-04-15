@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Note from '../components/Note'
-import BigCalendar from 'react-big-calendar'
 
 class NotesContainer extends Component {
 

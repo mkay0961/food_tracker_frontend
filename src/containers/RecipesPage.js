@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar'
 import SearchPageBar from '../components/SearchPageBar'
 import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
-import { Segment } from 'semantic-ui-react'
 import RecipeModal from '../components/RecipeModal'
 import NewRecipeModal from '../components/NewRecipeModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
@@ -44,8 +43,8 @@ class RecipesPage extends Component {
       recipe.food.forEach((recipeFood)=>{
         userFoods.forEach((userFood)=>{
 
-          console.log("comparing", recipeFood.name,"to", userFood.name)
-
+        if(recipeFood.name === userFood.name){
+          console.log(recipeFood.name, userFood.name);
           if(!(recipeFood.food_id === userFood.food_id && (userFood.combined_amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
             // console.log("DOesnt work")
             if(!obj[recipeFood.food_id] === true){
@@ -55,6 +54,8 @@ class RecipesPage extends Component {
             obj[recipeFood.food_id] = true
             // console.log("it works",userFood.amount.split(" ")[0],recipeFood.amount.split(" ")[0])
           }
+
+        }
         })
       })
       rtnVal = !Object.values(obj).includes(false)
@@ -85,6 +86,7 @@ class RecipesPage extends Component {
           <div className="buttonsGroup">
             <SearchPageBar />
             <AdvancedModal />
+            <NewRecipeModal />
           </div>
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />

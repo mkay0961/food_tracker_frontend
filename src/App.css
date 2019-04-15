@@ -11,11 +11,16 @@
 
 .buttonsGroup{
   display: inline-flex;
-  margin: 20px;
+  margin: 25px;
 }
 
 .advancedSearch{
   margin: 20px;
+}
+.chart{
+  margin: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .column {
@@ -25,13 +30,17 @@
 }
 .calendar{
   height:1000px;
+  margin: 100px;
   width: 1400px;
 }
 .catagory{
   padding: 10px;
   margin: 10px;
+  padding: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
   height:1000px;
-  width: 1400px;
+  width: 100%;
 }
 
 .App {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import Profile from '../components/Profile'
-import AllNotes from './AllNotes'
 import SavedRecipesContainer from './SavedRecipesContainer'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'

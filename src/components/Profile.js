@@ -11,7 +11,7 @@ class Profile extends Component {
           <div>
             <Segment placeholder>
             <Header as='h2' icon textAlign='center'>
-                <Image centered size='large' src="https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwizu9fk6c7hAhUDc98KHcHWCTAQjRx6BAgBEAU&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Fblank-profile-picture-mystery-man-973460%2F&psig=AOvVaw0dRC49JIKV4stO0qZTkeqB&ust=1555305270481837"/>
+                <Image centered size='large' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
               <Header.Content><h1>{this.props.fname + " " + this.props.lname}</h1></Header.Content>
             </Header>
             <h3>{this.props.email}</h3>
