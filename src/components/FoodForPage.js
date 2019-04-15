@@ -3,15 +3,14 @@ import { Card, Item, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { throwAwayFood } from '../redux/actions/user'
 
-// const throwAway = (props) => {
-//   props.data.specific_instances.forEach((item)=>{
-//     props.throwAwayFood(item.user_food_id)
-//   })
-// }
+const throwAway = (props) => {
+  props.data.specific_instances.forEach((item)=>{
+    props.throwAwayFood(item.user_food_id)
+  })
+}
 
-const Food = (props) => (
-  <div className="ui card test2" onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
-    <Item>
+const FoodForPage = (props) => (
+    <Card >
          <Item.Image src='' />
          <Item.Content>
            <Item.Header>{`${props.data.name}`}</Item.Header>
@@ -19,14 +18,16 @@ const Food = (props) => (
              {props.data.to_be_eaten?props.data.to_be_eaten:props.data.combined_amount}
            </Item.Meta>
            <Item.Description>{props.data.expiration_date?props.data.expiration_date:""}</Item.Description>
+           <Item.Extra>
+             {props.data.expired? <Button floated='right' onClick={()=>{throwAway(props)}}>Throw Away</Button>: ""}
+           </Item.Extra>
          </Item.Content>
-       </Item>
-    </div>
+       </Card>
 )
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     throwAwayFood: (id)=>{dispatch(throwAwayFood(id))},
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    throwAwayFood: (id)=>{dispatch(throwAwayFood(id))},
+  }
+}
 
-export default (Food)
+export default connect(null, mapDispatchToProps)(FoodForPage)

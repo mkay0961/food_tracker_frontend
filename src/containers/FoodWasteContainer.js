@@ -48,7 +48,7 @@ class FoodWasteContainer extends Component {
     let stats = this.getThisMonthStats()
     return stats["wasted"].length
   }
-  
+
   getWeekTotal = () =>{
     let count = 0
     let date = new Date()
