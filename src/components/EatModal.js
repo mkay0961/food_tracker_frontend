@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Modal, Button } from 'semantic-ui-react'
+import { Header, Modal, Button, Segment, Grid, Divider, Icon, Dropdown, Transition, Image } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
@@ -93,41 +93,57 @@ class EatModal extends Component {
 
     return (
       <div>
+        <button onClick={this.open} className="ui button">Eat Food</button>
+        <Transition visible={eatModalActive} animation='scale' duration={300}>
         <Modal dimmer={"blurring"}
                open={eatModalActive}
                onOpen={this.open}
+               className="modalCustom"
                onClose={this.close}
-               trigger={<button className="ui button">Eat Food</button>}>
-          <Modal.Header>Eat Food</Modal.Header>
-          <Modal.Content image>
-            <Modal.Description>
-              <Header>stuff</Header>
-              <div className="row">
-                <div className="column">
-                  <Header>My Food</Header>
-                  <SearchBar />
-                  <div className="scrollable">
-                    <FoodContainer food={this.generateFood()}
-                                   handleClick={this.handleEatClick} />
+               >
+          <Modal.Header as="h1">Eat Food</Modal.Header>
+          <Modal.Content>
+            <Grid stackable columns={2}>
+              <Grid.Column>
+                <Segment >
+                  <Header icon>
+                         My Food
+                   </Header>
+                   <Segment align="center">
+                     <SearchBar />
+                   </Segment>
+                   <div >
+                     <FoodContainer food={this.generateFood()}
+                           handleClick={this.handleEatClick} />
+                   </div>
+                </Segment>
+              </Grid.Column>
+              <Grid.Column>
+                <Segment>
+                  <Header icon>
+                          Food To Eat
+                  </Header>
+                  <div >
+                    <FoodContainer food={addFoodList}
+                       handleClick={this.handleDelClick}/>
                   </div>
-                </div>
-                <div className="column">
-                    <Header>Food To Eat</Header>
-                    <div className = "scrollable">
-                      <FoodContainer food={addFoodList}
-                                     handleClick={this.handleDelClick}/>
-                    </div>
-                </div>
-              </div>
-              <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
-            </Modal.Description>
+                </Segment>
+                <Segment align="center">
+                  <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
+                </Segment>
+              </Grid.Column>
+            </Grid>
+
           </Modal.Content>
+
         </Modal>
+        </Transition>
         {!this.state.currentEatModal? null:
             <DetailEatModal handleCancel={this.handleCancel}
                             handleUpdate={this.handleUpdate}
                             status={eatDetailModalActive}
                             data={currentEatModal} />}
+
       </div>
     )
   }
@@ -151,3 +167,42 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EatModal)
+
+
+//
+// <Grid columns={2} textAlign='center'>
+//   <Divider vertical><Icon name="arrow right"/></Divider>
+//   <Grid.Row verticalAlign='middle'>
+//     <Grid.Column>
+//       <Header icon>
+//         My Food
+//       </Header>
+//       <Segment>
+//         <SearchBar />
+//       </Segment>
+//       <div className="scrollable">
+//         <FoodContainer food={this.generateFood()}
+//               handleClick={this.handleEatClick} />
+//       </div>
+//
+//      </Grid.Column>
+//     <Grid.Column>
+//       <Header icon>
+//         Food To Eat
+//       </Header>
+//       <div >
+//         <FoodContainer food={addFoodList}
+//            handleClick={this.handleDelClick}/>
+//       </div>
+//     </Grid.Column>
+//
+//   </Grid.Row>
+//   <Grid.Row >
+//     <Grid.Column>
+//     <div>
+//       <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
+//     </div>
+//   </Grid.Column>
+//   </Grid.Row>
+//
+// </Grid>

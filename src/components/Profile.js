@@ -9,13 +9,13 @@ class Profile extends Component {
   render() {
     return (
           <div>
-            <Segment placeholder>
-            <Header as='h2' icon textAlign='center'>
-                <Image centered size='large' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
-              <Header.Content><h1>{this.props.fname + " " + this.props.lname}</h1></Header.Content>
+
+              <Image centered size='medium' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+            <Header as='h1' icon textAlign='center'>
+              <Header.Content>{this.props.fname + " " + this.props.lname}</Header.Content>
             </Header>
-            <h3>{this.props.email}</h3>
-          </Segment>
+            <h2>{this.props.email}</h2>
+          
           </div>
         )
       }

@@ -21,14 +21,21 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='login-form'>
+      <div className='backImage'>
+
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='orange' textAlign='center'>
-            <Image src='../../public/gro.jpg' /> Log-in to your account
-          </Header>
+          <Segment stacked>
+            <Header as='h1' color='orange' textAlign='center'>
+              Food Tracker
+            </Header>
+          </Segment>
+
           <Form size='large'>
             <Segment stacked>
+              <Header as='h2' color='orange' textAlign='center'>
+                 Log-in to your account
+              </Header>
               <Form.Input fluid id="username" icon='user' iconPosition='left' placeholder='E-mail address' />
               <Form.Input
                 fluid
@@ -51,6 +58,7 @@ class Login extends Component {
           </Message>
         </Grid.Column>
       </Grid>
+  
     </div>
 
     )

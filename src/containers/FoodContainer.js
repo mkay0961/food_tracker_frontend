@@ -1,10 +1,12 @@
 import React from 'react'
 import Food from '../components/Food'
+import { Card } from 'semantic-ui-react'
+
 
 const FoodContainer = (props) => (
- <div className="scrollable">
+ <Card.Group className="test">
     {props.food.map((food, i)=><Food handleClick={props.handleClick} key={i} data={food}/>)}
- </div>
+ </Card.Group>
 )
 
 export default (FoodContainer)

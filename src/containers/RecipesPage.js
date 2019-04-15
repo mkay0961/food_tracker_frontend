@@ -31,38 +31,46 @@ class RecipesPage extends Component {
   }
 
   recipeCheck = (recipe) => {
-    const { userFoods } = this.props
+    const { userFoods, advancedSearch } = this.props
 
-    let rtnVal = true
+    let rtnVal = false
 
-    // let userFoodIds = userFoods.map((food)=>food.food_id)
-    // let recipeFoodIds = recipe.food.map((food)=>food.food_id)
 
-      let obj = {}
-
+      let useFoodIds = userFoods.map((food)=>{
+        return food.food_id
+      })
+      let noMatch = 0
+      let yesMatch = 0
       recipe.food.forEach((recipeFood)=>{
-        userFoods.forEach((userFood)=>{
+        // userFoods.forEach((userFood)=>{
 
-        if(recipeFood.name === userFood.name){
-          console.log(recipeFood.name, userFood.name);
-          if(!(recipeFood.food_id === userFood.food_id && (userFood.combined_amount.split(" ")[0]-recipeFood.amount.split(" ")[0] >= 0))){
-            // console.log("DOesnt work")
-            if(!obj[recipeFood.food_id] === true){
-              obj[recipeFood.food_id] = false
-            }
+        // console.log(recipeFood.name);
+        if(useFoodIds.includes(recipeFood.food_id)){
+          if(parseInt(recipeFood.amount.split(" ")[0]) <= parseInt(userFoods.find((food)=>food.food_id === recipeFood.food_id).combined_amount.split(" ")[0])){
+            yesMatch += 1
           }else{
-            obj[recipeFood.food_id] = true
-            // console.log("it works",userFood.amount.split(" ")[0],recipeFood.amount.split(" ")[0])
+            noMatch += 1
           }
 
+
+        }else{
+
+          noMatch += 1
+
         }
-        })
+
       })
-      rtnVal = !Object.values(obj).includes(false)
-      console.log("canKJGLKJHG recipe", obj)
+
+      if(yesMatch === recipe.food.length){
+        rtnVal = true
+      }else if ( yesMatch + parseInt(advancedSearch.misNum) >= recipe.food.length) {
+        rtnVal = true
+      }else{
+        console.log("NOOOOOOOOOOOO");
+        rtnVal = false
+      }
 
     return rtnVal
-    // console.log(rtnVal)
   }
 
   generateRecipes = () =>{
@@ -86,7 +94,7 @@ class RecipesPage extends Component {
           <div className="buttonsGroup">
             <SearchPageBar />
             <AdvancedModal />
-            <NewRecipeModal />
+            del<NewRecipeModal />
           </div>
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />

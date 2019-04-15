@@ -10,7 +10,7 @@ const throwAway = (props) => {
 }
 
 const Food = (props) => (
-  <Card onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
+  <div className="ui card test2" onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
     <Item>
          <Item.Image src='' />
          <Item.Content>
@@ -24,7 +24,7 @@ const Food = (props) => (
            </Item.Extra>
          </Item.Content>
        </Item>
-    </Card>
+    </div>
 )
 const mapDispatchToProps = dispatch => {
   return {

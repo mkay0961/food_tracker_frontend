@@ -8,6 +8,7 @@ import Calendar from '../components/Calendar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import RecipeModal from '../components/RecipeModal'
+import { Grid } from 'semantic-ui-react'
 
 
 class OverviewPage extends Component {
@@ -38,14 +39,25 @@ class OverviewPage extends Component {
     return (
       <div>
         <Navbar/>
-        <Profile />
-        <div className="buttonsGroup">
-          <AddModal />
-          <EatModal />
-        </div>
-        <Calendar />
-        <SavedRecipesContainer handleClick={this.handleShowModal} />
-        <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
+    
+          <Profile />
+
+            <div className="buttonsGroup">
+              <AddModal />
+              <EatModal />
+            </div>
+              <SavedRecipesContainer handleClick={this.handleShowModal} />
+
+          <Calendar />
+
+
+
+
+
+
+
+
+            <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
       </div>
     )
   }

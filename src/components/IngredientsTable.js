@@ -12,10 +12,10 @@ const genItems = (ingredents) => {
 
 const IngredientsTable = (props) => (
  <div >
-   <Table celled>
+   <Table celled collapsing>
  <Table.Header>
    <Table.Row>
-     <Table.HeaderCell>?</Table.HeaderCell>
+     <Table.HeaderCell>Do you have it?</Table.HeaderCell>
      <Table.HeaderCell>Name</Table.HeaderCell>
      <Table.HeaderCell>Amount</Table.HeaderCell>
    </Table.Row>

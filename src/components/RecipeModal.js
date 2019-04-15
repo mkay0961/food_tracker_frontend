@@ -29,13 +29,12 @@ class RecipeModal extends Component {
   return (
       <div>
       {!this.props.data?null:
-        <Modal dimmer={"blurring"} size='large' open={active} onClose={noShow}>
+        <Modal className="modalCustom" dimmer={"blurring"} size='big' open={active} onClose={noShow}>
         <Modal.Header>
           <Header>{data.title} - {data.category}</Header>
         </Modal.Header>
-        <Modal.Content image scrolling>
+        <Modal.Content image>
           <Modal.Description>
-            <Rating icon='star' defaultRating={3} maxRating={3} />
             <p>{data.description}</p>
             <p>{data.instructions}</p>
             <IngredientsTable food={data.food} />

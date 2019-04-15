@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Header, Modal, Button } from 'semantic-ui-react'
+import { Header, Modal, Button, Transition, Grid, Divider, Icon, Segment } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
@@ -99,33 +99,52 @@ class AddModal extends Component {
 
   return (
       <div>
+        <button onClick={this.open} className="ui button">Add Food</button>
+        <Transition visible={addModalActive} animation='scale' duration={300}>
         <Modal dimmer={"blurring"}
-               open={addModalActive}
-               onOpen={this.open}
-               onClose={this.close}
-               trigger={<button className="ui button">Add Food</button>}>
-          <Modal.Header>Add Food</Modal.Header>
-          <Modal.Content >
+                    open={addModalActive}
+                    onOpen={this.open}
+                    size="large"
+                    className="addeatmodal"
+                    onClose={this.close}
+                    >
+          <Modal.Header as="h1">Add Food</Modal.Header>
+          <Modal.Content image>
             <Modal.Description>
-              <div className="row">
-                <div className="column">
-                  <Header>All Food</Header>
-                  <SearchBar />
-                  <FoodContainer food={this.generateFood()}
-                                 handleClick={this.handleAddClick}/>
-                </div>
-                <div className="column">
-                  <Header>Food To Add</Header>
-                  <FoodContainer food={addFoodList}
-                                 handleClick={this.handleDelClick}/>
-                </div>
-              </div>
+                <Grid columns={2} textAlign='center'>
+                  <Divider vertical><Icon name="arrow right"/></Divider>
+                  <Grid.Row verticalAlign='middle'>
+                    <Grid.Column>
+                      <Header icon>
+                        All Food
+                      </Header>
+                      <Segment>
+                        <SearchBar />
+                      </Segment>
+                      <div className="column">
+                        <FoodContainer food={this.generateFood()}
+                                       handleClick={this.handleAddClick}/>
+                      </div>
+                     </Grid.Column>
+                    <Grid.Column>
+                      <Header icon>
+                        Food To Add
+                      </Header>
+                      <div className = "column">
+                        <FoodContainer food={addFoodList}
+                                       handleClick={this.handleDelClick}/>
+                       </div>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+
+
             </Modal.Description>
-            <Modal.Actions>
-              <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
-            </Modal.Actions>
           </Modal.Content>
+          <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
         </Modal>
+        </Transition>
+
         {!currentAddModal?null:
           <DetailAddModal handleCancel={this.handleCancel}
                           handleUpdate={this.handleUpdate}

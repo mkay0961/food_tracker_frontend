@@ -2,11 +2,23 @@
 .row {
   display: flex;
 }
+.test{
+  min-height: 30vh;
+  max-height: 60vh;
+  overflow: auto;
+}
+
+.test2.ui.card{
+  padding-left: 20px;
+  padding-bottom: 20px;
+  width: 30%;
+  height: 30%;
+}
 
 .scrollable{
   overflow-y: auto;
-  height: 75%;
   overflow-x: hidden;
+  height: auto;
 }
 
 .buttonsGroup{
@@ -17,17 +29,47 @@
 .advancedSearch{
   margin: 20px;
 }
+
+.backgroundOpac{
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.backImage{
+ background: url("https://cdn.pixabay.com/photo/2019/03/13/11/07/supermarket-4052658_1280.jpg") no-repeat center center fixed;
+ background-size: cover;
+ height: 100vh;
+}
+
+
+
 .chart{
   margin: 20px;
   margin-left: 40px;
   margin-right: 40px;
 }
 
-.column {
+.modalCustom.ui.modal{
+  width: 65%;
+}
+
+
+/* .addeatmodal.ui.modal{
+  height: 70% !important;
+  width: 70% !important;
+} */
+
+/* .stretch.ui.modal.Segment{
+  height: 1000px !important;
+  width: 1000px !important;
+} */
+/* .column {
   flex: 50%;
   padding: 10px;
   height: 300px;
-}
+} */
+
+
 .calendar{
   height:1000px;
   margin: 100px;

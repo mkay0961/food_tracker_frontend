@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Segment, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { clearUser } from '../redux/actions/user'
@@ -15,10 +15,11 @@ class Navbar extends Component {
 
   render() {
    return (
-     <div>
-       <Menu pointing size='massive'>
+     <div >
+       <Menu pointing size='massive' fluid inverted color='orange' size='massive'>
+         <Menu.Menu position='left'>
          <Link to="/overview">
-            <Menu.Item  name='Overview'/>
+            <Menu.Item name='Overview'/>
          </Link>
          <Link to="/food">
             <Menu.Item name='MyFood'/>
@@ -29,6 +30,13 @@ class Navbar extends Component {
          <Link to="/stats">
             <Menu.Item name='Stats'/>
          </Link>
+         </Menu.Menu>
+
+         <Menu.Menu position='right'>
+            <Header as="h1">Food Tracker</Header>
+         </Menu.Menu>
+
+
          <Menu.Menu position='right'>
             <Menu.Item to="/logout" onClick={this.onLogout}  name='Logout'/>
          </Menu.Menu>

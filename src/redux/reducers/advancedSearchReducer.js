@@ -1,8 +1,10 @@
 import { SET_INGREDIENTS_SEARCH,
-         RESET_INGREDIENTS_SEARCH } from '../actions/types'
+         RESET_INGREDIENTS_SEARCH,
+         SET_MISMATCH_NUM,
+         CLEAR_MISMATCH_NUM } from '../actions/types'
 
 
-export default (state={withIngredients: false},action)=>{
+export default (state={withIngredients: false, misNum: 0},action)=>{
   let newState = {...state}
   switch (action.type) {
     case SET_INGREDIENTS_SEARCH:
@@ -11,6 +13,11 @@ export default (state={withIngredients: false},action)=>{
     case RESET_INGREDIENTS_SEARCH:
       newState.withIngredients = false
       return newState
+    case SET_MISMATCH_NUM:
+      newState.misNum = action.payload
+      return newState
+    case CLEAR_MISMATCH_NUM:
+      return 0
     default:
       return state
   }
