@@ -34,9 +34,7 @@ const generateAllWasted = (stats) => {
   stats[month]["wasted"].forEach((food)=>{
       if(obj[food.food_data.name]){
         obj[food.food_data.name] += parseInt(food.specifc_data.amount.split(" ")[0])
-        // obj[food.food_data.name] += 1
       }else{
-        // obj[food.food_data.name] = 1
         obj[food.food_data.name] = parseInt(food.specifc_data.amount.split(" ")[0])
       }
   })

@@ -10,13 +10,6 @@ import { addFoodsBackend } from '../redux/actions/user'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 import Swal from 'sweetalert2'
 
-// const Toast = Swal.mixin({
-//   toast: true,
-//   position: 'center',
-//   showConfirmButton: false,
-//   timer: 2000
-// });
-
 class AddModal extends Component {
   constructor(){
     super()
@@ -37,7 +30,7 @@ class AddModal extends Component {
 
     this.setState({
       [name]: value
-    });
+    })
   }
 
   open = () =>{
@@ -89,7 +82,6 @@ class AddModal extends Component {
           showConfirmButton: false,
           timer: 1000
         })
-
     }
 
   }
@@ -125,11 +117,7 @@ class AddModal extends Component {
 
     searchFilteredArray =  searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
 
-    return searchFilteredArray.filter((food, i)=>{
-      if(i<this.state.index ){
-        return food
-      }
-    })
+    return searchFilteredArray.filter((food, i)=>(i<this.state.index ))
 
   }
 

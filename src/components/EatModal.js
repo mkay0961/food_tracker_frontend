@@ -15,7 +15,7 @@ import Swal from 'sweetalert2'
 //   position: 'center',
 //   showConfirmButton: false,
 //   timer: 2000
-// });
+// })
 
 
 class EatModal extends Component {
@@ -112,11 +112,7 @@ class EatModal extends Component {
     let ids = addFoodList.map((food)=>food.food_id)
     let searchFilteredArray = foods.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
     searchFilteredArray = searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.food_id))
-    return searchFilteredArray.filter((food, i)=>{
-      if(i<this.state.index ){
-        return food
-      }
-    })
+    return searchFilteredArray.filter((food, i)=>(i<this.state.index))
   }
 
   moreSpaces = (e, length) => {

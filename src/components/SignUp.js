@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { createUser } from '../redux/actions/user'
 import { Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment, Input } from 'semantic-ui-react'
-import Toaster from 'toasted-notes';
-import 'toasted-notes/src/styles.css';
+import Toaster from 'toasted-notes'
+import 'toasted-notes/src/styles.css'
 
 class SignUp extends Component {
   constructor(){
@@ -22,17 +22,10 @@ class SignUp extends Component {
 
   onClickSubmit = (e) =>{
     e.preventDefault()
-    const { firstname, lastname, email, username, password, passwordConfirm, image } = this.state
+    const { firstname, lastname, email, username,
+            password, passwordConfirm, image } = this.state
 
     let newUser = {}
-
-    // let firstname = document.getElementById("firstname").value
-    // let lastname = document.getElementById("lastname").value
-    // let email = document.getElementById("email").value
-    // let username = document.getElementById("username").value
-    // let password = document.getElementById("password").value
-    // let passwordConfirm = document.getElementById("passwordConfirm").value
-    // let image = document.getElementById("image").value
 
     if(firstname !== "" && lastname !== "" && email !== "" && username !== "" && password !== "" && password === passwordConfirm){
       newUser["firstname"] = firstname

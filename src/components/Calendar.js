@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import BigCalendar from 'react-big-calendar'
 import { Segment } from 'semantic-ui-react'
-
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 

@@ -80,7 +80,6 @@
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 100%;
-
 }
 /* .bookImage{
   background-image: url('./test2.png');
@@ -171,7 +170,11 @@
   opacity: 1;
   filter: alpha(opacity=50);
 } */
-
+.recipe.a.ui.card{
+  opacity: 1;
+  filter: alpha(opacity=50);
+  /* background-color: rgba(255, 255, 255, 0.5); */
+}
 
 
 .chart{

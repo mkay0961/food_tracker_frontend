@@ -1,9 +1,10 @@
 // import React, { Component, createRef } from 'react'
 import React, { Component } from 'react'
 import './App.css'
-import { Loader, Dimmer, Segment } from 'semantic-ui-react'
+import { Loader, Dimmer } from 'semantic-ui-react'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Navbar from './components/Navbar'
 import OverviewPage from './containers/OverviewPage'
 import RecipesPage from './containers/RecipesPage'
 import FoodPage from './containers/FoodPage'
@@ -39,6 +40,8 @@ class App extends Component {
         {(localStorage.length>0 && isEmpty(user) && location.pathname === "/login") ?<div className="loader"><Dimmer inverted active>
         <Loader size='massive'>Loading</Loader>
       </Dimmer></div>:
+        <div>
+        <Navbar />
         <Switch>
           <Route exact path="/login" render={() => {
               return isEmpty(user)? <Login /> :
@@ -68,7 +71,8 @@ class App extends Component {
           />
          <Route exact path= "/signup" component={SignUp} />
          <Route exact path="*" render={() =>  <Redirect to="/overview" />} />
-        </Switch>}
+        </Switch>
+        </div>}
       </div>
     )
   }

@@ -2,8 +2,8 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 
 const Recipe = (props) => (
- <Card onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
-    {`${props.data.title}`}
+ <Card className="recipe" onClick={(props.handleClick)?()=>props.handleClick(props.data):null}>
+    {`  ${props.data.title}   `}
  </Card>
 )
 

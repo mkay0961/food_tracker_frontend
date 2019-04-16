@@ -5,30 +5,45 @@ import { connect } from 'react-redux'
 import { clearUser } from '../redux/actions/user'
 
 //make funtional?
+//make pointing work
 
 class Navbar extends Component {
+  constructor(){
+    super()
+    this.state = {
+      page: "Overview"
+    }
+  }
+
+  handlePageSwitch = (e) => {
+    this.setState({page: e.target.innerText})
+  }
 
   onLogout = () =>{
+    this.setState({page:""})
     localStorage.clear()
     this.props.clearUser()
   }
 
   render() {
+
+  const { page } = this.state
+
    return (
      <Segment >
        <Menu pointing size='massive' fluid inverted color='orange' >
          <Menu.Menu position='left'>
          <Link to="/overview">
-            <Menu.Item as="h1" name='Overview'/>
+            <Menu.Item active={page === "Overview"} onClick={(e)=>this.handlePageSwitch(e)} as="h1" name='Overview'/>
          </Link>
          <Link to="/food">
-            <Menu.Item as="h1" name='MyFood'/>
+            <Menu.Item as="h1" active={page === "My Food"} onClick={(e)=>this.handlePageSwitch(e)} name='My Food'/>
          </Link>
          <Link to="/recipes">
-            <Menu.Item as="h1" name='Recipes'/>
+            <Menu.Item as="h1" active={page === "Recipes"} onClick={(e)=>this.handlePageSwitch(e)} name='Recipes'/>
          </Link>
          <Link to="/stats">
-            <Menu.Item as="h1" name='Stats'/>
+            <Menu.Item as="h1" active={page === "Stats"} onClick={(e)=>this.handlePageSwitch(e)} name='Stats'/>
          </Link>
          </Menu.Menu>
 
@@ -52,5 +67,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(Navbar)
-// <Sticky context={this.props.contextRef}>
-//   </Sticky>

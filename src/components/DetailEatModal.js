@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Modal, Form, Button, Transition } from 'semantic-ui-react'
+import { Header, Modal, Form, Button } from 'semantic-ui-react'
 
 class DetailEatModal extends Component {
 

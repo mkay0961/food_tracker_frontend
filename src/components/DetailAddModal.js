@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Modal, Button, Form, Transition } from 'semantic-ui-react'
+import { Header, Modal, Button, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addFoodList } from '../redux/actions/food'
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Header, Button, Transition } from 'semantic-ui-react'
+import { Modal, Header, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import IngredientsTable from './IngredientsTable'
 import { removeFavRecipe, addFavRecipe } from '../redux/actions/user'

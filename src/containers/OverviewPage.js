@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../components/Navbar'
 import Profile from '../components/Profile'
 import SavedRecipesContainer from './SavedRecipesContainer'
 import AddModal from '../components/AddModal'
@@ -8,7 +7,7 @@ import Calendar from '../components/Calendar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import RecipeModal from '../components/RecipeModal'
-import { Segment, Grid, Image } from 'semantic-ui-react'
+import { Segment, Grid } from 'semantic-ui-react'
 
 
 class OverviewPage extends Component {
@@ -37,12 +36,19 @@ class OverviewPage extends Component {
 
     return (
       <div >
-        <Navbar/>
         <Segment >
           <Grid divided='vertically'className="backImage2" >
               <Grid.Row align="center" columns={1}>
                 <Grid.Column >
                   <Profile />
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row align="center" columns={1}>
+                <Grid.Column >
+                  <Segment className="buttonsGroup">
+                    <AddModal />
+                    <EatModal />
+                  </Segment>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row  align="center" columns={2}>

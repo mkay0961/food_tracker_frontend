@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Navbar from '../components/Navbar'
 import SearchPageBar from '../components/SearchPageBar'
 import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
@@ -24,7 +23,6 @@ class RecipesPage extends Component {
   }
 
   handleShowModal = (data) => {
-    console.log(data)
     this.setState({showModal: true, current: data})
   }
   handleNoShowModal = () => {
@@ -74,7 +72,6 @@ class RecipesPage extends Component {
     }
     rtnVal = rtnVal.filter((aFood)=>(aFood.title.toLowerCase().includes(searchPage.toLowerCase())))
     rtnVal.forEach((recipe, i)=>{
-      console.log(i,rtnVal.length );
       if(i <= rtnVal.length/2){
         obj["side1"].push(recipe)
       }else{
@@ -89,8 +86,6 @@ class RecipesPage extends Component {
 
     return (
        <div>
-          <Navbar />
-
           <div className="backImage3">
           <Segment className="buttonsGroup">
             <SearchPageBar />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Input, Form, Label, Transition, Segment, Button, Checkbox } from 'semantic-ui-react'
+import { Modal, Input, Form, Segment, Button, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { setIngredientsSearch,

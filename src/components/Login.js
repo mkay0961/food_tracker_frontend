@@ -3,8 +3,8 @@ import { loginUser } from '../redux/actions/user'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
-import Toaster from 'toasted-notes';
-import 'toasted-notes/src/styles.css';
+import Toaster from 'toasted-notes'
+import 'toasted-notes/src/styles.css'
 
 
 class Login extends Component {

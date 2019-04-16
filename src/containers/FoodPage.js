@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import CategoriesContainer from './CategoriesContainer'
-import Navbar from '../components/Navbar'
 import SearchPageBar from '../components/SearchPageBar'
 import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
-import { Divider, Segment, Grid, Image } from 'semantic-ui-react'
+import { Segment, Grid, Image } from 'semantic-ui-react'
 
 class FoodPage extends Component {
 
@@ -17,7 +16,6 @@ class FoodPage extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
         <Segment>
           <Grid divided='vertically' >
               <Grid.Row align="center" columns={1}>
