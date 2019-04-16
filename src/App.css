@@ -66,7 +66,8 @@
   width: 100%;
 }
 .savedRec{
-  width: 50%;
+  max-width: 60%;
+  max-height: 70%;
 }
 .ui.header:last-child{
   margin: auto !important;
@@ -120,6 +121,12 @@
   display: inline-flex;
   margin: 25px;
 }
+.group{
+  display: inline-flex;
+}
+.barr{
+  margin-top: 5%;
+}
 
 .advancedSearch{
   margin: 20px;
@@ -143,6 +150,27 @@
  height: 100%;
 }
 
+/* .backImage3{
+ background: url("https://images.pexels.com/photos/933154/pexels-photo-933154.jpeg?cs=srgb&dl=computer-cookies-desk-933154.jpg&fm=jpg") no-repeat center center fixed;
+ background-size: cover;
+ height: 100%;
+} */
+
+/* https://images.pexels.com/photos/416346/pexels-photo-416346.jpeg?cs=srgb&dl=art-art-materials-blank-416346.jpg&fm=jpg */
+
+.backImage3{
+ background: url("https://images.pexels.com/photos/172285/pexels-photo-172285.jpeg?cs=srgb&dl=brown-carpentry-design-172285.jpg&fm=jpg") no-repeat center center fixed;
+ background-size: cover;
+ height: 100%;
+}
+.opac.ui.segment{
+  /* background-color: rgba(240, 101, 26, 0.9); */
+  background-color: rgba(255, 255, 255, 0.9);
+}
+/* .opac1{
+  opacity: 1;
+  filter: alpha(opacity=50);
+} */
 
 
 

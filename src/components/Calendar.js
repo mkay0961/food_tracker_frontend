@@ -21,7 +21,7 @@ const genAllFood = (food) => {
 }
 
 const Calendar = (props) => (
-   <Segment color="orange" className="calendar calSeg">
+   <Segment color="orange" className="calendar calSeg opac">
      <BigCalendar
       localizer={localizer}
       events={genAllFood(props.food)}

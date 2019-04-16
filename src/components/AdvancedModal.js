@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Input, Label, Transition, Button } from 'semantic-ui-react'
+import { Modal, Input, Form, Label, Transition, Segment, Button, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { setIngredientsSearch,
@@ -14,10 +14,6 @@ class AdvancedModal extends Component {
   //     status: false
   //   }
   // }
-
-  componentDidMount(){
-
-  }
 
   onChangeCheck = () => {
 
@@ -52,30 +48,30 @@ class AdvancedModal extends Component {
 
     return (
       <div>
-        <Modal className="modalCustom"
-               onClose={this.onClose}
+        <Modal onClose={this.onClose}
+               size="large"
                trigger={<Button onClick={this.onOpen} size='massive' className="advancedSearch ui button fontsize">Advanced Search</Button>}>
           <Modal.Header>Advanced Search</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
-              <form className="ui form">
-                <div className="field">
-                  <Label>Show recipes by ingredients</Label>
-                  <Input onChange={()=>this.onChangeCheck()}
+              <Form>
+                <Segment>
+                  <Checkbox toggle onChange={()=>this.onChangeCheck()}
                          checked={advancedSearch["withIngredients"]}
                          type="checkbox"
+                         label="Show recipes by ingredients"
                          name="ingredients"
                          placeholder="ingredients"/>
-
-
+                </Segment>
+                <Segment>
                   <Input onChange={()=>this.onChangeNum()}
                          id="misNum"
                          label="Mis Match Num"
                          type='number'
                          pattern='[0-9]{0,5}'
                          />
-                </div>
-              </form>
+                  </Segment>
+              </Form>
             </Modal.Description>
           </Modal.Content>
         </Modal>
@@ -101,3 +97,9 @@ const mapStateToProps = state =>({
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancedModal)
 // <Transition visible={this.state.status} animation='scale' duration={300}>
 //   </Transition>
+//
+// <Input onChange={()=>this.onChangeCheck()}
+//        checked={advancedSearch["withIngredients"]}
+//        type="checkbox"
+//        name="ingredients"
+//        placeholder="ingredients"/>

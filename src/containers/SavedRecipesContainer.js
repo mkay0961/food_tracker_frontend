@@ -9,9 +9,11 @@ const genRecipeComponents = (recipes, props) =>{
 }
 
 const SavedRecipesContainer = (props) => (
- <Segment color="orange" className="ui card savedRec">
+ <Segment color="orange" className="savedRec opac">
     <h1>Saved Recipes</h1>
+    <Segment className="ui cards opac">
     {genRecipeComponents(props.saveRecipes, props)}
+    </Segment>
  </Segment>
 )
 

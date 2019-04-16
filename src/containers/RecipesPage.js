@@ -88,16 +88,17 @@ class RecipesPage extends Component {
     const { current, showModal } = this.state
 
     return (
-       <div >
+       <div>
           <Navbar />
-          <Segment>
-          <div className="buttonsGroup">
+
+          <div className="backImage3">
+          <Segment className="buttonsGroup">
             <SearchPageBar />
             <AdvancedModal />
-          </div>
-          <div className="recipeBookContainer" >
+          </Segment>
+          <div className="recipeBookContainer " >
             <Image width="110%" height="100%" src={require("../test2.png")} />
-              <Grid className="gridBook ">
+              <Grid className="gridBook">
                 <Grid.Column className="gridBookColRight " width={5}>
                   <RecipeContainer recipes={this.generateRecipes()["side1"]} handleClick={this.handleShowModal} />
                 </Grid.Column>
@@ -106,7 +107,7 @@ class RecipesPage extends Component {
                 </Grid.Column>
               </Grid>
           </div>
-          </Segment>
+          </div>
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
        </div>
         )
