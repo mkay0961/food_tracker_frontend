@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
+import { Modal, Input, Label } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { setIngredientsSearch,
@@ -44,23 +44,19 @@ class AdvancedModal extends Component {
             <Modal.Description>
               <form className="ui form">
                 <div className="field">
-                  <label>Show recipes by ingredients</label>
-                  {advancedSearch.withIngredients?
-                  <input onChange={()=>this.onChangeCheck()}
-                         checked
+                  <Label>Show recipes by ingredients</Label>
+                  <Input onChange={()=>this.onChangeCheck()}
+                         checked={advancedSearch["withIngredients"]}
                          type="checkbox"
                          name="ingredients"
                          placeholder="ingredients"/>
-                  :
-                  <input onChange={()=>this.onChangeCheck()}
-                         type="checkbox"
-                         name="ingredients"
-                         placeholder="ingredients"/>
-                  }
-                  <label>Mis Match Num</label>
-                  <input onChange={()=>this.onChangeNum()}
+
+                  
+                  <Input onChange={()=>this.onChangeNum()}
                          id="misNum"
-                         type="Integer"
+                         label="Mis Match Num"
+                         type='number'
+                         pattern='[0-9]{0,5}'
                          />
                 </div>
               </form>

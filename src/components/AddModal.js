@@ -8,6 +8,8 @@ import { clearSearch } from '../redux/actions/searchBar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { addFoodsBackend } from '../redux/actions/user'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
+import InfiniteScroll from 'react-infinite-scroller';
+
 
 class AddModal extends Component {
   constructor(){
@@ -16,8 +18,20 @@ class AddModal extends Component {
       addModalActive: false,
       currentAddModal: null,
       addDetailModalActive: false,
-      display: false
+      amount: "",
+      price: "",
+      expire_date: "",
+      index: 25
     }
+  }
+
+  onChangeForm = (event) => {
+    let value = event.target.value
+    let name = event.target.name
+
+    this.setState({
+      [name]: value
+    });
   }
 
   open = () =>{
@@ -37,10 +51,11 @@ class AddModal extends Component {
 
   handleUpdate = (e, item) =>{
     e.preventDefault()
+    const { amount, price } = this.state
 
-    let amount = e.target.form.children[0].children[1].children[0].value
-    let price = e.target.form.children[1].children[1].children[0].value
-    let expire_date = e.target.form.children[2].children[1].children[0].value
+    let expire_date = this.state.expire_date
+
+    let errorMess = ""
 
     if(expire_date === ""){
       expire_date = item.default_expiration
@@ -53,11 +68,15 @@ class AddModal extends Component {
       newItem["expire_date"] = expire_date
       this.props.addFood(newItem)
       this.setState({addDetailModalActive: false, currentAddModal:null})
-    }else {
-      alert("wrong amount")
+    }else{
+      if(amount === "") {
+        errorMess += "**Please enter an amount**\n"
+      }
+      if(price === "") {
+        errorMess += "**Please enter a price**\n"
+      }
+      alert(errorMess)
     }
-
-    //MAKE ERROR MESSAGES BETTER
 
   }
 
@@ -92,19 +111,29 @@ class AddModal extends Component {
 
     searchFilteredArray =  searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
 
-    return searchFilteredArray
+    return searchFilteredArray.slice(0, this.state.index)
+
   }
+
+  moreSpaces = (e, length) => {
+    console.log("h");
+    if((this.state.index <= length) && (e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight) <= 0){
+      this.setState({
+          index: this.state.index + 25
+      })
+    }
+   }
+
 
   render() {
 
   const { addModalActive, addDetailModalActive, currentAddModal } = this.state
-  const { addFoodList } = this.props
+  const { addFoodList, food } = this.props
 
   return (
       <div>
         <button onClick={this.open} className="ui button">Add Food</button>
-          <Transition visible={addModalActive} animation='scale' duration={300}>
-          <Modal dimmer={"blurring"}
+          <Modal
                  open={addModalActive}
                  onOpen={this.open}
                  className="modalCustom"
@@ -120,9 +149,9 @@ class AddModal extends Component {
                      <Segment align="center">
                        <SearchBar />
                      </Segment>
-                     <div >
-                       <FoodContainer food={this.generateFood()}
-                                      handleClick={this.handleAddClick}/>
+                     <div onScroll={(e)=>this.moreSpaces(e, food.length)}>
+                      <FoodContainer food={this.generateFood()}
+                                        handleClick={this.handleAddClick}/>
                      </div>
                   </Segment>
                 </Grid.Column>
@@ -132,8 +161,8 @@ class AddModal extends Component {
                             Food To Add
                     </Header>
                     <div >
-                      <FoodContainer food={addFoodList}
-                                     handleClick={this.handleDelClick}/>
+                        <FoodContainer food={addFoodList}
+                                       handleClick={this.handleDelClick}/>
                     </div>
                   </Segment>
                   <Segment align="center">
@@ -145,11 +174,11 @@ class AddModal extends Component {
               </Grid>
             </Modal.Content>
           </Modal>
-          </Transition>
         {!currentAddModal?null:
           <DetailAddModal handleCancel={this.handleCancel}
                           handleUpdate={this.handleUpdate}
                           onHandleChange={this.onHandleChange}
+                          onChangeForm={this.onChangeForm}
                           status={addDetailModalActive}
                           data={currentAddModal} />}
       </div>

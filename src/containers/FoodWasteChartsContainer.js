@@ -1,6 +1,8 @@
 import React from 'react'
 import Chart from '../components/Chart'
 import { connect } from 'react-redux'
+import { Segment } from 'semantic-ui-react'
+
 
 const capFirstLetter = (month) =>{
   return month.charAt(0).toUpperCase() + month.slice(1)
@@ -45,12 +47,20 @@ const generateAllWasted = (stats) => {
 const FoodWasteChartsContainer = (props) => (
   <div>
     <div className="chart">
-      Food Wasted Over A Year
-      <Chart  data={generateYearData(props.stats)} />
+        <Segment>
+          <h1>Food Wasted Over A Year</h1>
+        </Segment>
+        <Segment>
+          <Chart  data={generateYearData(props.stats)} />
+        </Segment>
      </div>
      <div className="chart">
-      Items Wasted This Month
-      <Chart data={generateAllWasted(props.stats)} />
+        <Segment>
+          <h1>Items Wasted This Month</h1>
+        </Segment>
+        <Segment>
+          <Chart data={generateAllWasted(props.stats)} />
+        </Segment>
      </div>
   </div>
 )

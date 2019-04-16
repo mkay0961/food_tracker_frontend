@@ -7,18 +7,33 @@ import { Button, Form, Grid, Header, Message, Segment, Input } from 'semantic-ui
 //make funtional?
 
 class SignUp extends Component {
+  constructor(){
+    super()
+    this.state = {
+      firstname: "",
+      lastname: "",
+      email: "",
+      username: "",
+      password: "",
+      passwordConfirm: "",
+      image: ""
+    }
+  }
 
   onClickSubmit = (e) =>{
     e.preventDefault()
+    const { firstname, lastname, email, username, password, passwordConfirm, image } = this.state
+
     let newUser = {}
 
-    let firstname = document.getElementById("firstname").value
-    let lastname = document.getElementById("lastname").value
-    let email = document.getElementById("email").value
-    let username = document.getElementById("username").value
-    let password = document.getElementById("password").value
-    let passwordConfirm = document.getElementById("passwordConfirm").value
-    let image = document.getElementById("image").value
+    // let firstname = document.getElementById("firstname").value
+    // let lastname = document.getElementById("lastname").value
+    // let email = document.getElementById("email").value
+    // let username = document.getElementById("username").value
+    // let password = document.getElementById("password").value
+    // let passwordConfirm = document.getElementById("passwordConfirm").value
+    // let image = document.getElementById("image").value
+    let errorMess = ""
 
     if(firstname !== "" && lastname !== "" && email !== "" && username !== "" && password !== "" && password === passwordConfirm){
       newUser["firstname"] = firstname
@@ -29,11 +44,43 @@ class SignUp extends Component {
       newUser["image"] = image
       this.props.createUser(newUser)
       this.props.history.push("/login")
-    }else if (password !== passwordConfirm) {
-      alert("Your password does not match the confirm password")
     }else{
-      alert("something is missing")
+      if(firstname === "") {
+        errorMess += "**Please enter a first name**\n"
+      }
+      if(lastname === "") {
+        errorMess += "**Please enter a last name**\n"
+      }
+      if(email === "") {
+        errorMess += "**Please enter an email**\n"
+      }
+      if(username === "") {
+        errorMess += "**Please enter an username**\n"
+      }
+      if(password === "") {
+        errorMess += "**Please enter a password**\n"
+      }
+      if(passwordConfirm === "") {
+        errorMess += "**Please enter a password confirm**\n"
+      }
+      if(password !== passwordConfirm) {
+        errorMess += "**Your password confirm does not equal your password**\n"
+      }
+      alert(errorMess)
+      errorMess = ""
     }
+  }
+
+  onHandleChange = (event) =>{
+
+    const target = event.target
+    const value = target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
+
   }
 
   render() {
@@ -53,25 +100,25 @@ class SignUp extends Component {
                  Sign Up For Food Tracker!!
               </Header>
               <Form.Field>
-                    <Input id="username" label="Username" placeholder='Username' />
+                    <Input onChange={this.onHandleChange} name="username" label="Username" placeholder='Username' />
               </Form.Field>
               <Form.Field>
-                    <Input id="password" type="password" label="Password" placeholder='Password' />
+                    <Input onChange={this.onHandleChange} name="password" type="password" label="Password" placeholder='Password' />
               </Form.Field>
               <Form.Field>
-                    <Input id="passwordConfirm" type="password" label="Confirm Password" placeholder='Confirm Password' />
+                    <Input onChange={this.onHandleChange} name="passwordConfirm" type="password" label="Confirm Password" placeholder='Confirm Password' />
               </Form.Field>
               <Form.Field>
-                    <Input id="email" label="Email" placeholder='Email' />
+                    <Input onChange={this.onHandleChange} name="email" label="Email" placeholder='Email' />
               </Form.Field>
               <Form.Field>
-                    <Input id="firstname" label="First Name" placeholder='First Name' />
+                    <Input onChange={this.onHandleChange} name="firstname" label="First Name" placeholder='First Name' />
               </Form.Field>
               <Form.Field>
-                    <Input id="lastname" label="Last Name" placeholder='Last Name' />
+                    <Input onChange={this.onHandleChange} name="lastname" label="Last Name" placeholder='Last Name' />
               </Form.Field>
               <Form.Field>
-                    <Input id="image" label="Profile Image" placeholder='Profile Image' />
+                    <Input onChange={this.onHandleChange} name="image" label="Profile Image" placeholder='Profile Image' />
               </Form.Field>
               <Button color='orange' fluid size='large' onClick={(e)=>{this.onClickSubmit(e)}} >Sign Up</Button>
             </Segment>

@@ -19,16 +19,16 @@ class Navbar extends Component {
        <Menu pointing size='massive' fluid inverted color='orange' >
          <Menu.Menu position='left'>
          <Link to="/overview">
-            <Menu.Item name='Overview'/>
+            <Menu.Item as="h1" name='Overview'/>
          </Link>
          <Link to="/food">
-            <Menu.Item name='MyFood'/>
+            <Menu.Item as="h1" name='MyFood'/>
          </Link>
          <Link to="/recipes">
-            <Menu.Item  name='Recipes'/>
+            <Menu.Item as="h1" name='Recipes'/>
          </Link>
          <Link to="/stats">
-            <Menu.Item name='Stats'/>
+            <Menu.Item as="h1" name='Stats'/>
          </Link>
          </Menu.Menu>
 
@@ -37,7 +37,7 @@ class Navbar extends Component {
          </Menu.Menu>
 
          <Menu.Menu position='right'>
-            <Menu.Item to="/logout" onClick={this.onLogout}  name='Logout'/>
+            <Menu.Item as="h1" to="/logout" onClick={this.onLogout}  name='Logout'/>
          </Menu.Menu>
        </Menu>
      </div>

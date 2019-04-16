@@ -17,7 +17,8 @@ class EatModal extends Component {
     this.state = {
       eatModalActive: false,
       currentEatModal: null,
-      eatDetailModalActive: false
+      eatDetailModalActive: false,
+      eatenAmount: ""
     }
   }
 
@@ -35,6 +36,15 @@ class EatModal extends Component {
     if(addFoodList.length !== 0){
       emptyList()
     }
+  }
+
+  onChangeForm = (event) => {
+    let value = event.target.value
+    let name = event.target.name
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleUpdate = (e, item) =>{
@@ -92,8 +102,7 @@ class EatModal extends Component {
     return (
       <div>
         <button onClick={this.open} className="ui button">Eat Food</button>
-        <Transition visible={eatModalActive} animation='scale' duration={300}>
-        <Modal dimmer={"blurring"}
+        <Modal
                open={eatModalActive}
                onOpen={this.open}
                className="modalCustom"
@@ -112,7 +121,7 @@ class EatModal extends Component {
                    </Segment>
                    <div >
                      <FoodContainer food={this.generateFood()}
-                           handleClick={this.handleEatClick} />
+                           handleClick={this.handleEatClick}/>
                    </div>
                 </Segment>
               </Grid.Column>
@@ -135,10 +144,10 @@ class EatModal extends Component {
           </Modal.Content>
 
         </Modal>
-        </Transition>
         {!this.state.currentEatModal? null:
             <DetailEatModal handleCancel={this.handleCancel}
                             handleUpdate={this.handleUpdate}
+                            onChangeForm={this.onChangeForm}
                             status={eatDetailModalActive}
                             data={currentEatModal} />}
 

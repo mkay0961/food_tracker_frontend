@@ -33,11 +33,21 @@ class Login extends Component {
     const { username, password } = this.state
     const { loginUser } = this.props
 
+    let errorMess = ""
+
     if(username !== "" && password !== ""){
       loginUser(username, password)
     }else{
-      alert("please enter evertthing")
+      if(username === "") {
+        errorMess += "**Please enter a username**\n"
+      }
+      if(password === "") {
+        errorMess += "**Please enter a password**\n"
+      }
+      alert(errorMess)
     }
+
+
   }
 
   render() {
