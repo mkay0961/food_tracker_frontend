@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Header, Button } from 'semantic-ui-react'
+import { Modal, Header, Button, Transition } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import IngredientsTable from './IngredientsTable'
 import { removeFavRecipe, addFavRecipe } from '../redux/actions/user'
@@ -29,7 +29,7 @@ class RecipeModal extends Component {
   return (
       <div>
       {!this.props.data?null:
-        <Modal className="modalCustom" dimmer={"blurring"} size='big' open={active} onClose={noShow}>
+        <Modal className="modalCustom" size='big' open={active} onClose={noShow}>
         <Modal.Header>
           <Header>{data.title} - {data.category}</Header>
         </Modal.Header>

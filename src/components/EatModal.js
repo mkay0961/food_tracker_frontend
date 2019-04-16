@@ -8,9 +8,14 @@ import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 import { clearSearch } from '../redux/actions/searchBar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { eatFoodsBackend } from '../redux/actions/user'
-import Toaster from 'toasted-notes';
-import 'toasted-notes/src/styles.css';
+import Swal from 'sweetalert2'
 
+// const Toast = Swal.mixin({
+//   toast: true,
+//   position: 'center',
+//   showConfirmButton: false,
+//   timer: 2000
+// });
 
 
 class EatModal extends Component {
@@ -62,8 +67,17 @@ class EatModal extends Component {
       if(eatenAmount.split(" ").length !== 1){
         errorMess += "**Please only enter a number**\n"
       }
-      alert(errorMess)
-      //MAKE BETTER
+
+      Swal.fire({
+          position: 'top',
+          type: 'error',
+          title: errorMess,
+          animation: true,
+          showConfirmButton: false,
+          timer: 1000
+        })
+
+
       e.preventDefault()
     }
 
@@ -119,7 +133,8 @@ class EatModal extends Component {
 
     return (
       <div>
-        <button onClick={this.open} className="ui button">Eat Food</button>
+        <Button size="massive" onClick={this.open} className="ui button">Eat Food</Button>
+        <Transition visible={eatModalActive} animation='scale' duration={300}>
         <Modal
                open={eatModalActive}
                onOpen={this.open}
@@ -162,6 +177,7 @@ class EatModal extends Component {
           </Modal.Content>
 
         </Modal>
+        </Transition>
         {!this.state.currentEatModal? null:
             <DetailEatModal handleCancel={this.handleCancel}
                             handleUpdate={this.handleUpdate}

@@ -11,7 +11,7 @@ class DetailAddModal extends Component {
 
     return (
       <div>
-      <Modal dimmer={"blurring"} open={status}>
+      <Modal open={status}>
         <Modal.Header>Adding Food</Modal.Header>
         <Modal.Content image>
           <Modal.Description>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import BigCalendar from 'react-big-calendar'
+import { Segment } from 'semantic-ui-react'
+
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -19,7 +21,7 @@ const genAllFood = (food) => {
 }
 
 const Calendar = (props) => (
-   <div className="calendar">
+   <Segment color="orange" className="calendar calSeg">
      <BigCalendar
       localizer={localizer}
       events={genAllFood(props.food)}
@@ -29,7 +31,7 @@ const Calendar = (props) => (
       resourceAccessor="name"
       endAccessor= "date"
     />
-   </div>
+   </Segment>
 )
 
 const mapStateToProps = state =>({

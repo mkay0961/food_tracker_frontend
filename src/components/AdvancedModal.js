@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Input, Label } from 'semantic-ui-react'
+import { Modal, Input, Label, Transition, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { setIngredientsSearch,
@@ -8,6 +8,16 @@ import { setIngredientsSearch,
 
 
 class AdvancedModal extends Component {
+  // constructor(){
+  //   super()
+  //   this.state = {
+  //     status: false
+  //   }
+  // }
+
+  componentDidMount(){
+
+  }
 
   onChangeCheck = () => {
 
@@ -28,17 +38,23 @@ class AdvancedModal extends Component {
   }
 
   onOpen = () => {
+    this.setState({status: true})
     this.props.clearSearchPage()
   }
+
+  onClose = () => {
+    this.setState({status: false})
+  }
+
 
   render() {
     const { advancedSearch } = this.props
 
     return (
       <div>
-        <Modal dimmer={"blurring"}
-               className="modalCustom"
-               trigger={<button onClick={this.onOpen} className="advancedSearch ui button">Advanced Search</button>}>
+        <Modal className="modalCustom"
+               onClose={this.onClose}
+               trigger={<Button onClick={this.onOpen} size='massive' className="advancedSearch ui button fontsize">Advanced Search</Button>}>
           <Modal.Header>Advanced Search</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
@@ -51,7 +67,7 @@ class AdvancedModal extends Component {
                          name="ingredients"
                          placeholder="ingredients"/>
 
-                  
+
                   <Input onChange={()=>this.onChangeNum()}
                          id="misNum"
                          label="Mis Match Num"
@@ -63,6 +79,7 @@ class AdvancedModal extends Component {
             </Modal.Description>
           </Modal.Content>
         </Modal>
+
       </div>
 
     )
@@ -82,3 +99,5 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancedModal)
+// <Transition visible={this.state.status} animation='scale' duration={300}>
+//   </Transition>

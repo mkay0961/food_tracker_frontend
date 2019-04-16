@@ -9,12 +9,12 @@ class DetailEatModal extends Component {
 
     return (
       <div>
-        <Modal dimmer={"blurring"} open={status} >
+        <Modal open={status} >
         <Modal.Header>Eat Food</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
             <Header>Item: {data.name}</Header>
-            <Form className="ui form">
+            <Form >
               <Form.Input fluid
                           id="eatenAmount"
                           name="eatenAmount"

@@ -1,5 +1,7 @@
+// import React, { Component, createRef } from 'react'
 import React, { Component } from 'react'
 import './App.css'
+import { Loader, Dimmer, Segment } from 'semantic-ui-react'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import OverviewPage from './containers/OverviewPage'
@@ -14,6 +16,8 @@ import { getAllFoods } from './redux/actions/food'
 import { isEmpty } from 'lodash'
 
 class App extends Component {
+
+  // contextRef = createRef()
 
   componentDidMount(){
     const { getAllRecipes, getAllFoods, getUser} = this.props
@@ -32,7 +36,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        {(localStorage.length>0 && isEmpty(user) && location.pathname === "/login") ?"LOADING":
+        {(localStorage.length>0 && isEmpty(user) && location.pathname === "/login") ?<div className="loader"><Dimmer inverted active>
+        <Loader size='massive'>Loading</Loader>
+      </Dimmer></div>:
         <Switch>
           <Route exact path="/login" render={() => {
               return isEmpty(user)? <Login /> :
@@ -82,3 +88,5 @@ const mapStateToProps = state =>({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+
+// <OverviewPage contextRef={this.contextRef}/>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import FoodWasteChartsContainer from './FoodWasteChartsContainer'
+import { Segment } from 'semantic-ui-react'
+
 
 class StatsPage extends Component {
 
@@ -9,8 +11,9 @@ class StatsPage extends Component {
     return (
       <div>
         <Navbar/>
-        <FoodWasteChartsContainer />
-
+        <Segment>
+          <FoodWasteChartsContainer />
+        </Segment>
       </div>
     )
   }

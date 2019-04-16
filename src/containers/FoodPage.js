@@ -6,7 +6,7 @@ import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
-import { Divider } from 'semantic-ui-react'
+import { Divider, Segment } from 'semantic-ui-react'
 
 class FoodPage extends Component {
 
@@ -18,10 +18,13 @@ class FoodPage extends Component {
     return (
       <div>
         <Navbar/>
+        <Segment>
         <div className="buttonsGroup">
           <SearchPageBar/>
-          <AddModal/>
-          <EatModal/>
+          <Segment>
+            <AddModal/>
+            <EatModal/>
+          </Segment>
         </div>
         <h1>Not Expired</h1>
         <div className="catagory scrollable">
@@ -32,6 +35,7 @@ class FoodPage extends Component {
         <div className="catagory scrollable">
           <CategoriesContainer name={"Expired"} foods={this.props.expired}/>
         </div>
+      </Segment>
     </div>
     )
   }

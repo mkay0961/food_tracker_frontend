@@ -8,10 +8,14 @@ import { clearSearch } from '../redux/actions/searchBar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { addFoodsBackend } from '../redux/actions/user'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
-import InfiniteScroll from 'react-infinite-scroller';
-import Toaster from 'toasted-notes';
-import 'toasted-notes/src/styles.css';
+import Swal from 'sweetalert2'
 
+// const Toast = Swal.mixin({
+//   toast: true,
+//   position: 'center',
+//   showConfirmButton: false,
+//   timer: 2000
+// });
 
 class AddModal extends Component {
   constructor(){
@@ -77,9 +81,15 @@ class AddModal extends Component {
       if(price === "") {
         errorMess += "**Please enter a price**\n"
       }
-      alert(errorMess)
+      Swal.fire({
+          position: 'top',
+          type: 'error',
+          title: errorMess,
+          animation: true,
+          showConfirmButton: false,
+          timer: 1000
+        })
 
-      //MAKE BETTER
     }
 
   }
@@ -139,7 +149,8 @@ class AddModal extends Component {
 
   return (
       <div>
-        <button onClick={this.open} className="ui button">Add Food</button>
+        <Button size="massive" onClick={this.open} className="ui button">Add Food</Button>
+          <Transition visible={addModalActive} animation='scale' duration={300}>
           <Modal
                  open={addModalActive}
                  onOpen={this.open}
@@ -181,6 +192,7 @@ class AddModal extends Component {
               </Grid>
             </Modal.Content>
           </Modal>
+          </Transition>
         {!currentAddModal?null:
           <DetailAddModal handleCancel={this.handleCancel}
                           handleUpdate={this.handleUpdate}

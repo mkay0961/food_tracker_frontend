@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Header } from 'semantic-ui-react'
+import { Menu, Header, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { clearUser } from '../redux/actions/user'
@@ -15,7 +15,7 @@ class Navbar extends Component {
 
   render() {
    return (
-     <div >
+     <Segment >
        <Menu pointing size='massive' fluid inverted color='orange' >
          <Menu.Menu position='left'>
          <Link to="/overview">
@@ -33,14 +33,14 @@ class Navbar extends Component {
          </Menu.Menu>
 
          <Menu.Menu position='right'>
-            <Header as="h1">Food Tracker</Header>
+            <Header className="marg" as="h1">Food Tracker</Header>
          </Menu.Menu>
 
          <Menu.Menu position='right'>
             <Menu.Item as="h1" to="/logout" onClick={this.onLogout}  name='Logout'/>
          </Menu.Menu>
        </Menu>
-     </div>
+     </Segment>
    )
   }
 }
@@ -52,3 +52,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(Navbar)
+// <Sticky context={this.props.contextRef}>
+//   </Sticky>

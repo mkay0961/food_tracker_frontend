@@ -8,6 +8,7 @@ import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import { Grid, Image, Segment } from 'semantic-ui-react'
 
+
 class RecipesPage extends Component {
 
   constructor(){
@@ -87,30 +88,25 @@ class RecipesPage extends Component {
     const { current, showModal } = this.state
 
     return (
-       <div>
+       <div >
           <Navbar />
+          <Segment>
           <div className="buttonsGroup">
             <SearchPageBar />
             <AdvancedModal />
           </div>
-          <div class="recipeBookContainer">
-            <Image width="110%" height="100%" src={require("../open-book.png")} />
-            <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-            <div className="recipeBookcentered book" >
-              <Grid className="book">
-                <Grid.Column className="paddingBook scroll" width={5}>
-                  <Segment>
+          <div className="recipeBookContainer" >
+            <Image width="110%" height="100%" src={require("../test2.png")} />
+              <Grid className="gridBook ">
+                <Grid.Column className="gridBookColRight " width={5}>
                   <RecipeContainer recipes={this.generateRecipes()["side1"]} handleClick={this.handleShowModal} />
-                  </Segment>
                 </Grid.Column>
-                <Grid.Column  className="paddingBook scroll" width={5}>
-                  <Segment>
+                <Grid.Column  className="gridBookColLeft " width={5}>
                   <RecipeContainer recipes={this.generateRecipes()["side2"]} handleClick={this.handleShowModal} />
-                  </Segment>
                 </Grid.Column>
               </Grid>
-            </div>
           </div>
+          </Segment>
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
        </div>
         )
@@ -130,4 +126,6 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesPage)
+// <Image width="110%" height="100%" src={require("../test2.png")} />
+
 // <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
