@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { createUser } from '../redux/actions/user'
 import { Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment, Input } from 'semantic-ui-react'
-
-//make funtional?
+import Toaster from 'toasted-notes';
+import 'toasted-notes/src/styles.css';
 
 class SignUp extends Component {
   constructor(){
@@ -33,7 +33,6 @@ class SignUp extends Component {
     // let password = document.getElementById("password").value
     // let passwordConfirm = document.getElementById("passwordConfirm").value
     // let image = document.getElementById("image").value
-    let errorMess = ""
 
     if(firstname !== "" && lastname !== "" && email !== "" && username !== "" && password !== "" && password === passwordConfirm){
       newUser["firstname"] = firstname
@@ -46,28 +45,47 @@ class SignUp extends Component {
       this.props.history.push("/login")
     }else{
       if(firstname === "") {
-        errorMess += "**Please enter a first name**\n"
+        Toaster.notify('**Please enter a first name**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(lastname === "") {
-        errorMess += "**Please enter a last name**\n"
+        Toaster.notify('**Please enter a last name**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(email === "") {
-        errorMess += "**Please enter an email**\n"
+        Toaster.notify('**Please enter an email**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(username === "") {
-        errorMess += "**Please enter an username**\n"
+        Toaster.notify('**Please enter an username**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(password === "") {
-        errorMess += "**Please enter a password**\n"
+        Toaster.notify('**Please enter a password**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(passwordConfirm === "") {
-        errorMess += "**Please enter a password confirm**\n"
+        Toaster.notify('**Please enter a password confirm**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(password !== passwordConfirm) {
-        errorMess += "**Your password confirm does not equal your password**\n"
+        Toaster.notify('**Your password confirm does not equal your password**', {
+          position: "top",
+          duration: 2000
+        })
       }
-      alert(errorMess)
-      errorMess = ""
     }
   }
 

@@ -8,6 +8,8 @@ import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 import { clearSearch } from '../redux/actions/searchBar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { eatFoodsBackend } from '../redux/actions/user'
+import Toaster from 'toasted-notes';
+import 'toasted-notes/src/styles.css';
 
 
 
@@ -18,7 +20,7 @@ class EatModal extends Component {
       eatModalActive: false,
       currentEatModal: null,
       eatDetailModalActive: false,
-      eatenAmount: ""
+      index: 25
     }
   }
 
@@ -31,25 +33,18 @@ class EatModal extends Component {
 
     const { clearSearch, addFoodList, emptyList} = this.props
 
-    this.setState({eatModalActive: false})
+    this.setState({ eatModalActive: false, index: 25 })
     clearSearch()
     if(addFoodList.length !== 0){
       emptyList()
     }
   }
 
-  onChangeForm = (event) => {
-    let value = event.target.value
-    let name = event.target.name
-
-    this.setState({
-      [name]: value
-    });
-  }
-
   handleUpdate = (e, item) =>{
-    let eatenAmount = e.target.form.children[0].children[1].children[0].value
+    let eatenAmount = document.getElementById("eatenAmount").value
     let oldAmount = item.combined_amount.split(" ")
+
+    let errorMess = ""
 
     if(oldAmount[0]- eatenAmount >= 0 && eatenAmount !== "" && eatenAmount.split(" ").length === 1){
       let newItem = {...item}
@@ -57,17 +52,27 @@ class EatModal extends Component {
       this.props.addFood(newItem)
       this.setState({eatDetailModalActive: false, currentModal:null})
     }else {
-      alert("stop")
+
+      if(eatenAmount === "" ){
+        errorMess += "**Please enter an amount**\n"
+      }
+      if(oldAmount[0]- eatenAmount < 0){
+        errorMess += "**You cant eat more than you have**\n"
+      }
+      if(eatenAmount.split(" ").length !== 1){
+        errorMess += "**Please only enter a number**\n"
+      }
+      alert(errorMess)
+      //MAKE BETTER
       e.preventDefault()
     }
 
-    //FIX TO MAKE ERRORS BETTER
 
   }
 
   handleCancel= (e) =>{
     e.preventDefault()
-    this.setState({ eatDetailModalActive: false, currentModal:null })
+    this.setState({ eatDetailModalActive: false, currentModal: null })
   }
 
   handleEatClick = (item) =>{
@@ -92,11 +97,24 @@ class EatModal extends Component {
 
     let ids = addFoodList.map((food)=>food.food_id)
     let searchFilteredArray = foods.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
-    return searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.food_id))
+    searchFilteredArray = searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.food_id))
+    return searchFilteredArray.filter((food, i)=>{
+      if(i<this.state.index ){
+        return food
+      }
+    })
   }
 
+  moreSpaces = (e, length) => {
+    if((this.state.index <= length) && (e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight) <= 0){
+      this.setState({
+          index: this.state.index + 25
+      })
+    }
+   }
+
   render() {
-    const { addFoodList } = this.props
+    const { addFoodList, foods } = this.props
     const { eatDetailModalActive, currentEatModal, eatModalActive } = this.state
 
     return (
@@ -119,7 +137,7 @@ class EatModal extends Component {
                    <Segment align="center">
                      <SearchBar />
                    </Segment>
-                   <div >
+                   <div onScroll={(e)=>this.moreSpaces(e, foods.length)}>
                      <FoodContainer food={this.generateFood()}
                            handleClick={this.handleEatClick}/>
                    </div>
@@ -147,7 +165,6 @@ class EatModal extends Component {
         {!this.state.currentEatModal? null:
             <DetailEatModal handleCancel={this.handleCancel}
                             handleUpdate={this.handleUpdate}
-                            onChangeForm={this.onChangeForm}
                             status={eatDetailModalActive}
                             data={currentEatModal} />}
 

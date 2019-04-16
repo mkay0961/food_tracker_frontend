@@ -5,7 +5,7 @@ class DetailEatModal extends Component {
 
   render() {
 
-    const { status, data, handleUpdate, handleCancel, onChangeForm } = this.props
+    const { status, data, handleUpdate, handleCancel } = this.props
 
     return (
       <div>
@@ -16,8 +16,8 @@ class DetailEatModal extends Component {
             <Header>Item: {data.name}</Header>
             <Form className="ui form">
               <Form.Input fluid
-                          name="amount"
-                          onChange={onChangeForm}
+                          id="eatenAmount"
+                          name="eatenAmount"
                           defaultValue={data.combined_amount.split(" ")[0]}
                           placeholder='Amount'
                           type='number'

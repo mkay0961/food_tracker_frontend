@@ -3,6 +3,8 @@ import { loginUser } from '../redux/actions/user'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import Toaster from 'toasted-notes';
+import 'toasted-notes/src/styles.css';
 
 
 class Login extends Component {
@@ -33,18 +35,21 @@ class Login extends Component {
     const { username, password } = this.state
     const { loginUser } = this.props
 
-    let errorMess = ""
-
     if(username !== "" && password !== ""){
       loginUser(username, password)
     }else{
       if(username === "") {
-        errorMess += "**Please enter a username**\n"
+        Toaster.notify('**Please enter a username**', {
+          position: "top",
+          duration: 2000
+        })
       }
       if(password === "") {
-        errorMess += "**Please enter a password**\n"
+        Toaster.notify('**Please enter a password**', {
+          position: "top",
+          duration: 2000
+        })
       }
-      alert(errorMess)
     }
 
 

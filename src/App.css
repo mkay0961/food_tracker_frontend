@@ -4,7 +4,7 @@
 }
 .test{
   min-height: 30vh;
-  max-height: 60vh;
+  max-height: 40vh;
   overflow: auto;
 }
 
@@ -85,7 +85,11 @@
 
 .modalCustom.ui.modal{
   width: 65%;
-  height: 70%;
+  position: fixed; /* or absolute */
+  top: 10%;
+  left: 17%;
+  min-height: 50px;
+  max-height: 100px;
 }
 
 

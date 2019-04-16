@@ -9,6 +9,8 @@ import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { addFoodsBackend } from '../redux/actions/user'
 import { addFoodList, delFoodList, emptyList } from '../redux/actions/food'
 import InfiniteScroll from 'react-infinite-scroller';
+import Toaster from 'toasted-notes';
+import 'toasted-notes/src/styles.css';
 
 
 class AddModal extends Component {
@@ -42,7 +44,7 @@ class AddModal extends Component {
   close = () =>{
     const { clearSearch, addFoodList, emptyList } = this.props
 
-    this.setState({ addModalActive: false })
+    this.setState({ addModalActive: false, index: 25 })
     clearSearch()
     if(addFoodList.length !== 0){
       emptyList()
@@ -76,6 +78,8 @@ class AddModal extends Component {
         errorMess += "**Please enter a price**\n"
       }
       alert(errorMess)
+
+      //MAKE BETTER
     }
 
   }
@@ -111,12 +115,15 @@ class AddModal extends Component {
 
     searchFilteredArray =  searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
 
-    return searchFilteredArray.slice(0, this.state.index)
+    return searchFilteredArray.filter((food, i)=>{
+      if(i<this.state.index ){
+        return food
+      }
+    })
 
   }
 
   moreSpaces = (e, length) => {
-    console.log("h");
     if((this.state.index <= length) && (e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight) <= 0){
       this.setState({
           index: this.state.index + 25
