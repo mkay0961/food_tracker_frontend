@@ -10,13 +10,11 @@ class FoodWasteContainer extends Component {
     let month = Object.keys(stats)[date.getMonth()]
     let thisMonthStats = stats[month]
     return thisMonthStats
-
   }
 
   startOfWeek = (date) =>{
     let diff = date.getDate() - date.getDay() + (date.getDay() === 0 ? -6 : 1)
     return new Date(date.setDate(diff))
-
   }
 
   endOfWeek = (date) =>{

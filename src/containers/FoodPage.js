@@ -8,7 +8,6 @@ import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import { Divider } from 'semantic-ui-react'
 
-
 class FoodPage extends Component {
 
   componentDidMount(){
@@ -24,7 +23,6 @@ class FoodPage extends Component {
           <AddModal/>
           <EatModal/>
         </div>
-
         <h1>Not Expired</h1>
         <div className="catagory scrollable">
           <CategoriesContainer name={"Not Expired"} foods={this.props.nonExpired}/>

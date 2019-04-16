@@ -1,6 +1,6 @@
 import React from 'react'
 import FoodForPage from '../components/FoodForPage'
-import { Item, Popup } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
 
 
 const Category = (props) => (

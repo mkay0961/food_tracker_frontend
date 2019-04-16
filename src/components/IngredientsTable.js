@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Table, Rating } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 import IngredientsTableItem from './IngredientsTableItem'
 
 const genItems = (ingredents) => {
@@ -9,23 +9,21 @@ const genItems = (ingredents) => {
 
 }
 
-
 const IngredientsTable = (props) => (
  <div >
    <Table celled collapsing>
- <Table.Header>
-   <Table.Row>
-     <Table.HeaderCell>Do you have it?</Table.HeaderCell>
-     <Table.HeaderCell>Name</Table.HeaderCell>
-     <Table.HeaderCell>Amount</Table.HeaderCell>
-   </Table.Row>
- </Table.Header>
+     <Table.Header>
+       <Table.Row>
+         <Table.HeaderCell>Do you have it?</Table.HeaderCell>
+         <Table.HeaderCell>Name</Table.HeaderCell>
+         <Table.HeaderCell>Amount</Table.HeaderCell>
+       </Table.Row>
+     </Table.Header>
 
- <Table.Body>
-   {genItems(props.food)}
- </Table.Body>
-</Table>
-
+     <Table.Body>
+       {genItems(props.food)}
+     </Table.Body>
+   </Table>
  </div>
 )
 

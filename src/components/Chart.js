@@ -9,10 +9,8 @@ class Chart extends Component {
     return {
         labels:  Object.keys(this.props.data[0]),
         datasets: this.getDataSet()
-
       }
   }
-
 
   getDataSet = () => {
     let rtnArray = []
@@ -33,11 +31,6 @@ class Chart extends Component {
   options = () => {return {
 
     tooltips: {
-        // callbacks: {
-        //   label: (tooltipItem, data) => {
-        //       return data['datasets'][0]['data'][tooltipItem['index']]
-        //   }
-        // },
         titleFontSize: 100,
         bodyFontSize: 100,
       },

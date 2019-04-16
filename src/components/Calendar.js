@@ -15,7 +15,6 @@ const genAllFood = (food) => {
       })
     })
   })
-  console.log(allFoodArray);
   return allFoodArray
 }
 
@@ -34,7 +33,6 @@ const Calendar = (props) => (
 )
 
 const mapStateToProps = state =>({
-  // notes: state.user.notes,
   food: state.user.foods
 })
 

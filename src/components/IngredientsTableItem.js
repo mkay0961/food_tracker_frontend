@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Table, Rating, Icon } from 'semantic-ui-react'
+import { Table, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 const checkIfHave = (data, userFoods) =>{
@@ -9,25 +9,15 @@ const checkIfHave = (data, userFoods) =>{
       return food.food_id
     })
 
-    // recipe.food.forEach((data)=>{
-    //   // userFoods.forEach((userFood)=>{
-    //
-    //   // console.log(recipeFood.name);
     if(useFoodIds.includes(data.food_id)){
       if(parseInt(data.amount.split(" ")[0]) <= parseInt(userFoods.find((food)=>food.food_id === data.food_id).combined_amount.split(" ")[0])){
         rtnVal = true
       }else{
         rtnVal = false
       }
-
-
     }else{
-
       rtnVal = false
-
     }
-
-
     return rtnVal
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Modal } from 'semantic-ui-react'
+import { Header, Modal, Form, Button } from 'semantic-ui-react'
 
 class DetailEatModal extends Component {
 
@@ -14,15 +14,15 @@ class DetailEatModal extends Component {
         <Modal.Content image>
           <Modal.Description>
             <Header>Item: {data.name}</Header>
-            <form className="ui form">
-              <div className="field">
-                <label>Amount</label>
-                <input type="text" name="amount" defaultValue={data.combined_amount.split(" ")[0]}/>
-                <label>{data.unit}</label>
-              </div>
-              <button className="ui button" onClick={(e)=>handleUpdate(e, data)}>Eat</button>
-              <button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</button>
-            </form>
+            <Form className="ui form">
+              <Form.Input fluid
+                          name="amount"
+                          defaultValue={data.combined_amount.split(" ")[0]}
+                          placeholder='Amount'
+                          label={`Amount   **Unit(${data.unit})**`} />
+              <Button className="ui button" onClick={(e)=>handleUpdate(e, data)}>Eat</Button>
+              <Button className="ui button" onClick={(e)=>handleCancel(e)}>Cancel</Button>
+            </Form>
           </Modal.Description>
         </Modal.Content>
       </Modal>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Modal, Button, Segment, Grid, Divider, Icon, Dropdown, Transition, Image } from 'semantic-ui-react'
+import { Header, Modal, Button, Segment, Grid, Transition } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
@@ -38,11 +38,7 @@ class EatModal extends Component {
   }
 
   handleUpdate = (e, item) =>{
-    //logic
-    //work on
-
-
-    let eatenAmount = e.target.parentElement.children[0].children[1].value
+    let eatenAmount = e.target.form.children[0].children[1].children[0].value
     let oldAmount = item.combined_amount.split(" ")
 
     if(oldAmount[0]- eatenAmount >= 0 && eatenAmount !== "" && eatenAmount.split(" ").length === 1){
@@ -54,6 +50,8 @@ class EatModal extends Component {
       alert("stop")
       e.preventDefault()
     }
+
+    //FIX TO MAKE ERRORS BETTER
 
   }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Header, Modal, Button, Transition, Grid, Divider, Icon, Segment } from 'semantic-ui-react'
+import { Header, Modal, Button, Transition, Grid, Segment } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
@@ -37,9 +37,10 @@ class AddModal extends Component {
 
   handleUpdate = (e, item) =>{
     e.preventDefault()
-    let amount = e.target.parentElement.children[0].children[1].value
-    let price = e.target.parentElement.children[1].children[1].value
-    let expire_date = e.target.parentElement.children[2].children[1].value
+
+    let amount = e.target.form.children[0].children[1].children[0].value
+    let price = e.target.form.children[1].children[1].children[0].value
+    let expire_date = e.target.form.children[2].children[1].children[0].value
 
     if(expire_date === ""){
       expire_date = item.default_expiration
@@ -55,6 +56,8 @@ class AddModal extends Component {
     }else {
       alert("wrong amount")
     }
+
+    //MAKE ERROR MESSAGES BETTER
 
   }
 
@@ -84,11 +87,11 @@ class AddModal extends Component {
     const { addFoodList, food, search } = this.props
 
     let ids = addFoodList.map((food)=>food.id)
+
     let searchFilteredArray = food.filter((aFood)=>(aFood.name.toLowerCase().includes(search.toLowerCase())))
+
     searchFilteredArray =  searchFilteredArray.filter((aFood)=>!(ids).includes(aFood.id))
-    // if(searchFilteredArray.length === 0){
-    //   console.log("ADD somthing");
-    // }
+
     return searchFilteredArray
   }
 
@@ -134,7 +137,9 @@ class AddModal extends Component {
                     </div>
                   </Segment>
                   <Segment align="center">
-                    <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
+                    <Button icon='check'
+                            content='Submit'
+                            onClick={this.handleSubmit}/>
                   </Segment>
                 </Grid.Column>
               </Grid>
@@ -144,6 +149,7 @@ class AddModal extends Component {
         {!currentAddModal?null:
           <DetailAddModal handleCancel={this.handleCancel}
                           handleUpdate={this.handleUpdate}
+                          onHandleChange={this.onHandleChange}
                           status={addDetailModalActive}
                           data={currentAddModal} />}
       </div>
@@ -170,42 +176,3 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddModal)
-
-        //
-        //
-        // <Transition visible={addModalActive} animation='scale' duration={300}>
-        //
-        //     <Modal.Description>
-        //         <Grid columns={2} textAlign='center'>
-        //           <Divider vertical><Icon name="arrow right"/></Divider>
-        //           <Grid.Row verticalAlign='middle'>
-        //             <Grid.Column>
-        //               <Header icon>
-        //                 All Food
-        //               </Header>
-        //               <Segment>
-        //                 <SearchBar />
-        //               </Segment>
-        //               <div className="column">
-        //                 <FoodContainer food={this.generateFood()}
-        //                                handleClick={this.handleAddClick}/>
-        //               </div>
-        //              </Grid.Column>
-        //             <Grid.Column>
-        //               <Header icon>
-        //                 Food To Add
-        //               </Header>
-        //               <div className = "column">
-        //                 <FoodContainer food={addFoodList}
-        //                                handleClick={this.handleDelClick}/>
-        //                </div>
-        //             </Grid.Column>
-        //           </Grid.Row>
-        //         </Grid>
-        //
-        //
-        //     </Modal.Description>
-        //   </Modal.Content>
-        //   <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
-        // </Modal>
-        // </Transition>

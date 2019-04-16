@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Item, Button, Icon } from 'semantic-ui-react'
+import { Card, Item, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { throwAwayFood } from '../redux/actions/user'
 

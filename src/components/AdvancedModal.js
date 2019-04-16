@@ -36,7 +36,7 @@ class AdvancedModal extends Component {
 
     return (
       <div>
-        <Modal size={"fullscreen"} dimmer={"blurring"}
+        <Modal dimmer={"blurring"}
                className="modalCustom"
                trigger={<button onClick={this.onOpen} className="advancedSearch ui button">Advanced Search</button>}>
           <Modal.Header>Advanced Search</Modal.Header>

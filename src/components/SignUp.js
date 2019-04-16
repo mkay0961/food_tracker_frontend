@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createUser } from '../redux/actions/user'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment, Input } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment, Input } from 'semantic-ui-react'
 
 //make funtional?
 

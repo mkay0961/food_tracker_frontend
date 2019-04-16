@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Menu, Segment, Header } from 'semantic-ui-react'
+import { Menu, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { clearUser } from '../redux/actions/user'
+
 //make funtional?
 
 class Navbar extends Component {
 
   onLogout = () =>{
-    console.log("LOG OUT")
     localStorage.clear()
     this.props.clearUser()
   }
@@ -16,7 +16,7 @@ class Navbar extends Component {
   render() {
    return (
      <div >
-       <Menu pointing size='massive' fluid inverted color='orange' size='massive'>
+       <Menu pointing size='massive' fluid inverted color='orange' >
          <Menu.Menu position='left'>
          <Link to="/overview">
             <Menu.Item name='Overview'/>
@@ -35,7 +35,6 @@ class Navbar extends Component {
          <Menu.Menu position='right'>
             <Header as="h1">Food Tracker</Header>
          </Menu.Menu>
-
 
          <Menu.Menu position='right'>
             <Menu.Item to="/logout" onClick={this.onLogout}  name='Logout'/>

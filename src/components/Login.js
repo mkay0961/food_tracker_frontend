@@ -2,18 +2,39 @@ import React, { Component } from 'react'
 import { loginUser } from '../redux/actions/user'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 
 class Login extends Component {
+  constructor(){
+    super()
+    this.state = {
+      username: "",
+      password: ""
+    }
+
+  }
+
+  onHandleChange = (event) =>{
+
+    const target = event.target
+    const value = target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
+
+  }
 
   handleSubmitClick = (e) =>{
     e.preventDefault()
-    let username = document.getElementById("username").value
-    let password = document.getElementById("password").value
+
+    const { username, password } = this.state
+    const { loginUser } = this.props
+
     if(username !== "" && password !== ""){
-      debugger
-      this.props.loginUser(username, password)
+      loginUser(username, password)
     }else{
       alert("please enter evertthing")
     }
@@ -36,16 +57,21 @@ class Login extends Component {
               <Header as='h2' color='orange' textAlign='center'>
                  Log-in to your account
               </Header>
-              <Form.Input fluid id="username" icon='user' iconPosition='left' placeholder='E-mail address' />
-              <Form.Input
-                fluid
-                icon='lock'
-                id="password"
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-              />
+              <Form.Input fluid
+                          onChange={(e)=>{this.onHandleChange(e)}}
+                          name="username"
+                          icon='user'
+                          iconPosition='left'
+                          placeholder='E-mail address' />
 
+              <Form.Input fluid
+                          onChange={(e)=>{this.onHandleChange(e)}}
+                          icon='lock'
+                          name="password"
+                          iconPosition='left'
+                          placeholder='Password'
+                          type='password'
+              />
             <Button color='orange' fluid size='large' onClick={this.handleSubmitClick}>
                 Login
               </Button>
@@ -58,7 +84,6 @@ class Login extends Component {
           </Message>
         </Grid.Column>
       </Grid>
-  
     </div>
 
     )

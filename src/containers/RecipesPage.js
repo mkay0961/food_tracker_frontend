@@ -4,7 +4,6 @@ import SearchPageBar from '../components/SearchPageBar'
 import AdvancedModal from '../components/AdvancedModal'
 import RecipeContainer from './RecipeContainer'
 import RecipeModal from '../components/RecipeModal'
-import NewRecipeModal from '../components/NewRecipeModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 
@@ -42,31 +41,21 @@ class RecipesPage extends Component {
       let noMatch = 0
       let yesMatch = 0
       recipe.food.forEach((recipeFood)=>{
-        // userFoods.forEach((userFood)=>{
-
-        // console.log(recipeFood.name);
         if(useFoodIds.includes(recipeFood.food_id)){
           if(parseInt(recipeFood.amount.split(" ")[0]) <= parseInt(userFoods.find((food)=>food.food_id === recipeFood.food_id).combined_amount.split(" ")[0])){
             yesMatch += 1
           }else{
             noMatch += 1
           }
-
-
         }else{
-
           noMatch += 1
-
         }
-
       })
-
       if(yesMatch === recipe.food.length){
         rtnVal = true
       }else if ( yesMatch + parseInt(advancedSearch.misNum) >= recipe.food.length) {
         rtnVal = true
       }else{
-        console.log("NOOOOOOOOOOOO");
         rtnVal = false
       }
 
@@ -94,7 +83,6 @@ class RecipesPage extends Component {
           <div className="buttonsGroup">
             <SearchPageBar />
             <AdvancedModal />
-            del<NewRecipeModal />
           </div>
           <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />
           <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
