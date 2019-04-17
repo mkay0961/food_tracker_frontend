@@ -13,7 +13,9 @@ class Chart extends Component {
   }
 
   getDataSet = () => {
+
     let rtnArray = []
+
     this.props.data.forEach((item, i)=>{
       let obj = {
         label: (i === 0? "Wasted" : "All Food"),
@@ -25,32 +27,40 @@ class Chart extends Component {
       })
       rtnArray.push(obj)
     })
+
     return (rtnArray)
+    
   }
 
   options = () => {return {
-
+    layout: {
+            padding: {
+                bottom: 10
+            }
+        },
     tooltips: {
         titleFontSize: 100,
         bodyFontSize: 100,
       },
     legend: {labels: {
-                fontSize: 50
+                fontSize: 40
             }},
     maintainAspectRatio: false ,
     scales: {
       yAxes: [{ ticks: { fontSize: 40,
                 beginAtZero: true,
                 precision:0 }}],
-      xAxes: [{ ticks: { fontSize: 40 } }]
+      xAxes: [{ ticks: { fontSize: 30, maxRotation:45, minRotation:45 } }]
     }
 
   }}
 
   render() {
     return (
-      <div>
-        <Bar height={700} options={this.options()} data={this.data()}/>
+      <div className="chartsize" >
+
+        <Bar height={1000} options={this.options()} data={this.data()}/>
+
       </div>
     )
   }

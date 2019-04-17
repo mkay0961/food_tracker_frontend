@@ -44,16 +44,16 @@ const generateAllWasted = (stats) => {
 
 const FoodWasteChartsContainer = (props) => (
   <div>
-    <div className="chart">
-        <Segment color="orange">
+    <div className="chart outlineOrange2chart">
+        <Segment >
           <h1>Food Wasted Over A Year</h1>
         </Segment>
         <Segment>
           <Chart  data={generateYearData(props.stats)} />
         </Segment>
      </div>
-     <div className="chart">
-        <Segment color="orange">
+     <div className="chart outlineOrange2chart">
+        <Segment >
           <h1>Items Wasted This Month</h1>
         </Segment>
         <Segment >

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Modal, Button, Segment, Grid, Transition } from 'semantic-ui-react'
+import { Header, Modal, Button, Segment, Grid, Transition, Label } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import FoodContainer from '../containers/FoodContainer'
 import { connect } from 'react-redux'
@@ -9,14 +9,6 @@ import { clearSearch } from '../redux/actions/searchBar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { eatFoodsBackend } from '../redux/actions/user'
 import Swal from 'sweetalert2'
-
-// const Toast = Swal.mixin({
-//   toast: true,
-//   position: 'center',
-//   showConfirmButton: false,
-//   timer: 2000
-// })
-
 
 class EatModal extends Component {
   constructor(){
@@ -137,11 +129,11 @@ class EatModal extends Component {
                className="modalCustom"
                onClose={this.close}
                >
-          <Modal.Header as="h1">Eat Food</Modal.Header>
+          <Modal.Header><Label inverted size="massive" color="orange">Eat Food</Label></Modal.Header>
           <Modal.Content>
             <Grid stackable columns={2}>
               <Grid.Column>
-                <Segment >
+                <div className="outlineOrange2">
                   <Header icon>
                          My Food
                    </Header>
@@ -152,9 +144,10 @@ class EatModal extends Component {
                      <FoodContainer food={this.generateFood()}
                            handleClick={this.handleEatClick}/>
                    </div>
-                </Segment>
+                </div>
               </Grid.Column>
               <Grid.Column>
+                <div className="outlineOrange2">
                 <Segment>
                   <Header icon>
                           Food To Eat
@@ -167,6 +160,7 @@ class EatModal extends Component {
                 <Segment align="center">
                   <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
                 </Segment>
+              </div>
               </Grid.Column>
             </Grid>
 
@@ -203,42 +197,3 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EatModal)
-
-
-//
-// <Grid columns={2} textAlign='center'>
-//   <Divider vertical><Icon name="arrow right"/></Divider>
-//   <Grid.Row verticalAlign='middle'>
-//     <Grid.Column>
-//       <Header icon>
-//         My Food
-//       </Header>
-//       <Segment>
-//         <SearchBar />
-//       </Segment>
-//       <div className="scrollable">
-//         <FoodContainer food={this.generateFood()}
-//               handleClick={this.handleEatClick} />
-//       </div>
-//
-//      </Grid.Column>
-//     <Grid.Column>
-//       <Header icon>
-//         Food To Eat
-//       </Header>
-//       <div >
-//         <FoodContainer food={addFoodList}
-//            handleClick={this.handleDelClick}/>
-//       </div>
-//     </Grid.Column>
-//
-//   </Grid.Row>
-//   <Grid.Row >
-//     <Grid.Column>
-//     <div>
-//       <Button icon='check' content='Submit' onClick={this.handleSubmit}/>
-//     </div>
-//   </Grid.Column>
-//   </Grid.Row>
-//
-// </Grid>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Header, Button } from 'semantic-ui-react'
+import { Modal, Header, Button, Label, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import IngredientsTable from './IngredientsTable'
 import { removeFavRecipe, addFavRecipe } from '../redux/actions/user'
@@ -30,19 +30,38 @@ class RecipeModal extends Component {
       <div>
       {!this.props.data?null:
         <Modal className="modalCustom" size='big' open={active} onClose={noShow}>
+        <div className="outlineOrange6">
         <Modal.Header>
-          <Header>{data.title} - {data.category}</Header>
+          <Header>{data.title} - <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
+            {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
+            </Button>
+          </Header>
         </Modal.Header>
         <Modal.Content image>
+
           <Modal.Description>
+
+          <Label >{data.category}</Label>
+
+          <div className="outlineOrange22">
+            <Label>Description</Label>
+            <Divider />
             <p>{data.description}</p>
+          </div>
+
+          <div className="outlineOrange22">
+            <Label>Instructions</Label>
+            <Divider />
             <p>{data.instructions}</p>
+          </div>
+
+          <div className="outlineOrange22" >
             <IngredientsTable food={data.food} />
-            <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
-              {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
-            </Button>
+          </div>
+
           </Modal.Description>
         </Modal.Content>
+        </div>
         </Modal>
       }
       </div>

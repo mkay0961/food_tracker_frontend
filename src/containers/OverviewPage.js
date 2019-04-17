@@ -7,7 +7,7 @@ import Calendar from '../components/Calendar'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import RecipeModal from '../components/RecipeModal'
-import { Segment, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 
 class OverviewPage extends Component {
@@ -35,32 +35,34 @@ class OverviewPage extends Component {
     const { current, showModal } = this.state
 
     return (
-      <div >
-        <Segment >
-          <Grid divided='vertically'className="backImage2" >
-              <Grid.Row align="center" columns={1}>
-                <Grid.Column >
-                  <Profile />
+      <div className="backImage2">
+        <Grid columns={2} className="gridMove" >
+          <Grid.Row stretched align="center">
+              <Grid.Column>
+
+                  <div>
+                    <Profile />
+                  </div>
+
+                  <div>
+                    <div className="buttonsGroup outlineOrange2">
+                        <AddModal />
+                        <EatModal />
+                    </div>
+                  </div>
+
+                  <div>
+                    <SavedRecipesContainer handleClick={this.handleShowModal} />
+                  </div>
+
                 </Grid.Column>
-              </Grid.Row>
-              <Grid.Row align="center" columns={1}>
-                <Grid.Column >
-                  <div className="buttonsGroup outlineOrange2">
-                    <AddModal />
-                    <EatModal />
+                <Grid.Column>
+                  <div>
+                    <Calendar />
                   </div>
                 </Grid.Column>
               </Grid.Row>
-              <Grid.Row  align="center" columns={2}>
-                <Grid.Column>
-                  <Calendar />
-                </Grid.Column>
-                <Grid.Column>
-                  <SavedRecipesContainer handleClick={this.handleShowModal} />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-        </Segment>
+          </Grid>
         <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
       </div>
     )
@@ -74,6 +76,62 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(OverviewPage)
+
+
+
+
+
+
+
+
+// <Grid divided='vertically'className="backImage2" >
+//     <Grid.Row align="center" columns={1}>
+//       <Grid.Column >
+//         <Profile />
+//       </Grid.Column>
+//     </Grid.Row>
+//     <Grid.Row align="center" columns={1}>
+//       <Grid.Column >
+//         <div className="buttonsGroup outlineOrange2">
+//           <AddModal />
+//           <EatModal />
+//         </div>
+//       </Grid.Column>
+//     </Grid.Row>
+//     <Grid.Row  align="center" columns={2}>
+//       <Grid.Column>
+//         <Calendar />
+//       </Grid.Column>
+//       <Grid.Column>
+//         <SavedRecipesContainer handleClick={this.handleShowModal} />
+//       </Grid.Column>
+//     </Grid.Row>
+//   </Grid>
+
+
+
+
+
+// <Grid columns={2} divided className="backImage2">
+// <Grid.Row stretched>
+//     <Grid.Column>
+//         <div><Profile /></div>
+//         <div><div className="buttonsGroup outlineOrange2">
+//                   <AddModal />
+//                   <EatModal />
+//                 </div></div>
+//         <div>    <SavedRecipesContainer handleClick={this.handleShowModal} /></div>
+//       </Grid.Column>
+//       <Grid.Column>
+//         <div><Calendar />
+//         </div>
+//       </Grid.Column>
+//     </Grid.Row>
+//</Grid>
+
+
+
+
 
 
 // <Profile />

@@ -12,10 +12,18 @@ class DetailAddModal extends Component {
     return (
       <div>
       <Modal open={status}>
-        <Modal.Header>Adding Food</Modal.Header>
+
+        <Modal.Header>
+          Adding Food
+        </Modal.Header>
+
         <Modal.Content image>
           <Modal.Description>
-            <Header>Item: {data.name}</Header>
+
+            <Header>
+              Item: {data.name}
+            </Header>
+
             <Form size='large'>
 
               <Form.Input fluid
@@ -42,8 +50,10 @@ class DetailAddModal extends Component {
 
               <Button className="ui button"
                       onClick={(e)=>handleUpdate(e,data)}>Add</Button>
+
               <Button className="ui button"
                       onClick={(e)=>handleCancel(e)}>Cancel</Button>
+
             </Form>
           </Modal.Description>
         </Modal.Content>
@@ -61,8 +71,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)( DetailAddModal )
-
-
-
-// <Transition visible={status} animation='scale' duration={300}>
-//   </Transition>

@@ -87,7 +87,7 @@ class RecipesPage extends Component {
     return (
        <div>
           <div className="">
-          <div className="buttonsGroup outlineOrange2">
+          <div className="buttonsGroup ">
             <SearchPageBar />
             <Segment className="advancedmodal">
               <AdvancedModal />

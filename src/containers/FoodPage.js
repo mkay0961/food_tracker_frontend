@@ -5,7 +5,7 @@ import AddModal from '../components/AddModal'
 import EatModal from '../components/EatModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
-import { Segment, Grid, Image, Tab, Header, Label, Icon } from 'semantic-ui-react'
+import { Segment, Tab, Header, Label, Icon } from 'semantic-ui-react'
 
 class FoodPage extends Component {
 
@@ -47,46 +47,17 @@ class FoodPage extends Component {
       })
 
     }
-    console.log("skdajhflkh", array2);
-    // this.props.nonExpired.forEach(()=>{
-    //
-    //
-    //
-    // })
-
-    // console.log("skdajhflkh", allcat);
-    //
-    //
-    // let rtnVal = this.props.nonExpired
-    // if(num === 0){
-    //   rtnVal = this.props.nonExpired.filter((food, i)=>{
-    //     console.log(food.category);
-    //     if(food.category === "Freezer" || food.category === "Produce" || food.category === "Dairy & Eggs"  || food.category === "Breakfast"){
-    //       return food
-    //      }
-    //   })
-    // }else if(num === 1){
-    //   rtnVal = this.props.nonExpired.filter((food, i)=>{
-    //     console.log(food.category);
-    //     if(food.category === "Pantry" || food.category === "Dry Goods & Pasta" || food.category === "Canned Goods" || food.category === "Snacks" ){
-    //       return food
-    //     }
-    //   })
-    // }
     return array2
   }
 
   render() {
     return (
       <div>
-
-        <div className="buttonsGroup outlineOrange2">
-
+        <div className="buttonsGroup ">
           <SearchPageBar/>
-      
-            <Segment className="buttonsGroup">
-          <AddModal />
-          <EatModal />
+          <Segment className="buttonsGroup ">
+            <AddModal />
+            <EatModal />
           </Segment>
         </div>
 
@@ -94,6 +65,7 @@ class FoodPage extends Component {
           <Label icon="trash" size="massive"><Header><Icon name='food' />Non Expired</Header></Label>
           <Tab panes={this.genProperNonExpiredFood(0)} />
         </div>
+        
         <div className="foodGroup outlineOrange">
           <Label size="massive" ><Header><Icon name='trash' />Expired</Header></Label>
           <Tab panes={this.genProperNonExpiredFood(1)} />

@@ -5,7 +5,7 @@ import { Input } from 'semantic-ui-react'
 
 const SearchBar = (props) => (
   <div className="test2">
-    <Input size='massive' onChange={(e)=>props.setSearch(e.target.value)} value={props.searchPage} icon='search' placeholder='Search...' />
+    <Input className="outlineblack" size='massive' onChange={(e)=>props.setSearch(e.target.value)} value={props.searchPage} icon='search' placeholder='Search...' />
   </div>
 )
 

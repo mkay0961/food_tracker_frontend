@@ -11,9 +11,9 @@ const genItems = (ingredents) => {
 
 const IngredientsTable = (props) => (
  <div >
-   <Table celled collapsing>
+   <Table celled collapsing inverted color="orange" className="outlinegrey">
      <Table.Header>
-       <Table.Row>
+       <Table.Row active >
          <Table.HeaderCell>Do you have it?</Table.HeaderCell>
          <Table.HeaderCell>Name</Table.HeaderCell>
          <Table.HeaderCell>Amount</Table.HeaderCell>

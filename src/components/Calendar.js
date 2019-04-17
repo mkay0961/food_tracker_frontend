@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import BigCalendar from 'react-big-calendar'
-import { Segment } from 'semantic-ui-react'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 
 const genAllFood = (food) => {
+
   let allFoodArray = []
+
   Object.keys(food).forEach((cat)=>{
     food[cat].forEach((food)=>{
       food["specific_instances"].forEach((spec)=>{
@@ -16,11 +17,15 @@ const genAllFood = (food) => {
       })
     })
   })
+
   return allFoodArray
+
 }
 
 const Calendar = (props) => (
-   <div color="orange" className="calendar calSeg opac outlineOrange2">
+
+  <div color="orange" className="calendar calSeg opac outlineOrange2">
+    
      <BigCalendar
       localizer={localizer}
       events={genAllFood(props.food)}
@@ -30,6 +35,7 @@ const Calendar = (props) => (
       resourceAccessor="name"
       endAccessor= "date"
     />
+
 </div>
 )
 

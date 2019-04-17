@@ -22,7 +22,7 @@ const checkIfHave = (data, userFoods) =>{
 }
 
 const IngredientsTableItem = (props) => (
-   <Table.Row>
+   <Table.Row active>
      <Table.Cell>
         {checkIfHave(props.data, props.userFoods)?
           <Icon color='green' name='checkmark' size='large' />
@@ -30,7 +30,7 @@ const IngredientsTableItem = (props) => (
           <Icon color='red' name='close' size='large' />
         }
      </Table.Cell>
-     <Table.Cell>
+     <Table.Cell >
          {props.data.name}
      </Table.Cell>
      <Table.Cell>

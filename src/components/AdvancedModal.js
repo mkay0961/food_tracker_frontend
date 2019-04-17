@@ -8,12 +8,6 @@ import { setIngredientsSearch,
 
 
 class AdvancedModal extends Component {
-  // constructor(){
-  //   super()
-  //   this.state = {
-  //     status: false
-  //   }
-  // }
 
   onChangeCheck = () => {
 
@@ -50,8 +44,16 @@ class AdvancedModal extends Component {
       <div>
         <Modal onClose={this.onClose}
                size="large"
-               trigger={<Button onClick={this.onOpen} size='massive' className="advancedSearch ui button fontsize">Advanced Search</Button>}>
-          <Modal.Header>Advanced Search</Modal.Header>
+               trigger={<Button onClick={this.onOpen}
+                                size='massive'
+                                className="advancedSearch ui button fontsize">
+                            Advanced Search
+                        </Button>}>
+
+          <Modal.Header>
+            Advanced Search
+          </Modal.Header>
+
           <Modal.Content image>
             <Modal.Description>
               <Form>
@@ -75,9 +77,7 @@ class AdvancedModal extends Component {
             </Modal.Description>
           </Modal.Content>
         </Modal>
-
       </div>
-
     )
   }
 }
@@ -95,11 +95,3 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancedModal)
-// <Transition visible={this.state.status} animation='scale' duration={300}>
-//   </Transition>
-//
-// <Input onChange={()=>this.onChangeCheck()}
-//        checked={advancedSearch["withIngredients"]}
-//        type="checkbox"
-//        name="ingredients"
-//        placeholder="ingredients"/>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Header, Modal, Button, Transition, Grid, Segment } from 'semantic-ui-react'
+import { Header, Modal, Button, Transition, Grid, Segment, Label } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import DetailAddModal from './DetailAddModal'
 import FoodContainer from '../containers/FoodContainer'
@@ -144,11 +144,17 @@ class AddModal extends Component {
                  onOpen={this.open}
                  className="modalCustom"
                  onClose={this.close}>
-            <Modal.Header as="h1">Add Food</Modal.Header>
+
+            <Modal.Header>
+              <Label inverted size="massive" color="orange">
+                Add Food
+              </Label>
+            </Modal.Header>
+            
             <Modal.Content>
               <Grid stackable columns={2}>
                 <Grid.Column>
-                  <Segment >
+                  <div className="outlineOrange2">
                     <Header icon>
                            All Food
                      </Header>
@@ -159,9 +165,10 @@ class AddModal extends Component {
                       <FoodContainer food={this.generateFood()}
                                         handleClick={this.handleAddClick}/>
                      </div>
-                  </Segment>
+                  </div>
                 </Grid.Column>
                 <Grid.Column>
+                  <div className="outlineOrange2">
                   <Segment>
                     <Header icon>
                             Food To Add
@@ -176,6 +183,7 @@ class AddModal extends Component {
                             content='Submit'
                             onClick={this.handleSubmit}/>
                   </Segment>
+                </div>
                 </Grid.Column>
               </Grid>
             </Modal.Content>
