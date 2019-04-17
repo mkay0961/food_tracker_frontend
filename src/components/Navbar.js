@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { clearUser } from '../redux/actions/user'
 
-//make funtional?
-//make pointing work
-
 class Navbar extends Component {
   constructor(){
     super()

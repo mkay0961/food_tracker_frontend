@@ -30,38 +30,38 @@ class RecipeModal extends Component {
       <div>
       {!this.props.data?null:
         <Modal className="modalCustom" size='big' open={active} onClose={noShow}>
-        <div className="outlineOrange6">
-        <Modal.Header>
-          <Header>{data.title} - <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
-            {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
-            </Button>
-          </Header>
-        </Modal.Header>
-        <Modal.Content image>
+          <div className="outlineOrange6">
+          <Modal.Header>
+            <Header>{data.title} - <Button toggle active={this.checkIfFavorite()} onClick={this.handleFavClick}>
+              {this.checkIfFavorite()? "Unfavorite" : "Favorite"}
+              </Button>
+            </Header>
+          </Modal.Header>
+          <Modal.Content image>
 
-          <Modal.Description>
+            <Modal.Description>
 
-          <Label >{data.category}</Label>
+            <Label >{data.category}</Label>
 
-          <div className="outlineOrange22">
-            <Label>Description</Label>
-            <Divider />
-            <p>{data.description}</p>
+            <div className="outlineOrange22">
+              <Label>Description</Label>
+              <Divider />
+              <p>{data.description}</p>
+            </div>
+
+            <div className="outlineOrange22">
+              <Label>Instructions</Label>
+              <Divider />
+              <p>{data.instructions}</p>
+            </div>
+
+            <div className="outlineOrange22" >
+              <IngredientsTable food={data.food} />
+            </div>
+
+            </Modal.Description>
+          </Modal.Content>
           </div>
-
-          <div className="outlineOrange22">
-            <Label>Instructions</Label>
-            <Divider />
-            <p>{data.instructions}</p>
-          </div>
-
-          <div className="outlineOrange22" >
-            <IngredientsTable food={data.food} />
-          </div>
-
-          </Modal.Description>
-        </Modal.Content>
-        </div>
         </Modal>
       }
       </div>

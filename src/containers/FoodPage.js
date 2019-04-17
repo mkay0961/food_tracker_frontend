@@ -65,7 +65,7 @@ class FoodPage extends Component {
           <Label icon="trash" size="massive"><Header><Icon name='food' />Non Expired</Header></Label>
           <Tab panes={this.genProperNonExpiredFood(0)} />
         </div>
-        
+
         <div className="foodGroup outlineOrange">
           <Label size="massive" ><Header><Icon name='trash' />Expired</Header></Label>
           <Tab panes={this.genProperNonExpiredFood(1)} />
@@ -87,55 +87,3 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FoodPage)
-// <Grid columns={2} divided >
-//     <Grid.Row align="center" columns={1}>
-//       <Grid.Column >
-//         <Segment className="group">
-//           <div className="barr">
-//             <SearchPageBar/>
-//           </div>
-//           <Segment className="buttonsGroup">
-//             <AddModal/>
-//             <EatModal/>
-//           </Segment>
-//         </Segment>
-//       </Grid.Column>
-//     </Grid.Row>
-//     <Grid.Row stretched>
-// <Grid.Column >
-
-// <h1>Not Expired</h1>
-// <div className="catagory scrollable">
-// <CategoriesContainer name={"Not Expired"} foods={this.genProperNonExpiredFood(4)}/>
-// </div>
-//
-// </Grid.Column>
-// <Grid.Column>
-// <Segment>
-// <h1>Expired</h1>
-// <div className="catagory scrollable">
-// <CategoriesContainer name={"Expired"} foods={this.props.expired}/>
-// </div>
-// </Segment>
-// </Grid.Column>
-//
-// </Grid.Row>
-//   </Grid>
-// <Segment className="group">
-//   <div className="barr">
-//     <SearchPageBar/>
-//   </div>
-//   <Segment className="buttonsGroup">
-//     <AddModal/>
-//     <EatModal/>
-//   </Segment>
-// </Segment>
-// <h1>Not Expired</h1>
-// <div className="catagory scrollable">
-//   <CategoriesContainer name={"Not Expired"} foods={this.props.nonExpired}/>
-// </div>
-// <Divider section />
-// <h1>Expired</h1>
-// <div className="catagory scrollable">
-//   <CategoriesContainer name={"Expired"} foods={this.props.expired}/>
-// </div>

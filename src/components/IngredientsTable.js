@@ -3,6 +3,7 @@ import { Table } from 'semantic-ui-react'
 import IngredientsTableItem from './IngredientsTableItem'
 
 const genItems = (ingredents) => {
+  
   return ingredents.map((food)=>{
       return <IngredientsTableItem data={food}/>
   })
@@ -19,7 +20,6 @@ const IngredientsTable = (props) => (
          <Table.HeaderCell>Amount</Table.HeaderCell>
        </Table.Row>
      </Table.Header>
-
      <Table.Body>
        {genItems(props.food)}
      </Table.Body>

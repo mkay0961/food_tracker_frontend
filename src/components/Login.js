@@ -93,7 +93,8 @@ class Login extends Component {
             </Segment>
           </Form>
           <Message>
-            New to us? <Link to="/signup">
+            New to us?
+            <Link to="/signup">
               <Button>Sign Up</Button>
             </Link>
           </Message>

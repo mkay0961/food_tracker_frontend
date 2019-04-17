@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import { throwAwayFood } from '../redux/actions/user'
 
 const throwAway = (props) => {
+
   props.data.specific_instances.forEach((item)=>{
     props.throwAwayFood(item.user_food_id)
   })
+  
 }
 
 const genPopUp = (foods) => {
