@@ -86,18 +86,20 @@ class RecipesPage extends Component {
 
     return (
        <div>
-          <div className="backImage3">
-          <Segment className="buttonsGroup">
+          <div className="">
+          <div className="buttonsGroup outlineOrange2">
             <SearchPageBar />
-            <AdvancedModal />
-          </Segment>
+            <Segment className="advancedmodal">
+              <AdvancedModal />
+            </Segment>
+          </div>
           <div className="recipeBookContainer " >
-            <Image width="110%" height="100%" src={require("../test2.png")} />
+            <Image width="110%" height="100%" src={require("../open-book22.jpeg")} />
               <Grid className="gridBook">
-                <Grid.Column className="gridBookColRight " width={5}>
+                <Grid.Column className="gridBookColRight" width={5}>
                   <RecipeContainer recipes={this.generateRecipes()["side1"]} handleClick={this.handleShowModal} />
                 </Grid.Column>
-                <Grid.Column  className="gridBookColLeft " width={5}>
+                <Grid.Column  className="gridBookColLeft" width={5}>
                   <RecipeContainer recipes={this.generateRecipes()["side2"]} handleClick={this.handleShowModal} />
                 </Grid.Column>
               </Grid>

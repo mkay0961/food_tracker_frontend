@@ -20,7 +20,7 @@ const genAllFood = (food) => {
 }
 
 const Calendar = (props) => (
-   <Segment color="orange" className="calendar calSeg opac">
+   <div color="orange" className="calendar calSeg opac outlineOrange2">
      <BigCalendar
       localizer={localizer}
       events={genAllFood(props.food)}
@@ -30,7 +30,7 @@ const Calendar = (props) => (
       resourceAccessor="name"
       endAccessor= "date"
     />
-   </Segment>
+</div>
 )
 
 const mapStateToProps = state =>({

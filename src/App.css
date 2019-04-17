@@ -127,9 +127,7 @@
   margin-top: 5%;
 }
 
-.advancedSearch{
-  margin: 20px;
-}
+
 
 .backgroundOpac{
   opacity: 0.5;
@@ -149,6 +147,60 @@
  height: 100%;
 }
 
+.item.listItemRecipe{
+  padding: 10px;
+  margin: 10px;
+}
+.ui.grid.gridBook {
+    width: 100%;
+    padding: 20px;
+}
+
+
+.column.signup {
+    min-width: 20%;
+    max-width: 20%;
+}
+.image.shrinkImage > img{
+  height: 300px;
+  width: 300px;
+}
+.outlineOrange{
+  border-radius: 25px;
+  border: 5px solid rgba(240, 101, 26, 0.9);
+  padding: 20px;
+}
+.outlineOrange2{
+  border-radius: 25px;
+  border: 5px solid rgba(240, 101, 26, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+}
+
+.ui.segment.advancedmodal {
+    margin-top: 0px;
+   padding-top: 30px;
+}
+.ui.segment.buttonsGroup {
+    margin: 5px;
+    padding-top: 30px;
+}
+.foodGroup{
+  margin: 90px;
+  width: 70%;
+  margin-top: 60px;
+  margin-left: 15%;
+}
+
+button.ui.button.recipeButton{
+  margin: 20px;
+}
+.column.login {
+    min-width: 20%;
+    max-width: 20%;
+    max-height: 50%;
+    min-height: 50%;
+}
 /* .backImage3{
  background: url("https://images.pexels.com/photos/933154/pexels-photo-933154.jpeg?cs=srgb&dl=computer-cookies-desk-933154.jpg&fm=jpg") no-repeat center center fixed;
  background-size: cover;
@@ -162,18 +214,37 @@
  background-size: cover;
  height: 100%;
 }
+.backImage4{
+ background: url('./fridge.jpeg') no-repeat center center fixed;
+ background-size: cover;
+ height: 100%;
+}
 .opac.ui.segment{
   /* background-color: rgba(240, 101, 26, 0.9); */
   background-color: rgba(255, 255, 255, 0.9);
+}
+.opac23.ui.segment{
+  /* background-color: rgba(240, 101, 26, 0.9); */
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.opac2.content{
+  /* background-color: rgba(240, 101, 26, 0.9); */
+  background-color: rgba(255, 255, 255, 0.2);
 }
 /* .opac1{
   opacity: 1;
   filter: alpha(opacity=50);
 } */
+.giveMemargin.ui.card{
+  margin: 10px;
+}
 .recipe.a.ui.card{
   opacity: 1;
   filter: alpha(opacity=50);
   /* background-color: rgba(255, 255, 255, 0.5); */
+}
+.ui.divided.two.column.grid.foodPageCss{
+  height: 100%;
 }
 
 

@@ -17,7 +17,7 @@ class Chart extends Component {
     this.props.data.forEach((item, i)=>{
       let obj = {
         label: (i === 0? "Wasted" : "All Food"),
-        backgroundColor: (i === 0? 'rgb(255, 99, 132)' : "blue"),
+        backgroundColor: (i === 0? 'brown' : "grey"),
         data: []
       }
       Object.keys(item).forEach((key)=>{
@@ -50,7 +50,7 @@ class Chart extends Component {
   render() {
     return (
       <div>
-        <Bar width={100} height={500} options={this.options()} data={this.data()}/>
+        <Bar height={700} options={this.options()} data={this.data()}/>
       </div>
     )
   }

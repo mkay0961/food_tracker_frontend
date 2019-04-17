@@ -1,20 +1,20 @@
 import React from 'react'
 import Recipe from '../components/Recipe'
 import { connect } from 'react-redux'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 
 
 const genRecipeComponents = (recipes, props) =>{
-  return recipes.map((recipe, i)=> <Recipe key={i} data={recipe} handleClick={props.handleClick} /> )
+  return recipes.map((recipe, i)=> <Button className="recipeButton"><Recipe key={i} data={recipe} handleClick={props.handleClick} /></Button> )
 }
 
 const SavedRecipesContainer = (props) => (
- <Segment color="orange" className="savedRec opac">
+ <div color="orange" className="savedRec opac outlineOrange2">
     <h1>Saved Recipes</h1>
     <Segment className="ui cards opac">
-    {genRecipeComponents(props.saveRecipes, props)}
+      {genRecipeComponents(props.saveRecipes, props)}
     </Segment>
- </Segment>
+ </div>
 )
 
 const mapStateToProps = state =>({

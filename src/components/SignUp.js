@@ -98,7 +98,7 @@ class SignUp extends Component {
     return (
       <div className='backImage'>
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column className="signup">
           <Segment stacked>
             <Header as='h1' color='orange' textAlign='center'>
               Food Tracker

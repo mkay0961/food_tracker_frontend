@@ -45,10 +45,10 @@ class OverviewPage extends Component {
               </Grid.Row>
               <Grid.Row align="center" columns={1}>
                 <Grid.Column >
-                  <Segment className="buttonsGroup">
+                  <div className="buttonsGroup outlineOrange2">
                     <AddModal />
                     <EatModal />
-                  </Segment>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row  align="center" columns={2}>
