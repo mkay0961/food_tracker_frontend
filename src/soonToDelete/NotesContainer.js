@@ -8,7 +8,7 @@ class NotesContainer extends Component {
       return <Note key={i} data={item} />
     })
   }
-  
+
   render() {
     return (
      <div >

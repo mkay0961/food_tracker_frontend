@@ -38,7 +38,7 @@ class OverviewPage extends Component {
       <div className="backImage2">
         <Grid columns={2} className="gridMove" >
           <Grid.Row stretched align="center">
-              <Grid.Column>
+              <Grid.Column className="hack">
 
                   <div>
                     <Profile />
@@ -56,7 +56,7 @@ class OverviewPage extends Component {
                   </div>
 
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="hack2" >
                   <div>
                     <Calendar />
                   </div>
