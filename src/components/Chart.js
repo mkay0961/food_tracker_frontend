@@ -29,7 +29,7 @@ class Chart extends Component {
     })
 
     return (rtnArray)
-    
+
   }
 
   options = () => {return {
@@ -39,8 +39,8 @@ class Chart extends Component {
             }
         },
     tooltips: {
-        titleFontSize: 100,
-        bodyFontSize: 100,
+        titleFontSize: 50,
+        bodyFontSize: 50,
       },
     legend: {labels: {
                 fontSize: 40
