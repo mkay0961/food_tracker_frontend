@@ -55,7 +55,7 @@ class RecipeModal extends Component {
               <p>{data.instructions}</p>
             </div>
 
-            <div className="outlineOrange22" >
+            <div className="outlineOrangesheesh" >
               <IngredientsTable food={data.food} />
             </div>
 

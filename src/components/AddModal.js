@@ -150,7 +150,7 @@ class AddModal extends Component {
                 Add Food
               </Label>
             </Modal.Header>
-            
+
             <Modal.Content>
               <Grid stackable columns={2}>
                 <Grid.Column>

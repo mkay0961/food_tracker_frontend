@@ -2,20 +2,21 @@ import React, { Component } from 'react'
 import { Modal, Input, Form, Segment, Button, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
-import { setIngredientsSearch,
-         resetIngredientsSearch,
-         setMisMatchNum } from '../redux/actions/searchByIngredients'
+import { setIngredientsSearch, resetIngredientsSearch,
+         setMisMatchNum, clearMisMatchNum } from '../redux/actions/searchByIngredients'
 
 
 class AdvancedModal extends Component {
 
   onChangeCheck = () => {
 
-    const { advancedSearch, resetIngredientsSearch, setIngredientsSearch } = this.props
+    const { advancedSearch, resetIngredientsSearch, setIngredientsSearch, clearMisMatchNum } = this.props
 
     if(advancedSearch.withIngredients){
+      clearMisMatchNum()
       resetIngredientsSearch()
     }else{
+      clearMisMatchNum()
       setIngredientsSearch()
     }
   }
@@ -69,6 +70,7 @@ class AdvancedModal extends Component {
                   <Input onChange={()=>this.onChangeNum()}
                          id="misNum"
                          label="Mis Match Num"
+                         defaultValue={advancedSearch["misNum"]}
                          type='number'
                          pattern='[0-9]{0,5}'
                          />
@@ -86,7 +88,8 @@ const mapDispatchToProps = dispatch => {
     setIngredientsSearch: ()=>{dispatch(setIngredientsSearch())},
     resetIngredientsSearch: ()=>{dispatch(resetIngredientsSearch())},
     clearSearchPage: ()=>{dispatch(clearSearchPage())},
-    setMisMatchNum: (num)=>{dispatch(setMisMatchNum(num))}
+    setMisMatchNum: (num)=>{dispatch(setMisMatchNum(num))},
+    clearMisMatchNum: ()=>{dispatch(clearMisMatchNum())}
     }
 }
 

@@ -19,14 +19,16 @@ class FoodPage extends Component {
       let obj ={}
 
       this.props.nonExpired.forEach((food, i)=>{
-        if(!Object.keys(obj).includes(food.category)){
-            obj[food.category]= [food]
-        }else{
-          obj[food.category].push(food)
-        }
+          if(!Object.keys(obj).includes(food.category)){
+              obj[food.category]= [food]
+          }else{
+            obj[food.category].push(food)
+          }
+
       })
 
       Object.keys(obj).forEach((cat, i)=>{
+        console.log("test2",obj[cat]);
         array2.push({ menuItem: cat, render: () => <Tab.Pane><FoodPageFoodContainer foods={obj[cat]}/></Tab.Pane> })
       })
 

@@ -17,7 +17,8 @@ export default (state={withIngredients: false, misNum: 0},action)=>{
       newState.misNum = action.payload
       return newState
     case CLEAR_MISMATCH_NUM:
-      return 0
+      newState.misNum = 0
+      return newState
     default:
       return state
   }
