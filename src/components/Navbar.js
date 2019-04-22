@@ -8,7 +8,7 @@ class Navbar extends Component {
   constructor(){
     super()
     this.state = {
-      page: "Overview"
+      page: ""
     }
   }
 
@@ -31,16 +31,16 @@ class Navbar extends Component {
        <Menu pointing size='massive' fluid inverted color='orange' >
          <Menu.Menu position='left'>
          <Link to="/overview">
-            <Menu.Item active={page === "Overview"} onClick={(e)=>this.handlePageSwitch(e)} as="h1" name='Overview'/>
+            <Menu.Item active={page === "Overview"}  as="h1" name='Overview'/>
          </Link>
          <Link to="/food">
-            <Menu.Item as="h1" active={page === "My Food"} onClick={(e)=>this.handlePageSwitch(e)} name='My Food'/>
+            <Menu.Item as="h1" active={page === "My Food"}  name='My Food'/>
          </Link>
          <Link to="/recipes">
-            <Menu.Item as="h1" active={page === "Recipes"} onClick={(e)=>this.handlePageSwitch(e)} name='Recipes'/>
+            <Menu.Item as="h1" active={page === "Recipes"}  name='Recipes'/>
          </Link>
          <Link to="/stats">
-            <Menu.Item as="h1" active={page === "Stats"} onClick={(e)=>this.handlePageSwitch(e)} name='Stats'/>
+            <Menu.Item as="h1" active={page === "Stats"}  name='Stats'/>
          </Link>
          </Menu.Menu>
 

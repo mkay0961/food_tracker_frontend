@@ -8,6 +8,8 @@ import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import RecipeModal from '../components/RecipeModal'
 import { Grid } from 'semantic-ui-react'
+import Navbar from '../components/Navbar'
+
 
 
 class OverviewPage extends Component {
@@ -35,6 +37,8 @@ class OverviewPage extends Component {
     const { current, showModal } = this.state
 
     return (
+      <div>
+      <Navbar />
       <div className="backImage2">
         <Grid columns={2} className="gridMove" >
           <Grid.Row stretched align="center">
@@ -64,6 +68,7 @@ class OverviewPage extends Component {
               </Grid.Row>
           </Grid>
         <RecipeModal data={current} active={showModal} noShow={this.handleNoShowModal} />
+      </div>
       </div>
     )
   }

@@ -6,6 +6,8 @@ import RecipeModal from '../components/RecipeModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import { Grid, Image, Segment } from 'semantic-ui-react'
+import Navbar from '../components/Navbar'
+
 
 
 class RecipesPage extends Component {
@@ -86,6 +88,7 @@ class RecipesPage extends Component {
 
     return (
        <div>
+         <Navbar />
           <div className="">
           <div className="buttonsGroup ">
             <SearchPageBar />
@@ -124,6 +127,3 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesPage)
-// <Image width="110%" height="100%" src={require("../test2.png")} />
-
-// <RecipeContainer recipes={this.generateRecipes()} handleClick={this.handleShowModal} />

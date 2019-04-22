@@ -6,6 +6,7 @@ import EatModal from '../components/EatModal'
 import { clearSearchPage } from '../redux/actions/searchPageBar'
 import { connect } from 'react-redux'
 import { Segment, Tab, Header, Label, Icon } from 'semantic-ui-react'
+import Navbar from '../components/Navbar'
 
 class FoodPage extends Component {
 
@@ -55,6 +56,7 @@ class FoodPage extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <div className="buttonsGroup ">
           <SearchPageBar/>
           <Segment className="buttonsGroup ">

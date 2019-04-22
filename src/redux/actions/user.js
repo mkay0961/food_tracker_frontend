@@ -55,7 +55,7 @@ function loginUser(username, password){
         dispatch({type: SET_USER, payload: auth.user})
       })
       .catch(r => r.json().then(e => {
-        alert(e)
+        alert("Incorrect Username or password")
       }))
   }
 }

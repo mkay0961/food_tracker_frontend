@@ -41,7 +41,6 @@ class App extends Component {
         <Loader size='massive'>Loading</Loader>
       </Dimmer></div>:
         <div>
-        <Navbar />
         <Switch>
           <Route exact path="/login" render={() => {
               return isEmpty(user)? <Login /> :
