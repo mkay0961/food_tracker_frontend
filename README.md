@@ -1,4 +1,4 @@
-Simple versioThis app was designed to help track an food waste, in addition to finding recipes based on the food in your housen of uno in which one player plays against three computers
+This app was designed to help track an food waste, in addition to finding recipes based on the food in your house
 
 DEMO: https://youtu.be/rKszL_VdBCA
 
